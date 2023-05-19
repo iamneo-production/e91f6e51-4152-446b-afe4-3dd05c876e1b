@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 009ee1d8c9afd061ba3d802d121b98c32c667580
 =======
@@ -58,6 +59,8 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> a1cdaba466e31da48fadbafadb14d2e46bc04bd6
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -135,8 +138,11 @@
 	</build>
 
 </project>
+<<<<<<< HEAD
 >>>>>>> parent of 8b10062 (Initial_commit_reinstall)
 =======
 >>>>>>> 009ee1d8c9afd061ba3d802d121b98c32c667580
 =======
 >>>>>>> 009ee1d8c9afd061ba3d802d121b98c32c667580
+=======
+>>>>>>> a1cdaba466e31da48fadbafadb14d2e46bc04bd6
