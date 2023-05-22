@@ -1,3 +1,4 @@
+
 package com.examly.springapp.models;
 
 import java.lang.annotation.Inherited;
@@ -29,4 +30,3 @@ public class AdminModel {
     private String mobileNumber;
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
-}
