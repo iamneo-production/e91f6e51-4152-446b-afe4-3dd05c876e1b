@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./components/Auth/Login/Login";
 import Signup from "./components/Auth/Signup/Signup";
 import Homepage from "./components/Customer/HomepPage/HomePage"
-import Addtheme from "./components/Admin/Addtheme";
+import AddTheme from "./components/Admin/AddTheme/AddTheme";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
         
         {/* ADMIN ROUTES */}
 
-        <Route path="/admin/home" element={<Addtheme />} />
+        <Route path="/admin/home" element={<AddTheme />} />
       </Routes>
 
       
