@@ -1,5 +1,3 @@
-import axios from "axios";
-
 
 export async function signUpUser(email, mobileNumber, password, userType, userName) {
     const user = {
@@ -11,16 +9,27 @@ export async function signUpUser(email, mobileNumber, password, userType, userNa
     };
   
     try {
-      const response = await axios.post("https://8080-faeeaababbcfcafefbdecbeaedcfdfabbdb.project.examly.io/user/signup", user);
-      console.log(response.status,"response data is :",response.data);
-      console.log("userRole is :",response.data.userRole);
-      alert(`${response.data}`);
+      const response = await fetch("https://8080-faeeaababbcfcafefbdecbeaedcfdfabbdb.project.examly.io/user/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          mobileNumber: mobileNumber,
+          password: password,
+          userRole: userType,
+          username: userName,
+        }),
+      });
+      const data = await response.json()
+      alert(`${data.message}`);
       if(user.userRole==="admin"){
         window.location.href = "/admin/login";
       }else {
         window.location.href = "/user/login";
       }
-      return response.data; 
+      return data; 
     } catch (error) {
       alert("Error registering user/admin"+error.message);
       
@@ -28,14 +37,20 @@ export async function signUpUser(email, mobileNumber, password, userType, userNa
   }
 
 export async function loginUser(email, password) {
-    const user = {
-        "email": email,
-        "password": password
-      };
+
       try{
-        const response = await  axios.post("https://8080-faeeaababbcfcafefbdecbeaedcfdfabbdb.project.examly.io/user/login", user)
+        const res = await fetch("https://8080-faeeaababbcfcafefbdecbeaedcfdfabbdb.project.examly.io/user/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+          }),
+        });
         
-        return response;
+        return res;
       }catch(error){
           alert("Error logging user/admin" + error.message);
           return error;
