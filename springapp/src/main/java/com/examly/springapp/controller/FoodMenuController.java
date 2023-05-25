@@ -1,11 +1,11 @@
-package com.examly.springapp.controller;
-import org.springframework.web.bind.annotation.*;
+// package com.examly.springapp.controller;
+// import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/")
+// @RestController
+// @RequestMapping("/")
 
 
-public class FoodMenuController {
+// public class FoodMenuController {
     
-}
+//}
 
