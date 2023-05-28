@@ -13,6 +13,8 @@ public interface AdminModelRepository extends JpaRepository<AdminModel,Integer> 
 
 
 
+//*******************************************************PRATIK CODE SAONAR PASSED TEST**************************** */
+
 // package com.examly.springapp.repository;
 
 // import org.springframework.web.bind.annotation.*;
