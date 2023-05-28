@@ -3,19 +3,42 @@ import React from "react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { Link } from "react-router-dom";
 import Steps from "./Steps";
-import { useSearchParams } from "react-router-dom";
-import endpoints from "../../config/config";
+import { useSearchParams,useLocation } from "react-router-dom";
+import endpoints from "/home/coder/project/workspace/reactapp/src/components/config/config.js";
 import axios from "axios";
 import Swal from "sweetalert2";
-import Header from "/home/coder/project/workspace/reactapp/src/components/Customer/Navbaar/Navbaar.js";
-
-const BookEvent = () => {
+//import Navbaar from "../Navbaar/Navbaar";
+const Booking = () => {
   let [searchParams, setSearchParams] = useSearchParams();
+
   const [eventData, setEventData] = React.useState({
     loading: false,
     data: null,
   });
   const eventId = searchParams?.get("eventId");
+
+  // const {id} = useParams();
+  // const [data, setData] = useState()
+
+  // useEffect(()=>{
+  //   async function getEvent() {
+  //     try {
+  //       const response = await fetch(`${BASE_URL}/getAllThemes/${id}`);
+  //       if (!response.ok) {
+  //         throw new Error('Failed to fetch event data');
+  //       }
+  //       const eventData = await response.json();
+  //       console.log('event', eventData);
+  //       setData(eventData);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  
+  //   getEvent();
+  // },[])
+
+  //console.log("Hii",id)
 
   React.useEffect(() => {
     if (eventId && eventId !== undefined) {
@@ -41,9 +64,8 @@ const BookEvent = () => {
  
 
   return (
-    //<BrowserRouter></BrowserRouter><Header />
+  
     <div className="maincontainer">
-      <Header />
       <Grid container alignItems="center" spacing={2}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Link to={"/user"}>
@@ -77,4 +99,4 @@ const BookEvent = () => {
   );
 };
 
-export default BookEvent;
+export default Booking;
