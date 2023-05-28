@@ -34,17 +34,20 @@ export default function Login() {
       return;
     } else {
       const response = await loginUser(email, password);
+      const data =await response.json();
+      console.log("userModel is :",data.userModel)
+      console.log("login :",data.success)
       if (response instanceof Error) {
-        alert(response.Error);
-        console.log(response.message);
-      } else if (response.data.userModel) {
-        if (response.data.userModel.userRole === "user") {
-          console.log(response.data.userModel)
-          setUserModel(response.data.userModel);
+  //      alert(response.Error);
+     //   console.log(data.message);
+      } else if (data.userModel) {
+        if (data.userModel.userRole === "user") {
+          console.log(data.userModel)
+          setUserModel(data.userModel);
           navigate("/user/home");
-        } else if (response.data.userModel.userRole === "admin") {
-          console.log(response.data.userModel)
-          setUserModel(response.data.userModel);
+        } else if (data.userModel.userRole === "admin") {
+          console.log(data.userModel)
+          setUserModel(data.userModel);
           navigate("/admin/home");
         }
       } else {

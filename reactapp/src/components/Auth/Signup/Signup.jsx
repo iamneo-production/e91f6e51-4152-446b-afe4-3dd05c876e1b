@@ -20,7 +20,7 @@ export default function Signup() {
 
 
 
-  function handleSignup(){
+  async function handleSignup(){
     if(userType==="" ||  email==="" || userName==="" || mobileNumber==="" || password==="" || confirmPassword===""){
       alert("Please enter all fields")
       console.log("Please enter all details")
@@ -47,7 +47,7 @@ export default function Signup() {
     }
     else{
 
-      const response= signUpUser(email,mobileNumber,password,userType,userName)
+      const response= await signUpUser(email,mobileNumber,password,userType,userName)
       console.log(response);
       
     }
