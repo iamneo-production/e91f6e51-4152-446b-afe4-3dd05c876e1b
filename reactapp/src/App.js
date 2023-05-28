@@ -14,7 +14,7 @@ import Login from "./components/Auth/Login/Login";
 import Signup from "./components/Auth/Signup/Signup";
 
 import Homepage from "./components/Customer/HomepPage/HomePage";
-import Addtheme from "./components/Admin/Addtheme";
+//import Addtheme from "./components/Admin/Addtheme";
 import Booking from "./components/Customer/BookingPage/Booking";
 
 
@@ -37,10 +37,10 @@ function App() {
         <Route path="/user/bookTheme" element={<Booking/>} />
 
         
-        {/* ADMIN ROUTES */}
+        {/* ADMIN ROUTES 
 
-        <Route path="/admin/home" element={<AddTheme />} />
-      </Routes>
+  <Route path="/admin/home" element={<AddTheme />} />*/}
+  </Routes>
       
       </ThemeProvider>
       
