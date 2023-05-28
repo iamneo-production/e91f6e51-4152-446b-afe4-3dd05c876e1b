@@ -12,9 +12,11 @@ import {
 import theme from "/home/coder/project/workspace/reactapp/src/Theme/Theme.js";
 import Login from "./components/Auth/Login/Login";
 import Signup from "./components/Auth/Signup/Signup";
+
 import Homepage from "./components/Customer/HomepPage/HomePage";
 import Addtheme from "./components/Admin/Addtheme";
 import Booking from "./components/Customer/BookingPage/Booking";
+
 
 function App() {
   return (
@@ -37,7 +39,7 @@ function App() {
         
         {/* ADMIN ROUTES */}
 
-        <Route path="/admin/home" element={<Addtheme />} />
+        <Route path="/admin/home" element={<AddTheme />} />
       </Routes>
       
       </ThemeProvider>
