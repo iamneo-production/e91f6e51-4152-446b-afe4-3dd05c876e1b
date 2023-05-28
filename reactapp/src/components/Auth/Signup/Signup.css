@@ -41,7 +41,9 @@
   }
 }
 #signinLink {
+  color:rgb(106, 15, 210);
   text-decoration: none;
+
 }
 .loginPara {
   font-family: 'Times New Roman', Times, serif;
