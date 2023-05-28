@@ -57,6 +57,7 @@ public class UserModel {
 	public void setUserRole(String userRole) {
 		this.userRole = userRole;
 	}
+
 }
 
 
