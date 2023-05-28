@@ -55,6 +55,8 @@ public class AdminModel {
 
 
 
+//************************************************* PRATIK RAJ SOANR TEST **********************************/
+
 // package com.examly.springapp.models;
 // import java.lang.annotation.Inherited;
 
