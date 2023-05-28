@@ -7,9 +7,11 @@ export async function signUpUser(email, mobileNumber, password, userType, userNa
       "userRole":userType,
       "username":userName
     };
-  
+  //ceddbecfbbacaefefbdecbeaedcfdfabbdb ------------ pratik terminal
     try {
-      const response = await fetch("https://8080-faeeaababbcfcafefbdecbeaedcfdfabbdb.project.examly.io/user/signup", {
+
+      const response = await fetch("https://8080-ceddbecfbbacaefefbdecbeaedcfdfabbdb.project.examly.io/user/signup", {
+
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +41,9 @@ export async function signUpUser(email, mobileNumber, password, userType, userNa
 export async function loginUser(email, password) {
 
       try{
-        const res = await fetch("https://8080-faeeaababbcfcafefbdecbeaedcfdfabbdb.project.examly.io/user/login", {
+
+        const res = await fetch("https://8080-ceddbecfbbacaefefbdecbeaedcfdfabbdb.project.examly.io/user/login", {
+
           method: "POST",
           headers: {
             "Content-Type": "application/json",
