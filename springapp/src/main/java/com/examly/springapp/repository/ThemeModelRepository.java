@@ -16,7 +16,7 @@ import java.util.*;
 
 public interface ThemeModelRepository extends JpaRepository<ThemeModel,Integer> {
     List<ThemeModel> findAll(); 
-    Optional<ThemeModel> findBythemeId(Integer id);   // optional used for handling possibility of null
+    Optional<ThemeModel> findByThemeId(Integer id);   // optional used for handling possibility of null
     boolean existsBythemeId(Integer id);  //method checks if a record exists in table with the specified id
     void deleteById(Integer id);//used to delete record from table based on id
     
