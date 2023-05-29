@@ -22,7 +22,8 @@ import lombok.NoArgsConstructor;
 public class ThemeModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
+    private Integer themeId;
     private String themeName;
     private String themeimgUrl;
     private String themeDescription;
