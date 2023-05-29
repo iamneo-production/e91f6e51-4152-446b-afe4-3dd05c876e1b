@@ -12,7 +12,7 @@ import java.util.*;
 public interface ThemeModelRepository extends JpaRepository<ThemeModel,Integer> {
     List<CourseModel> findAll(); 
     Optional<CourseModel> findBycourseId(Integer id); 
-    void deleteById(Integer id);//used to delete record from table based on id
     boolean existsByCourseId(Integer id); //method checks if a record exists in table with the specified id
+    void deleteById(Integer id);//used to delete record from table based on id
     
 }
