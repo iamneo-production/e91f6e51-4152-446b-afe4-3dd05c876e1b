@@ -22,8 +22,8 @@ import lombok.NoArgsConstructor;
 public class AddOnModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
     private Integer addOnId;
+    // private Integer id;
     private String AddOnName;
     private String AddOnDescription;
     private String AddOnPrice;
