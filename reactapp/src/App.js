@@ -1,22 +1,14 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Navigate,
-  BrowserRouter,
-} from "react-router-dom";
-
 
 import theme from "/home/coder/project/workspace/reactapp/src/Theme/Theme.js";
 import Login from "./components/Auth/Login/Login";
 import Signup from "./components/Auth/Signup/Signup";
-
 import Homepage from "./components/Customer/HomepPage/HomePage";
-//import Addtheme from "./components/Admin/Addtheme";
 import Booking from "./components/Customer/BookingPage/Booking";
-
+import ViewBookedEvents from "./components/Customer/ViewBooking/ViewBooking";
+import AddTheme from "./components/Admin/AddTheme/AddTheme";
 
 function App() {
   return (
@@ -30,16 +22,19 @@ function App() {
         <Route path="/user/login" element={<Login />} />
         <Route path="/user/signup" element={<Signup />} />
         <Route path="/admin/login" element={<Login />} />
+        
 
         {/* USER ROUTES */}
 
-        <Route path="/user/home" element={<Homepage/>} />
+        <Route path="/user/getAllThemes" element={<HomePage/>} />
         <Route path="/user/bookTheme" element={<Booking/>} />
+        <Route path="/user/bookTheme/:id" element={<Booking/>} />
+        <Route path="/user/getBookedTheme" element={<ViewBookedEvents />} />
 
         
-        {/* ADMIN ROUTES 
+        {/* ADMIN ROUTES */}
 
-  <Route path="/admin/home" element={<AddTheme />} />*/}
+  <Route path="/admin/home" element={<AddTheme />} />
   </Routes>
       
       </ThemeProvider>

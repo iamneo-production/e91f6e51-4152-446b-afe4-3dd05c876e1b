@@ -7,3 +7,5 @@ const endpoints = {
 };
 
 export default endpoints;
+
+export const BASE_URL = "http://localhost:3500";
