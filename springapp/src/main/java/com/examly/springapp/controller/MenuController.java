@@ -33,8 +33,18 @@ public class MenuController {
 
  }
 
- @GetMapping("admin/viewMenu")
+ @GetMapping("admin/getMenu")
  public List<MenuModel> viewMenu() {
   return menuService.getMenu();
  }
 }
+
+
+
+
+
+
+
+
+
+//.......................###############. pratik
