@@ -48,9 +48,9 @@ public class ThemeModelServices {
         Optional<ThemeModel> themeModel=themeModelRepository.findById(id);
         if(themeModel.isPresent()){
             themeModelRepository.deleteById(id);
-            return "Student details deleted";
+            return "Theme details deleted";
         }
-        return "Student not Found";
+        return "Theme details not Found";
     }
 
     public ThemeModel getTheme(Integer id){
