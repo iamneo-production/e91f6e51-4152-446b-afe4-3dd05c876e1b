@@ -1,13 +1,13 @@
 import { Button, Grid } from "@mui/material";
-import React from "react";
+import React,{useEffect,useState} from "react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { Link } from "react-router-dom";
 import Steps from "./Steps";
-import { useSearchParams,useLocation } from "react-router-dom";
-import endpoints from "/home/coder/project/workspace/reactapp/src/components/config/config.js";
+import { useSearchParams,useLocation,useParams } from "react-router-dom";
+import endpoints,{BASE_URL} from "/home/coder/project/workspace/reactapp/src/config/config";
 import axios from "axios";
 import Swal from "sweetalert2";
-//import Navbaar from "../Navbaar/Navbaar";
+import Navbaar from "/home/coder/project/workspace/reactapp/src/components/Customer/Navbaar/Navbaar.jsx";
 const Booking = () => {
   let [searchParams, setSearchParams] = useSearchParams();
 
@@ -17,28 +17,8 @@ const Booking = () => {
   });
   const eventId = searchParams?.get("eventId");
 
-  // const {id} = useParams();
-  // const [data, setData] = useState()
 
-  // useEffect(()=>{
-  //   async function getEvent() {
-  //     try {
-  //       const response = await fetch(`${BASE_URL}/getAllThemes/${id}`);
-  //       if (!response.ok) {
-  //         throw new Error('Failed to fetch event data');
-  //       }
-  //       const eventData = await response.json();
-  //       console.log('event', eventData);
-  //       setData(eventData);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  
-  //   getEvent();
-  // },[])
-
-  //console.log("Hii",id)
+ 
 
   React.useEffect(() => {
     if (eventId && eventId !== undefined) {
@@ -62,13 +42,13 @@ const Booking = () => {
     return () => setEventData({ loading: false, data: null });
   }, [eventId]);
  
-
   return (
   
     <div className="maincontainer">
+      <Navbaar />
       <Grid container alignItems="center" spacing={2}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Link to={"/user"}>
+          <Link to={"/user/getAllThemes"}>
             <Button variant="outlined" startIcon={<ArrowBackIosIcon />}>
               Back
             </Button>
