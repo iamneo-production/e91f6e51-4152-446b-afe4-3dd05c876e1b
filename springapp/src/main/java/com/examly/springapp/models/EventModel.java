@@ -39,6 +39,7 @@ public class EventModel {
     private String applicantMobile;
     private String applicantEmail;
     private String eventAddress;
+
     
     private Date eventDate;
     private LocalDateTime eventTime;
