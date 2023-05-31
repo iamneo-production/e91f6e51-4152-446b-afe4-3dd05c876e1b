@@ -22,8 +22,8 @@ import lombok.NoArgsConstructor;
 public class MenuModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
     private Integer foodMenuId;
+    // private Integer id;
     private String foodMenuType;
     private String foodMenuItems;
     private String foodMenuCost;
