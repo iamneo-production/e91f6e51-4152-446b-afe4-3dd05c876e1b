@@ -15,7 +15,7 @@ import {
   import DeleteIcon from "@mui/icons-material/Delete";
   import { Link, useNavigate } from "react-router-dom";
   import axios from "axios";
-  import endpoints from "/home/coder/project/workspace/reactapp/src/components/config/config.js";
+  import endpoints from "/home/coder/project/workspace/reactapp/src/config/config";
   import Swal from "sweetalert2";
   import Navbaar from "../Navbaar/Navbaar";
   const ViewBookedEvents = () => {
@@ -70,7 +70,7 @@ import {
         <Navbaar/>
         <Grid container alignItems="center" spacing={2}>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Link to={"/user"}>
+            <Link to={"/user/BookTheme"}>
               <Button variant="outlined" startIcon={<ArrowBackIosIcon />}>
                 Back
               </Button>
