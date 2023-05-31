@@ -15,9 +15,9 @@ import {
   import DeleteIcon from "@mui/icons-material/Delete";
   import { Link, useNavigate } from "react-router-dom";
   import axios from "axios";
-  import endpoints from "../../../config/config"
+  import endpoints from "/home/coder/project/workspace/reactapp/src/components/config/config.js";
   import Swal from "sweetalert2";
-  import Navbar from "../Navbaar/Navbar";
+  import Navbaar from "../Navbaar/Navbaar";
   const ViewBookedEvents = () => {
     const [eventList, setEventList] = React.useState({
       loading: false,
@@ -67,7 +67,7 @@ import {
   
     return (
       <div className="maincontainer">
-        <Navbar/>
+        <Navbaar/>
         <Grid container alignItems="center" spacing={2}>
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <Link to={"/user"}>
