@@ -15,11 +15,9 @@ import dayjs from "dayjs";
 import "dayjs/locale/de";
 import { TimePicker } from "@mui/x-date-pickers";
 import axios from "axios";
-import endpoints from "../../config/config";
+import endpoints ,{BASE_URL} from "/home/coder/project/workspace/reactapp/src/config/config";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
-import Select from 'react-select'
-
+import { useNavigate,useParams } from "react-router-dom";
 
 
 const initialState = {
@@ -41,6 +39,26 @@ export default function Steps({ editMode, eventData }) {
   const navigate = useNavigate();
 
   const [formData, setFormData] = React.useState(initialState);
+  const {id} = useParams();
+  const [data, setData] = React.useState()
+  //  fetching the details based on id  
+  React.useEffect(()=>{
+    async function getEvent() {
+      try {
+        const response = await fetch(`${BASE_URL}/getAllThemes/${id}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch event data');
+        }
+        const eventData = await response.json();
+        console.log('event', eventData);
+        setData(eventData);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  
+    getEvent();
+  },[])
 
   React.useEffect(() => {
     if (editMode) {
@@ -65,7 +83,7 @@ export default function Steps({ editMode, eventData }) {
                 fullWidth
                 id="outlined-required"
                 label="Event Name"
-                value={formData?.eventName}
+                value={data?.name}
                 onChange={(e) => formHandler("eventName", e.target.value)}
               />
             </Grid>
@@ -223,6 +241,7 @@ export default function Steps({ editMode, eventData }) {
   };
 
   return eventData?.loading ? (
+    
     <div
       style={{
         height: "40vh",
@@ -236,6 +255,7 @@ export default function Steps({ editMode, eventData }) {
     </div>
   ) : (
     <Box sx={{ width: "100%", flexGrow: 1 }}>
+      
       <Paper
         square
         elevation={0}

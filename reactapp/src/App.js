@@ -1,13 +1,6 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Navigate,
-  BrowserRouter,
-} from "react-router-dom";
-
 
 import theme from "/home/coder/project/workspace/reactapp/src/Theme/Theme.js";
 import Login from "./components/Auth/Login/Login";
@@ -33,9 +26,11 @@ function App() {
 
         {/* USER ROUTES */}
 
-        <Route path="/user/home" element={<Homepage/>} />
+        <Route path="/user/getAllThemes" element={<HomePage/>} />
         <Route path="/user/bookTheme" element={<Booking/>} />
+        <Route path="/user/bookTheme/:id" element={<Booking/>} />
         <Route path="/user/getBookedTheme" element={<ViewBookedEvents />} />
+
         
         {/* ADMIN ROUTES */}
 
