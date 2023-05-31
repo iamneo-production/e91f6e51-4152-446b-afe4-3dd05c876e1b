@@ -18,10 +18,12 @@ public class MenuModelServices {
         this.menuModelRepository = menuModelRepository;
     }
 
+    // For adding menu.........................pratik
     public void addMenu(MenuModel menuModel) {
         menuModelRepository.save(menuModel);
     }
 
+    // For editing menu.........................
     public String editMenu(Integer menuId, MenuModel updatedMenu) {
         Optional<MenuModel> existingMenu = menuModelRepository.findById(menuId);
         if (existingMenu.isPresent()) {
@@ -31,6 +33,7 @@ public class MenuModelServices {
             menu.setFoodMenuType(updatedMenu.getFoodMenuType());
             menu.setFoodMenuItems(updatedMenu.getFoodMenuItems());
             menu.setFoodMenuCost(updatedMenu.getFoodMenuCost());
+            menu.setImageUrl(updatedMenu.getImageUrl());
 
 
             menuModelRepository.save(menu);
@@ -39,7 +42,7 @@ public class MenuModelServices {
             return "Menu not found";
         }
     }
-
+// For deleting menu.........................
     public String deleteMenu(Integer menuId) {
         Optional<MenuModel> existingMenu = menuModelRepository.findById(menuId);
         if (existingMenu.isPresent()) {
@@ -64,3 +67,19 @@ public class MenuModelServices {
         return menuModelRepository.findAll();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//.................////////....... pratik
