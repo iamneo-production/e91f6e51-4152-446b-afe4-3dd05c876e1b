@@ -31,8 +31,8 @@ import lombok.NoArgsConstructor;
 public class EventModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
     private Integer eventId;
+    // private Integer id;
     private String eventName;
     private String applicantName;
     private String applicantAddress;
