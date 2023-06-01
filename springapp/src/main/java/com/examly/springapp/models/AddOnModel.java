@@ -24,14 +24,15 @@ public class AddOnModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer addOnId;
     // private Integer id;
-    private String addOnName;
-    private String addOnDescription;
-    private String addOnPrice;
-    private String imgUrlAddons;
+    private String AddOnName;
+    private String AddOnDescription;
+    private String AddOnPrice;
+    private String ImgUrlAddons;
 
     
 
     
+
 }
 
 
@@ -48,3 +49,4 @@ public class AddOnModel {
 
 
 //........................ pratik
+
