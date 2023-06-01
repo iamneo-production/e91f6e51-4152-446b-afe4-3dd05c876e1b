@@ -5,7 +5,7 @@ import { ThemeProvider } from "@mui/material";
 import theme from "/home/coder/project/workspace/reactapp/src/Theme/Theme.js";
 import Login from "./components/Auth/Login/Login";
 import Signup from "./components/Auth/Signup/Signup";
-import Homepage from "./components/Customer/HomepPage/HomePage";
+import HomePage from "./components/Customer/HomepPage/HomePage";
 import Booking from "./components/Customer/BookingPage/Booking";
 import ViewBookedEvents from "./components/Customer/ViewBooking/ViewBooking";
 import AddTheme from "./components/Admin/AddTheme/AddTheme";
