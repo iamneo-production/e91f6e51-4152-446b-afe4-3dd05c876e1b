@@ -1,0 +1,52 @@
+{
+    "getAllThemes": [
+      {
+        "id": 1,
+        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6GErBYryEox07LIr05optVAo-Dpf-0NPi8g&usqp=CAU",
+        "name": "Cosmic Carnival",
+        "place": "Hyd",
+        "price": "950",
+        "rating": 3
+      },
+      {
+        "id": 2,
+        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc_svJZnWhWB0X0ddEhomZqS-0PUlEb8EXtQ&usqp=CAU",
+        "name": "Fire and Ice Event",
+        "place": "Delhi",
+        "price": 5000,
+        "rating": 5
+      },
+      {
+        "id": 3,
+        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8Z81HL2v570DPubH9NmI44rn4zEEd0eK0Fw&usqp=CAU",
+        "name": "Garden Party",
+        "place": "Mumbai",
+        "price": 2000,
+        "rating": 3
+      },
+      {
+        "id": 4,
+        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN1QmtnkPxiKFvwuS_pH9PRMDwfq3WFo4Epw&usqp=CAU",
+        "name": "Masquerade Ball",
+        "place": "Kolkata",
+        "price": 1000,
+        "rating": 3
+      },
+      {
+        "id": 5,
+        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI7ztqD3zg7Lh0jw58_6SokRFYisSIU1YPwg&usqp=CAU",
+        "name": "Rose Events",
+        "place": "Bangalore",
+        "price": 1100,
+        "rating": 3
+      },
+      {
+        "id": 6,
+        "imgUrl": "https://images.squarespace-cdn.com/content/v1/59eb9dfd692ebe60a346d3b3/1520002590112-DBFI9QYI9DQZVYRS6P5B/minteventdesign.com%2B_%2BMint%2BEvent%2BDesign%2BParty%2BPlanning%2B_%2BVintage%2BCarousel%2BThemed%2BBirthday%2BParties%2BFor%2BKids%2B_%2B%284%29.jpg?format=1000w",
+        "name": "Vintage Events",
+        "place": "Goa",
+        "price": 1200,
+        "rating": 4
+      }
+    ]
+  }
