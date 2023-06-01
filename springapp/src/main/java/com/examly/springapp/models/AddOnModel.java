@@ -24,17 +24,10 @@ public class AddOnModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer addOnId;
     // private Integer id;
-<<<<<<< HEAD
-    private String AddOnName;
-    private String AddOnDescription;
-    private String AddOnPrice;
-    private String ImgUrlAddons;
-=======
     private String addOnName;
     private String addOnDescription;
     private String addOnPrice;
     private String imgUrlAddons;
->>>>>>> origin/main
 
     
 
