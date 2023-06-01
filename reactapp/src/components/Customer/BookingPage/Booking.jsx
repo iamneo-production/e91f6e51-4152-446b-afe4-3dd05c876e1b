@@ -7,7 +7,7 @@ import { useSearchParams,useLocation } from "react-router-dom";
 import endpoints from "/home/coder/project/workspace/reactapp/src/components/config/config.js";
 import axios from "axios";
 import Swal from "sweetalert2";
-//import Navbaar from "../Navbaar/Navbaar";
+import Navbaar from "/home/coder/project/workspace/reactapp/src/components/Admin/Navbar/Navbar.js";
 const Booking = () => {
   let [searchParams, setSearchParams] = useSearchParams();
 
@@ -66,6 +66,7 @@ const Booking = () => {
   return (
   
     <div className="maincontainer">
+      <Navbaar/>
       <Grid container alignItems="center" spacing={2}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Link to={"/user"}>
