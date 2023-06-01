@@ -44,15 +44,6 @@ public class ThemeModelServices {
 
 
     //for deleting the theme
-<<<<<<< HEAD
-    public String deleteTheme(Integer id){
-        Optional<ThemeModel> themeModel=themeModelRepository.findById(id);
-        if(themeModel.isPresent()){
-            themeModelRepository.deleteById(id);
-            return "Student details deleted";
-        }
-        return "Student not Found";
-=======
     public String deleteTheme(Integer themeId){
         Optional<ThemeModel> themeModel=themeModelRepository.findByThemeId(themeId);
         if(themeModel.isPresent()){
@@ -60,7 +51,6 @@ public class ThemeModelServices {
             return "Theme details deleted";
         }
         return "Theme not Found";
->>>>>>> origin/main
     }
 
     public ThemeModel getTheme(Integer id){
@@ -75,8 +65,6 @@ public class ThemeModelServices {
         return themeModelRepository.findAll();
     }
 }
-<<<<<<< HEAD
-=======
 
 
 
@@ -85,4 +73,3 @@ public class ThemeModelServices {
 
 
 //........................ pratik
->>>>>>> origin/main
