@@ -21,25 +21,29 @@ public class ThemeController {
         ThemeService.addTheme(themeModel);
         return "theme added";
     }
-//  for
+//  for Deleting .........................................pratik
+
+
     @DeleteMapping("admin/deleteTheme/{id}")
-    private String deleteTheme(@PathVariable("id") Integer themeid) {
-        ThemeService.deleteTheme(themeid);
-        return "theme deleted";
+    private String deleteTheme(@PathVariable("id") Integer themeId) {
+    return ThemeService.deleteTheme(themeId);
+
     }
+
 
 
     @PutMapping("admin/editTheme/{id}")
-    private String editTheme(@PathVariable("id") Integer themeid, @RequestBody ThemeModel updatedTheme) {
-        ThemeService.editTheme(themeid, updatedTheme);
-        return "theme edited";
+    private String editTheme(@PathVariable("id") Integer themeId, @RequestBody ThemeModel updatedTheme) {
+    return ThemeService.editTheme(themeId, updatedTheme);
+
     }
 
 
-    @GetMapping("admin/viewTheme")
+    @GetMapping("admin/getTheme")
     public List<ThemeModel> viewtheme() {
         return ThemeService.getTheme();
     }
 }
 
 
+//....................      pratik
