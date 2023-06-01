@@ -13,9 +13,10 @@ import theme from "/home/coder/project/workspace/reactapp/src/Theme/Theme.js";
 import Login from "./components/Auth/Login/Login";
 import Signup from "./components/Auth/Signup/Signup";
 
-import Homepage from "./components/Customer/HomepPage/HomePage";
+//import Homepage from "./components/Customer/HomepPage/HomePage";
 //import Addtheme from "./components/Admin/Addtheme";
 import Booking from "./components/Customer/BookingPage/Booking";
+import ViewBookedEvents from "./components/Customer/ViewBooking/ViewBooking";
 
 
 function App() {
@@ -32,10 +33,11 @@ function App() {
         <Route path="/admin/login" element={<Login />} />
 
         {/* USER ROUTES */}
-
-        <Route path="/user/home" element={<Homepage/>} />
         <Route path="/user/bookTheme" element={<Booking/>} />
-
+       {/* <Route path="/user/home" element={<Homepage/>} />
+        */}
+        <Route path="/user/getBookedTheme" element={<ViewBookedEvents/>} />
+  
         
         {/* ADMIN ROUTES 
 
