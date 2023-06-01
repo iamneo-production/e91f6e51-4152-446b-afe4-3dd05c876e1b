@@ -44,13 +44,13 @@ public class ThemeModelServices {
 
 
     //for deleting the theme
-    public String deleteTheme(Integer id){
-        Optional<ThemeModel> themeModel=themeModelRepository.findById(id);
+    public String deleteTheme(Integer themeId){
+        Optional<ThemeModel> themeModel=themeModelRepository.findByThemeId(themeId);
         if(themeModel.isPresent()){
-            themeModelRepository.deleteById(id);
+            themeModelRepository.deleteById(themeId);
             return "Theme details deleted";
         }
-        return "Theme details not Found";
+        return "Theme not Found";
     }
 
     public ThemeModel getTheme(Integer id){
