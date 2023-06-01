@@ -25,17 +25,17 @@ public class ThemeController {
 
 
     @DeleteMapping("admin/deleteTheme/{id}")
-    private String deleteTheme(@PathVariable("id") Integer themeid) {
-        return ThemeService.deleteTheme(themeid);
-        
+    private String deleteTheme(@PathVariable("id") Integer themeId) {
+    return ThemeService.deleteTheme(themeId);
+
     }
 
 
 
     @PutMapping("admin/editTheme/{id}")
-    private String editTheme(@PathVariable("id") Integer themeid, @RequestBody ThemeModel updatedTheme) {
-        return ThemeService.editTheme(themeid, updatedTheme);
-        
+    private String editTheme(@PathVariable("id") Integer themeId, @RequestBody ThemeModel updatedTheme) {
+    return ThemeService.editTheme(themeId, updatedTheme);
+
     }
 
 
