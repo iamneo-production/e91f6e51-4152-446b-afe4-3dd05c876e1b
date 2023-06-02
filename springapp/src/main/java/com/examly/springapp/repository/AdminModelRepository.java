@@ -25,7 +25,7 @@ public interface AdminModelRepository extends JpaRepository<AdminModel,Integer> 
 // import org.springframework.beans.factory.annotation.*;
 // import java.util.*;
 // @Repository
-// public interface AdminRepository extends JpaRepository<AdminModel,Integer> {
+// public interface AdminModelRepository extends JpaRepository<AdminModel,Integer> {
 
 //     List<AdminModel> findAll(); 
 //     AdminModel findUserById(Integer id);
