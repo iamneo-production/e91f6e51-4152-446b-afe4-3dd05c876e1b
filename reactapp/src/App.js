@@ -9,6 +9,8 @@ import HomePage from "./components/Customer/HomepPage/HomePage";
 import Booking from "./components/Customer/BookingPage/Booking";
 import ViewBookedEvents from "./components/Customer/ViewBooking/ViewBooking";
 import AddTheme from "./components/Admin/AddTheme/AddTheme";
+import AddMenu from "./components/Admin/AddMenu/AddMenu";
+import Addons from "./components/Admin/AddOns/AddOns"
 
 function App() {
   return (
@@ -34,8 +36,10 @@ function App() {
         
         {/* ADMIN ROUTES */}
 
-  <Route path="/admin/home" element={<AddTheme />} />
-  </Routes>
+        <Route path="/admin/home" element={<AddTheme />} />
+        <Route path="/admin/addMenu" element={<AddMenu/>} />
+        <Route path="/admin/addAddon" element={<Addons/>}/>
+        </Routes>
       
       </ThemeProvider>
       
