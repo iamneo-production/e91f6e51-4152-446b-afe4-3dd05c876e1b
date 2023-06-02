@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
-import { loginUser } from "../../../utils/userApi";
+import { loginUser } from "../../../utils/authApi";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -44,7 +44,7 @@ export default function Login() {
         if (data.userModel.userRole === "user") {
           console.log(data.userModel)
           setUserModel(data.userModel);
-          navigate("/user/home");
+          navigate("/user/getAllThemes");
         } else if (data.userModel.userRole === "admin") {
           console.log(data.userModel)
           setUserModel(data.userModel);
