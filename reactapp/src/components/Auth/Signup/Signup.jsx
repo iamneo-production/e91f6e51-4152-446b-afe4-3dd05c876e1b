@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Link } from "react-router-dom";
- import {signUpUser,loginUser} from "../../../utils/userApi"
+ import {signUpUser,loginUser} from "../../../utils/authApi"
 import './Signup.css'
 
 export default function Signup() {
