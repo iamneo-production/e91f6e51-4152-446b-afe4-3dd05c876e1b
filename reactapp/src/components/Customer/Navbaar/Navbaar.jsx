@@ -1,29 +1,25 @@
+
 import React from 'react';
-import styles from './Navbar.module.css';
 import { NavLink } from 'react-router-dom';
+import '/home/coder/project/workspace/reactapp/src/components/Customer/Navbaar/Navbaar.css'; // Import the CSS file
 
-const Navbar = () => {
+
+function Navbaar() {
   return (
-    <div className={styles.navbar_div}>
-      <div className={styles.logo}>
-        <p>Birthday Event</p>
+    <nav className="navbar">
+      <div>
+        <NavLink exact to="/user/getAllThemes" className="navbar-link" activeClassName="active">Birthday Event</NavLink>
       </div>
-      <div className={styles.page_section}>
-        <NavLink to="/admin/home" className={styles.links} activeClassName={styles.activeLink}>
-          Add Theme
-        </NavLink>
-        <NavLink to="/admin/addMenu" className={styles.links} activeClassName={styles.activeLink}>
-          Add Menu
-        </NavLink>
-        <NavLink to="/admin/addAddon" className={styles.links} activeClassName={styles.activeLink}>
-          Add Add-ons
-        </NavLink>
+      <div className="navbar-links">
+        <NavLink to="/user/bookTheme" className="navbar-link" activeClassName="active">Book Event</NavLink>
+        <NavLink to="/user/getBookedTheme" className="navbar-link" activeClassName="active">View Booked event</NavLink>
       </div>
-      <div className={styles.logout}>
-        <p>Logout</p>
+      <div>
+        <NavLink to="/user/login" className="navbar-link" activeClassName="active">Logout</NavLink>
       </div>
-    </div>
+    </nav>
   );
-};
+}
 
-export default Navbar;
+
+export default Navbaar;
