@@ -1,0 +1,176 @@
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container > div {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 20px;
+}
+
+.container > div > button {
+  order: -1;
+}
+
+.container ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+
+.container ul li {
+  flex-basis: 20%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* item css */
+.con {
+  width: 100%;
+}
+
+.item-box {
+  display: flex;
+  background-color: aqua;
+  margin: 6px;
+  align-items: center;
+  padding: 10px;
+}
+
+.item-box p {
+  margin: 0 6px;
+}
+
+.button-group {
+  display: flex;
+}
+
+/* modal css */
+
+.custom-item-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 300px;
+}
+
+.custom-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.custom-buttons-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  width: 200px;
+}
+
+.custom-buttons-container button {
+  padding: 8px 16px;
+  background-color: #0e0e0e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.custom-buttons-container button:hover {
+  background-color: #808080;
+}
+
+/* ADD ITEM CSS */
+
+.add-item {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.add-item-text {
+  margin-bottom: 10px;
+  font-weight: bold;
+  padding-right: 20px;
+}
+
+.add-item-button {
+  padding: 8px 16px;
+  background-color: #212427;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-item-button:hover {
+  background-color: rgb(169, 33, 228);
+}
+
+/* Add item modal */
+
+.new-item-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  padding-bottom: 20px;
+}
+
+.rounded-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.new-item-buttons-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  width: 200px;
+}
+
+.new-item-buttons-container button {
+  padding: 8px 16px;
+  background-color: #0e0e0e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.new-item-buttons-container button:hover {
+  background-color: #808080;
+}
+
+/* Table CSS */
+
+table {
+  border-collapse: separate;
+  border-spacing: 0 30px; /* Add spacing between table rows */
+  width: 100%;
+}
+
+table tr {
+  background: linear-gradient(to right, #b2fefa, #0ed2f7); /* Add gradient background to table rows */
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: left;
+}
+
+table th {
+  background-color: #f1b5b5;
+}
