@@ -151,7 +151,7 @@ export default function FoodMenu() {
       console.log(e);
     }
   }
-
+  
   return (
     <div class="container">
         <Navbar />
