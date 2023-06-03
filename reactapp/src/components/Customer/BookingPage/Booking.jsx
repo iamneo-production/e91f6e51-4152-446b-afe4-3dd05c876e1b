@@ -4,7 +4,8 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { Link } from "react-router-dom";
 import Steps from "./Steps";
 import { useSearchParams,useLocation,useParams } from "react-router-dom";
-import endpoints,{BASE_URL} from "/home/coder/project/workspace/reactapp/src/config/config";
+import endpoints from "/home/coder/project/workspace/reactapp/src/config/config";
+import {BASE_URL} from "../../../utils/userApi"
 import axios from "axios";
 import Swal from "sweetalert2";
 import Navbaar from "../Navbaar/Navbaar";
