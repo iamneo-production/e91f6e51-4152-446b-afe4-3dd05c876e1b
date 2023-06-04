@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {Link} from "react-router-dom"
 import "/home/coder/project/workspace/reactapp/src/components/Customer/HomepPage/HomePage.css";
-import { BASE_URL } from "/home/coder/project/workspace/reactapp/src/config/config";
+import { BASE_URL } from "../../../utils/userApi";
 import axios from 'axios'
 import Rating from "./Rating";
 import EventCard from "/home/coder/project/workspace/reactapp/src/components/Customer/HomepPage/EventCard";
@@ -9,128 +9,67 @@ import Navbaar from "/home/coder/project/workspace/reactapp/src/components/Custo
 
 
 export default function HomePage() {
-  const [data, setData] = useState([
-    {
-          "id": 1,
-          "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6GErBYryEox07LIr05optVAo-Dpf-0NPi8g&usqp=CAU",
-          "name": "Cosmic Carnival",
-          "place": "Hyd",
-          "price": "950",
-          "rating": 2
-        },
-        {
-          "id": 2,
-          "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc_svJZnWhWB0X0ddEhomZqS-0PUlEb8EXtQ&usqp=CAU",
-          "name": "Fire and Ice Event",
-          "place": "Delhi",
-          "price": 5000,
-          "rating": 4
-        },
-        {
-          "id": 3,
-          "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8Z81HL2v570DPubH9NmI44rn4zEEd0eK0Fw&usqp=CAU",
-          "name": "Garden Party",
-          "place": "Mumbai",
-          "price": 2000,
-          "rating": 4
-        },
-        {
-          "id": 4,
-          "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN1QmtnkPxiKFvwuS_pH9PRMDwfq3WFo4Epw&usqp=CAU",
-          "name": "Masquerade Ball",
-          "place": "Kolkata",
-          "price": 1000,
-          "rating": 2
-        },
-        {
-          "id": 5,
-          "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI7ztqD3zg7Lh0jw58_6SokRFYisSIU1YPwg&usqp=CAU",
-          "name": "Rose Events",
-          "place": "Bangalore",
-          "price": 1100,
-          "rating": 1
-        },
-        {
-          "id": 6,
-          "imgUrl": "https://images.squarespace-cdn.com/content/v1/59eb9dfd692ebe60a346d3b3/1520002590112-DBFI9QYI9DQZVYRS6P5B/minteventdesign.com%2B_%2BMint%2BEvent%2BDesign%2BParty%2BPlanning%2B_%2BVintage%2BCarousel%2BThemed%2BBirthday%2BParties%2BFor%2BKids%2B_%2B%284%29.jpg?format=1000w",
-          "name": "Vintage Events",
-          "place": "Goa",
-          "price": 1200,
-          "rating": 3
-        }
-      
-  ]);
+  const [data, setData] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [sortBy, setSortBy] = useState("");
 
-  // useEffect(() => {
+      
+  //---fetching events----//
 
-  //   async function getAllThemes() {
-  //     try {
-  //       const res = await axios.get(`${BASE_URL}/getAllThemes`);
-  //       setData(res.data);
-  //       console.log("res",res);
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  //   }
-  //   getAllThemes();
+  useEffect(() => {
 
-  // }, [])
+    async function getAllThemes() {
+      try {
+        const res = await axios.get(`${BASE_URL}/admin/getTheme`);
+        setData(res.data)
+        console.log("res",res);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    getAllThemes();
+
+  }, [])
 
 
   function handleSearch(e) {
     setSearchText(e.target.value);
-  }
+}
 //- ---------    UPDATE RATING ------//
   function handleRating(id, rating) {
     console.log(id, rating)
 
     const updatedData = data.map((event) => {
-      if (event.id === id) {
+      if (event.themeId === id) {
         return { ...event, rating };
       } else {
         return event;
       }
     });
-//     fetch(`${BASE_URL}/getAllThemes/${id}`, {
-//       method: "PATCH",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(updatedData.find((event) => event.id === id)),
-//     })
-//       .then((res) => res.json())
-//       .then((data) => {
-//         console.log("updated", data.id, data)
-//         setData(updatedData)
-//       })
-//       .catch((e) => {
-//         console.log(e)
-//       })
-    axios.patch(`${BASE_URL}/getAllThemes/${id}`, updatedData.find((event) => event.id === id))
-    .then((res) => {
-      console.log("updated", res.data.id, res.data);
-      setData(updatedData);
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-  }
+                //------- Rating --------//
+  //   axios.patch(`${BASE_URL}/user/getAllThemes/${id}`, updatedData.find((event) => event.themeid === id))
+  //   .then((res) => {
+  //     console.log("updated", res.data.id, res.data);
+  //     setData(updatedData);
+  //   })
+  //   .catch((e) => {
+  //     console.log(e);
+  //   });
+   }
 
   const filterEvents = data.filter((singleEvent) => {
-    return singleEvent.name.toLowerCase().includes(searchText.toLowerCase());
+    return singleEvent.themeName.toLowerCase().includes(searchText.toLowerCase());
   });
 /*Dropdown filter*/
   const sortEvents = filterEvents.sort((a, b) => {
     if (sortBy === "nameAsc") {
-      return a.name.localeCompare(b.name);
+      return a.themeName.localeCompare(b.themeName);
     } else if (sortBy === "nameDesc") {
-      return b.name.localeCompare(a.name);
+      return b.themeName.localeCompare(a.themeName);
     } else if (sortBy === "priceAsc") {
-      return parseFloat(a.price) - parseFloat(b.price);
+      return parseFloat(a.cost) - parseFloat(b.cost);
     } else if (sortBy === "priceDesc") {
-      return parseFloat(b.price) - parseFloat(a.price);
+      return parseFloat(b.cost) - parseFloat(a.cost);
     } else {
       return 0;
     }
@@ -139,7 +78,7 @@ export default function HomePage() {
   const events = sortEvents.map((singleEvent) => {
     return (
   
-      <EventCard singleEvent={singleEvent} handleRating={handleRating} key={singleEvent.id} />
+      <EventCard singleEvent={singleEvent} handleRating={handleRating} key={singleEvent.themeId} />
    
     );
   });

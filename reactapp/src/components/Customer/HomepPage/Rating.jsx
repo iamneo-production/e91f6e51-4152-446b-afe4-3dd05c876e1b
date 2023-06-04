@@ -11,7 +11,7 @@ export default function Rating({ singleEvent, handleRating }) {
               <span
                 key={i}
                 className={className}
-                onClick={() => handleRating(singleEvent.id, starRating)}
+                onClick={() => handleRating(singleEvent.themeid, starRating)}
               >
                 &#9733;
               </span>
