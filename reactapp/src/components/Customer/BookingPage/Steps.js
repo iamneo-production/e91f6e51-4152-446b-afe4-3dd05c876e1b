@@ -1,4 +1,4 @@
-import * as React from "react";
+//import * as React from "react";
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
 import MobileStepper from "@mui/material/MobileStepper";
@@ -12,13 +12,16 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
-import "dayjs/locale/de";
+import "dayjs/locale/de";    
 import { TimePicker } from "@mui/x-date-pickers";
 import axios from "axios";
 import endpoints from "/home/coder/project/workspace/reactapp/src/config/config";
 import {BASE_URL} from "../../../utils/userApi"
 import Swal from "sweetalert2";
 import { useNavigate,useParams } from "react-router-dom";
+import React, { useState } from 'react';
+import "/home/coder/project/workspace/reactapp/src/components/Customer/BookingPage/Booking.css";
+import Select from "react-select";
 
 
 const initialState = {
@@ -38,10 +41,22 @@ export default function Steps({ editMode, eventData }) {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const navigate = useNavigate();
+  const [selectedOptions, setSelectedOptions] = useState();
 
   const [formData, setFormData] = React.useState(initialState);
   const {id} = useParams();
   const [data, setData] = React.useState()
+
+  const optionList = [
+    { value: "5000", label: "Magic show------5000" },
+    { value: "green", label: "DJ party------4000" },
+    { value: "yellow", label: "Game show-----5000" },
+    { value: "blue", label: "Mehendi-----3000" },
+    { value: "white", label: "Comedy show-----5000" }
+  ];
+  function handleSelect(data) {
+    setSelectedOptions(data);
+  }
   //  fetching the details based on id  
   React.useEffect(()=>{
     async function getEvent() {
@@ -175,21 +190,15 @@ export default function Steps({ editMode, eventData }) {
                 onChange={(e) => formHandler("eventMenuld", e.target.value)}
               />
             </Grid>
-            <Grid item xs={12} sm={5} md={5} lg={5}>
-            <label>
-            Select Category
-            <select 
-            data-testid="userType"
-            className="input-style-signup-select"
-            onChange={(e) => formHandler("addonld", e.target.value)}
-            >
-             <option >None</option>
-             <option >Magic show-----Rs.5000</option>
-             <option >DJ party----------Rs.10000</option>
-             <option >Mehendi----------Rs.2000</option>
-             <option >Gameshow------Rs.4000</option>
-            </select>
-            </label>
+            <Grid item xs={12} sm={5} md={5} lg={5} className="dropdown-container">
+            <Select
+          options={optionList}
+          placeholder="Select Add-On"
+          value={selectedOptions}
+          onChange={handleSelect}
+          isSearchable={true}
+          isMulti
+        />
             </Grid>
             <Grid item xs={12} sm={5} md={5} lg={5}>
               <TextField
