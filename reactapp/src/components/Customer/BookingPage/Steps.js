@@ -15,7 +15,8 @@ import dayjs from "dayjs";
 import "dayjs/locale/de";    
 import { TimePicker } from "@mui/x-date-pickers";
 import axios from "axios";
-import endpoints ,{BASE_URL} from "/home/coder/project/workspace/reactapp/src/config/config";
+import endpoints from "/home/coder/project/workspace/reactapp/src/config/config";
+import {BASE_URL} from "../../../utils/userApi"
 import Swal from "sweetalert2";
 import { useNavigate,useParams } from "react-router-dom";
 import React, { useState } from 'react';
