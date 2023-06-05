@@ -19,7 +19,7 @@ import endpoints from "/home/coder/project/workspace/reactapp/src/config/config"
 import {BASE_URL} from "../../../utils/userApi"
 import Swal from "sweetalert2";
 import { useNavigate,useParams } from "react-router-dom";
-
+import UserContext from '../../../UserContext' 
 
 const initialState = {
   eventName: "",
@@ -37,9 +37,12 @@ const initialState = {
 export default function Steps({ editMode, eventData }) {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
+  const { appUser,setAppUser } = React.useContext(UserContext);
+  console.log("appUser",appUser)
   const navigate = useNavigate();
 
   const [formData, setFormData] = React.useState(initialState);
+  console.log(formData)
   const {id} = useParams();
   const [data, setData] = React.useState()
   //  fetching the details based on id  
@@ -86,6 +89,14 @@ export default function Steps({ editMode, eventData }) {
                 label="Event Name"
                 value={data?.name}
                 onChange={(e) => formHandler("eventName", e.target.value)}
+              />
+              <TextField
+                required
+                fullWidth
+                id=""
+                label="User id"
+                value={appUser?.id}
+                
               />
             </Grid>
             <Grid item xs={12} sm={5} md={5} lg={5}>
@@ -216,29 +227,7 @@ export default function Steps({ editMode, eventData }) {
   };
 
   const handleSubmit = () => {
-    const url = editMode
-      ? endpoints?.createEvent + "/?eventId=" + eventData?.data?.eventId
-      : endpoints?.createEvent;
-    axios
-      .post(url, formData)
-      .then((resp) => {
-        Swal.fire({
-          icon: "success",
-          title: "Event Saved",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        navigate("/user/getBookedTheme");
-      })
-      .catch((e) => {
-        console.error(e);
-        Swal.fire({
-          icon: "error",
-          title: "Saving Event Fail",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      });
+   console.log(formData);
   };
 
   return eventData?.loading ? (

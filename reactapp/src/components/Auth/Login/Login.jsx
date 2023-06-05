@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
 import { loginUser } from "../../../utils/authApi";
+import UserContext from "../../../UserContext";
 
 export default function Login() {
   const navigate = useNavigate();
- const [userModel,setUserModel]= useState({
-
- });
-
+  const { appUser,setAppUser } = useContext(UserContext);
+  console.log("App user is",appUser)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
  
@@ -43,11 +42,11 @@ export default function Login() {
       } else if (data.userModel) {
         if (data.userModel.userRole === "user") {
           console.log(data.userModel)
-          setUserModel(data.userModel);
+          setAppUser(data.userModel);
           navigate("/user/getAllThemes");
         } else if (data.userModel.userRole === "admin") {
           console.log(data.userModel)
-          setUserModel(data.userModel);
+          setAppUser(data.userModel);
           navigate("/admin/home");
         }
       } else {
