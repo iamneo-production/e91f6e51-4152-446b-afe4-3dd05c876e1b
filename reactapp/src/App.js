@@ -12,6 +12,8 @@ import AddTheme from "./components/Admin/AddTheme/AddTheme";
 import AddMenu from "./components/Admin/AddMenu/AddMenu";
 import Addons from "./components/Admin/AddOns/AddOns"
 import { UserProvider } from "./UserContext";
+import PageNotFound from "/home/coder/project/workspace/reactapp/src/components/Customer/PageNotFound";
+
 
 function App() {
   return (
@@ -34,6 +36,7 @@ function App() {
             <Route path="/user/bookTheme" element={<Booking />} />
             <Route path="/user/bookTheme/:id" element={<Booking />} />
             <Route path="/user/getBookedTheme" element={<ViewBookedEvents />} />
+            <Route path='*' element={<PageNotFound/>} />
 
 
             {/* ADMIN ROUTES */}

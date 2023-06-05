@@ -101,7 +101,7 @@ export default function Login() {
               }}
             />
             <p className="loginPara">
-              &nbsp; New user/admin
+              
               <Link 
                 data-testid="signupLink"
               id="signinLink" to="/user/signup">
