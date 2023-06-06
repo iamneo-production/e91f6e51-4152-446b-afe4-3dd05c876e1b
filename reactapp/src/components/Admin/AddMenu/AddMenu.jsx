@@ -62,19 +62,19 @@ export default function FoodMenu() {
   const columns = [
     {
       name: "Id",
-      selector: (row) => row.foodMenuId,
+      selector: (row) => <h1>{row.foodMenuId}</h1> ,
     },
     {
       name: "Name",
-      selector: (row) => row.foodMenuItems,
+      selector: (row) => <h1>{row.foodMenuItems}</h1>,
     },
     {
       name: "Price",
-      selector: (row) => row.foodMenuCost,
+      selector: (row) => <h1>{row.foodMenuCost}</h1>,
     },
     {
       name: "Category",
-      selector: (row) => row.foodMenuType,
+      selector: (row) => <h1>{row.foodMenuType}</h1>,
     },
     {
       name: "Image",

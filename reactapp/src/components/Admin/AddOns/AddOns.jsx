@@ -3,9 +3,8 @@ import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import AddOnCard from "/home/coder/project/workspace/reactapp/src/components/Admin/AddOns/AddOnCard.jsx";
 import { BaseUrl } from "../../../utils/authApi";
-import Navbar from "/home/coder/project/workspace/reactapp/src/components/Admin/Navbar/Navbar.js";
+import Navbar from "../Navbar/Navbar"
 import "./AddOn.css";
-
 export default function AddOn() {
   const [data, setData] = useState([]);
 
@@ -42,7 +41,10 @@ export default function AddOn() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const res = await axios.post(`${BaseUrl}/admin/addAddon`,addOnItem);
+      const res = await axios.post(
+        `${BaseUrl}/admin/addAddon`,
+        addOnItem
+      );
       console.log(res.data);
       setIsModalOpen(false);
       alert("Added")
@@ -59,11 +61,14 @@ export default function AddOn() {
   });
 
   return (
-    <div className="custom-buttons-container">
-      <Navbar />
-      <button onClick={openModal}>Add ons</button>
+    <div>
+      <Navbar/>
+      <div className="AddOnButton">
+      <div onClick={openModal}>Add AddOns</div>
+      </div>
       <Modal isOpen={isModalOpen}>
         <h2>Add new Add-on</h2>
+        
 
         <div className="input-tags-container">
           <div>
@@ -75,6 +80,7 @@ export default function AddOn() {
               onChange={handleChange}
             />
           </div>
+          
           <div>
             <input
               type="text"
@@ -103,8 +109,8 @@ export default function AddOn() {
             />
           </div>
         </div>
-        <div> 
-          <button onClick={handleSubmit}>Addon</button>
+        <div className="AddnewButton">
+          <button onClick={handleSubmit}>Add-new Addon</button>
           <button
             onClick={() => {
               setIsModalOpen(false);
@@ -114,10 +120,9 @@ export default function AddOn() {
           </button>
         </div>
       </Modal>
+
       
-      
-      
-    <div className="grid-container">{data.length === 0 ? "No data found Please add asome data":addOnCards}</div>
+      <div className="grid-container">{data.length === 0 ? "No data found Please add asome data":addOnCards}</div>
     </div>
   );
 }
