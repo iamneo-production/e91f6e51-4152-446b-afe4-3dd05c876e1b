@@ -63,6 +63,9 @@ export default function FoodMenu() {
     {
       name: "Id",
       selector: (row) => row.foodMenuId,
+      style: {
+        width:'50px',
+    },
     },
     {
       name: "Name",
@@ -89,6 +92,7 @@ export default function FoodMenu() {
           onClick={() => {
             handleEdit(row);
           }}
+          className="edit_delete_button"
         >
           Edit
         </button>
@@ -97,7 +101,7 @@ export default function FoodMenu() {
     },
     {
       name: "Delete",
-      cell: (row) => <button onClick={() => handleDelete(row)}>Delete</button>,
+      cell: (row) => <button onClick={() => handleDelete(row) }className="edit_delete_button">Delete</button>,
       button: true,
     },
   ];
@@ -151,6 +155,35 @@ export default function FoodMenu() {
       console.log(e);
     }
   }
+
+  const customStyles = {
+    rows: {
+        style: {
+            minHeight: '50px', // override the row height
+        },
+    },
+    headCells: {
+        style: {
+            paddingLeft: '8px', // override the cell padding for head cells
+            paddingRight: '8px',
+            backgroundColor:'black',
+            color:'white',
+            fontSize:'20px',
+            width:'100%',
+            justifyContent:'center'
+        },
+    },
+    cells: {
+        style: {
+            paddingLeft: '8px', // override the cell padding for data cells
+            paddingRight: '8px',
+            width:'100%',
+            justifyContent:'center',
+            fontSize:'20px'
+
+        },
+    },
+};
 
   return (
     <div class="container">
@@ -282,7 +315,9 @@ export default function FoodMenu() {
         {itemsArray.length === 0 ? (
           <div> No items found </div>
         ) : (
-          <DataTable columns={columns} data={itemsArray}></DataTable>
+          <div style={{padding:'10px'}}>
+            <DataTable columns={columns} data={itemsArray} customStyles={customStyles}></DataTable>
+          </div>
         )}
       </div>
     </div>
