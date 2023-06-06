@@ -1,0 +1,57 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+  
+  @media (max-width: 768px) {
+    .grid-container {
+      grid-template-columns: repeat(3, minmax(200px, 1fr));
+      padding: 10px;
+      max-width: 600px;
+    }
+  }
+
+  .bday-card{
+    background-color: white;
+    width: 280px;
+    margin-top: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 15px;
+    transition: transform 0.3s , box-shadow 0.3s ;
+  }
+  
+  
+  .bday-card:hover {
+    box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3px);
+  }
+  
+  .bday-card img {
+    position: relative;
+    object-fit: cover;
+    border-radius: 5px;
+    width:100%;
+    max-height: 500px;
+  }
+  .custom-buttons-container button {
+    padding: 8px 16px;
+    background-color: #0e0e0e;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .custom-buttons-container button:hover {
+    background-color: #808080;
+  }
