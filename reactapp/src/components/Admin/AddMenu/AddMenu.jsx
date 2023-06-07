@@ -64,7 +64,7 @@ export default function FoodMenu() {
       name: "Id",
       selector: (row) => row.foodMenuId,
       style: {
-        width:'50px',
+        width:'10px',
     },
     },
     {
