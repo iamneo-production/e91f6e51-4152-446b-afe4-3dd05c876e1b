@@ -1,6 +1,9 @@
 com/examly/springapp/repository/AdminModelRepository.class
 com/examly/springapp/repository/UserModelRepository.class
+com/examly/springapp/repository/EventModelRepository.class
 com/examly/springapp/SpringappApplication.class
+com/examly/springapp/service/AddOnModelServices.class
+com/examly/springapp/models/MenuModel.class
 com/examly/springapp/models/LoginResponseModel.class
 com/examly/springapp/models/UserRole.class
 com/examly/springapp/models/LoginModel.class
