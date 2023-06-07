@@ -60,7 +60,7 @@ export default function AddOn() {
   });
 
   return (
-    <div className="custom-buttons-container">
+    <div className="">
       <Navbar />
       <button onClick={openModal}>Add ons</button>
       <Modal isOpen={isModalOpen}>
