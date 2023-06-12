@@ -20,6 +20,7 @@
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/ThemeModelRepository.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/models/AdminModel.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/SpringappApplication.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/security/securityconfig/SecurityConfig.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/AdminModelRepository.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/models/UserRole.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/AuthController.java

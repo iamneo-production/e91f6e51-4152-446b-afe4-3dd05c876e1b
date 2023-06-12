@@ -28,8 +28,9 @@ export async function signUpUser(email, mobileNumber, password, userType, userNa
           username: userName,
         }),
       });
-      const data = await response.json()
-      alert(`${data.message}`);
+      console.log(response);
+      const data = await response.text()
+      alert(data);
       if(user.userRole==="admin"){
         window.location.href = "/admin/login";
       }else {
