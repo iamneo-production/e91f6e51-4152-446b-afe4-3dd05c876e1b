@@ -10,10 +10,18 @@ import org.springframework.stereotype.Service;
 import com.examly.springapp.models.LoginModel;
 import com.examly.springapp.repository.UserModelRepository;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+
+
 
 @Service
 public class UserModelService {
 
+
+	@Autowired
+	PasswordEncoder passwordEncoder;
 	@Autowired
 	UserModelRepository userModelRepository;
 	@Autowired
@@ -43,10 +51,25 @@ public class UserModelService {
 		return userModelRepository.findUserByEmail(username) != null;
 	}
 
-	public UserModel saveUser(UserModel userModel) {
+	public ResponseEntity<?> saveUser(UserModel userModel) {
 
+		if(userAldreadyExist(userModel.getEmail())){
+            return  new ResponseEntity<>("User Aldredy exist in db go login",HttpStatus.CONFLICT);
+        }
 
-		return userModelRepository.save(userModel);
+        //  UserModel savedUser = userModelService.saveUser(userModel);
+		// UserMOdel savedUser = new UserModel();
+        // if (savedUser != null) {
+        //     String role = savedUser.getUserRole();
+        //     String message = role.equals("admin") ? "Admin added" : "User added";
+        //     return ResponseEntity.ok(new MessageResponse(message));
+        // } else {
+        //     return new ResponseEntity<>("Failed to register user.", HttpStatus.INTERNAL_SERVER_ERROR);
+        // }
+		userModel.setPassword(passwordEncoder.encode(userModel.getPassword()));
+		userModelRepository.save(userModel);
+		return new ResponseEntity<>(userModel.getUserRole()+" " +"added",HttpStatus.ACCEPTED);
+
 	}
 
 
@@ -73,9 +96,13 @@ public class UserModelService {
 	}
 
 	public String validateUser(LoginModel data) {
-		UserModel user = userModelRepository.findByEmailAndPassword(data.getEmail(),data.getPassword());
+		UserModel user = userModelRepository.findByEmail(data.getEmail());
 
-		if (user!=null) {
+		if (user == null) {
+		// 	return new ResponseEntity<>(userModel.getUserRole()+" " +"The User Is Not Present",HttpStatus.BAD_REQUEST);
+		// }
+
+
 			if (user.getUserRole().equals("admin")) {
 				return "admin/dashboard";
 			} else {
