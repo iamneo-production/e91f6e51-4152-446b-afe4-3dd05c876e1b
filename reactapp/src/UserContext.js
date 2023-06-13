@@ -6,7 +6,9 @@ const UserContext = createContext({
 });
 
 function UserProvider({children}){
+    
     const [appUser, setAppUser] = useState(null);
+    console.log("new user",appUser);
     return (
         <UserContext.Provider value={{appUser,setAppUser}}>
             {children}

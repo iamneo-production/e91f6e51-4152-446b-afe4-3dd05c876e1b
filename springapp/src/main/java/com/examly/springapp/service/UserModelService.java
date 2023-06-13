@@ -1,5 +1,11 @@
 package com.examly.springapp.service;
 
+
+import java.security.Principal;
+import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.examly.springapp.models.AdminModel;
 import com.examly.springapp.models.UserModel;
 import com.examly.springapp.repository.AdminModelRepository;
@@ -14,6 +20,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 
+import com.examly.springapp.security.securityconfig.JwtUtils;
+import com.examly.springapp.security.securityservices.UserDetailsImpl;
+
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 
 @Service
@@ -26,6 +40,14 @@ public class UserModelService {
 	UserModelRepository userModelRepository;
 	@Autowired
 	AdminModelRepository adminModelRepository;
+
+	@Autowired
+    JwtUtils jwtUtils;
+
+    @Autowired
+    AuthenticationManager authenticationManager;
+    
+    private static final String USER_NAME_NOT_FOUND = "User email not found in database";
 
 	public boolean isUserPresent(LoginModel data) {
 
@@ -95,23 +117,49 @@ public class UserModelService {
 		return userModelRepository.save(admin);
 	}
 
-	public String validateUser(LoginModel data) {
-		UserModel user = userModelRepository.findByEmail(data.getEmail());
+	// public String validateUser(LoginModel data) {
+	// 	UserModel user = userModelRepository.findByEmail(data.getEmail());
 
-		if (user == null) {
-		// 	return new ResponseEntity<>(userModel.getUserRole()+" " +"The User Is Not Present",HttpStatus.BAD_REQUEST);
-		// }
+	// 	if (user == null) {
+	// 	// 	return new ResponseEntity<>(userModel.getUserRole()+" " +"The User Is Not Present",HttpStatus.BAD_REQUEST);
+	// 	// }
 
 
-			if (user.getUserRole().equals("admin")) {
-				return "admin/dashboard";
-			} else {
-				return "user/dashboard";
+	// 		if (user.getUserRole().equals("admin")) {
+	// 			return "admin/dashboard";
+	// 		} else {
+	// 			return "user/dashboard";
+	// 		}
+	// 	} else {
+	// 		return "/user/login?error";
+	// 	}
+	// }
+    
+	public  ResponseEntity<?> validateUser(LoginModel data) {
+		UserModel userModel = userModelRepository.findByEmail(data.getEmail());
+		if (userModel == null) {
+				throw new UsernameNotFoundException(USER_NAME_NOT_FOUND);
 			}
-		} else {
-			return "/user/login?error";
+
+			Authentication authentication = authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(data.getEmail(),data.getPassword()));
+			SecurityContextHolder.getContext().setAuthentication(authentication);
+
+			String jwt = jwtUtils.generateJwt(authentication) ;
+			
+			HashMap<String, Object> outResponse = new HashMap<>();
+			outResponse.put("token", jwt);
+			outResponse.put("id", userModel.getId());
+			outResponse.put("username", userModel.getUsername());
+			outResponse.put("email", userModel.getEmail());
+			outResponse.put("roles", userModel.getUserRole());
+			outResponse.put("status", 200);
+
+			
+			return ResponseEntity.ok( outResponse );	
 		}
-	}
+	
+
 
 	public String validateAdmin(LoginModel data) {
 		AdminModel user = adminModelRepository.findByEmailAndPassword(data.getEmail(),data.getPassword());

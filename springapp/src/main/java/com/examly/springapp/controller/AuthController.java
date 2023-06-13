@@ -72,27 +72,28 @@ public class AuthController {
 
     @PostMapping("/user/login")
     @ResponseBody
-    public LoginResponseModel loginUser(@RequestBody LoginModel data) {
-        // return userModelService.validateUser(data);
-       String redirectUrl = userModelService.validateUser(data);
-        if (redirectUrl.contains("error")) {
-            return new LoginResponseModel(null, false);
-        } else {
+    public  ResponseEntity<?> loginUser(@RequestBody LoginModel data) {
+        return userModelService.validateUser(data);
+    //    String redirectUrl = userModelService.validateUser(data);
+    //     if (redirectUrl.contains("error")) {
+    //         return new LoginResponseModel(null, false);
+    //     } else {
             
-            UserModel userModel = userModelService.findUserByEmail(data.getEmail());
-            return new LoginResponseModel(userModel, true);
-        } 
+    //         UserModel userModel = userModelService.findUserByEmail(data.getEmail());
+    //         return new LoginResponseModel(userModel, true);
+    //     } 
     }
     @PostMapping("/")
     @ResponseBody
     public ResponseEntity <?> login(@RequestBody LoginModel data) {
-        String redirectUrl = userModelService.validateUser(data);
-        if (redirectUrl.contains("error")) {
-            return new ResponseEntity<>("login failed",HttpStatus.INTERNAL_SERVER_ERROR);
-        } else {
-            UserModel userModel = userModelService.findUserByEmail(data.getEmail());
-            return  ResponseEntity.ok(userModel);
-        }
+        return userModelService.validateUser(data);
+        // String redirectUrl = userModelService.validateUser(data);
+        // if (redirectUrl.contains("error")) {
+        //     return new ResponseEntity<>("login failed",HttpStatus.INTERNAL_SERVER_ERROR);
+        // } else {
+        //     UserModel userModel = userModelService.findUserByEmail(data.getEmail());
+        //     return  ResponseEntity.ok(userModel);
+        // }
     }
 
     // NOT WORKING TEST //

@@ -1,13 +1,14 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import Modal from "react-modal";
 import AddOnCard from "/home/coder/project/workspace/reactapp/src/components/Admin/AddOns/AddOnCard.jsx";
 import { BaseUrl } from "../../../utils/authApi";
 import Navbar from "../Navbar/Navbar"
 import "./AddOn.css";
+import UserContext from '../../../UserContext'
 export default function AddOn() {
   const [data, setData] = useState([]);
-
+  const {appUser,setAppUser} =useContext(UserContext);
   const [addOnItem, setaddOnItem] = useState({
     addOnName: "",
     addOnDescription: "",
@@ -16,12 +17,21 @@ export default function AddOn() {
   });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const jwtToken = appUser?.token;
+  console.log("token",jwtToken);
+  const headers = {
+    Authorization: `Bearer ${jwtToken}` ,
+  };
   useEffect(() => {
     async function getAddons() {
-      const res = await axios.get(`${BaseUrl}/admin/getAddon`);
-      console.log(res.data);
-      setData(res.data);
+      try{
+        const res = await axios.get(`${BaseUrl}/admin/getAddon`,{headers});
+        console.log(res.data);
+        setData(res.data);
+      
+      }catch(e){
+        console.log(e)
+      }
     }
     getAddons();
   }, []);
@@ -43,7 +53,8 @@ export default function AddOn() {
     try {
       const res = await axios.post(
         `${BaseUrl}/admin/addAddon`,
-        addOnItem
+        addOnItem,
+        {headers}
       );
       console.log(res.data);
       setIsModalOpen(false);

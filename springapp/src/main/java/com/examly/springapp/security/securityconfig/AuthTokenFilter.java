@@ -14,14 +14,21 @@ import javax.servlet.http.HttpServletResponse;
 import com.examly.springapp.security.securityservices.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+
+
 public class AuthTokenFilter extends OncePerRequestFilter{
     private Logger logger=LoggerFactory.getLogger(AuthTokenFilter.class);
+
+
     @Autowired
     private JwtUtils jwtUtils;
     @Autowired
     private UserDetailsServiceImpl userDetailsServiceImpl;
     @Override
     protected void doFilterInternal(HttpServletRequest request, 
+
+    
     HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException{
         try {
             String token=parseJwt(request);
@@ -31,7 +38,7 @@ public class AuthTokenFilter extends OncePerRequestFilter{
                 UsernamePasswordAuthenticationToken authentication=new 
                                     UsernamePasswordAuthenticationToken(user,null,user.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
-                // system.out.println(user);
+                
             }
 
         } 

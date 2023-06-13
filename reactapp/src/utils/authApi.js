@@ -58,8 +58,9 @@ export async function loginUser(email, password) {
             password: password,
           }),
         });
-        
-        return res;
+        const data = await res.json();
+        console.log("utils use data",data);
+        return data;
       }catch(error){
           alert("Error logging user/admin" + error.message);
           return error;

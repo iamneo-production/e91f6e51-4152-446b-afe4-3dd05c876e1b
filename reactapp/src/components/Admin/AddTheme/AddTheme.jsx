@@ -1,10 +1,12 @@
-import { React, useRef, useState } from "react";
+import { React, useRef, useState, useContext } from "react";
 import Navbar from "/home/coder/project/workspace/reactapp/src/components/Admin/Navbar/Navbar.js";
 import styles from  "/home/coder/project/workspace/reactapp/src/components/Admin/AddTheme/AddTheme.module.css";
 import { BaseUrl } from "../../../utils/authApi";
 import axios from "axios";
+import UserContext from "../../../UserContext";
 
 const AddTheme = () => {
+  const { appUser, setAppUserl } = useContext(UserContext);
   const themeName =useRef();
   const imageUrl =useRef();
   const photographerDetails =useRef();
@@ -28,8 +30,13 @@ const AddTheme = () => {
         }
 
         try{
-            const res = await axios.post(`${BaseUrl}/admin/addTheme`,themeModel)
-        
+          const jwtToken = appUser.token;
+          console.log("token",jwtToken);
+          const headers = {
+            Authorization: `Bearer ${jwtToken}` ,
+          };
+            const res = await axios.post(`${BaseUrl}/admin/addTheme`,themeModel,{headers})
+          
         console.log(res.data)
         themeName.current.value =""
         imageUrl.current.value=""
