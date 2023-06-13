@@ -72,11 +72,9 @@ export default function AddOn() {
   });
 
   return (
-    <div>
-      <Navbar/>
-      <div className="AddOnButton">
-      <div onClick={openModal}>Add AddOns</div>
-      </div>
+    <div className="">
+      <Navbar />
+      <button onClick={openModal}>Add ons</button>
       <Modal isOpen={isModalOpen}>
         <h2>Add new Add-on</h2>
         
