@@ -71,7 +71,10 @@ export default function FoodMenu() {
   const columns = [
     {
       name: "Id",
-      selector: (row) => <h1>{row.foodMenuId}</h1> ,
+      selector: (row) => row.foodMenuId,
+      style: {
+        width:'10px',
+    },
     },
     {
       name: "Name",
