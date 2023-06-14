@@ -9,5 +9,6 @@ const PageNotFound=()=>{
         </div>
     )
 }
+//echo fs.inotify.max_user_watches= 131070 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 
 export default PageNotFound
