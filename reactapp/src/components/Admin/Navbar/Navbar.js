@@ -19,10 +19,11 @@ const Navbar = () => {
           Add Add-ons
         </NavLink>
       </div>
-      <div className={styles.logout}>
-        <p>Logout</p>
+      <NavLink to="/user/login" className={styles.links} activeClassName={styles.logout}>
+        Logout
+        </NavLink>
       </div>
-    </div>
+    
   );
 };
 
