@@ -1,53 +1,67 @@
-import { React, useEffect, useRef, useState } from "react";
-import Navbar from "../Navbar/Navbar";
-import styles from "./AddTheme.module.css";
+import { React, useRef, useState, useContext,useEffect } from "react";
+import Navbar from "/home/coder/project/workspace/reactapp/src/components/Admin/Navbar/Navbar.js";
+import styles from  "/home/coder/project/workspace/reactapp/src/components/Admin/AddTheme/AddTheme.module.css";
 import { BaseUrl } from "../../../utils/authApi";
 import axios from "axios";
+import UserContext from "../../../UserContext";
 
 const AddTheme = () => {
-  const themeName = useRef();
-  const imageUrl = useRef();
-  const photographerDetails = useRef();
-  const videographerDetails = useRef();
-  const returnGift = useRef();
-  const themeCost = useRef();
-  const description = useRef();
+  const { appUser, setAppUserl } = useContext(UserContext);
+  const themeName =useRef();
+  const imageUrl =useRef();
+  const photographerDetails =useRef();
+  const videographerDetails =useRef();
+  const returnGift =useRef();
+  const themeCost =useRef();
+  const description =useRef();
 
-  const [data, setData] = useState();
+  const [data,setData]=useState();
 
-  async function handleSubmit() {
-    console.log("i am handle submit");
-    const themeModel = {
-      themeName: themeName.current.value,
-      themeimgUrl: imageUrl.current.value,
-      themephotographer: photographerDetails.current.value,
-      themeVideographer: videographerDetails.current.value,
-      themeReturnGift: returnGift.current.value,
-      cost: themeCost.current.value,
-      themeDescription: description.current.value,
-    };
+  const jwtToken = appUser?.token;
+  console.log("token",jwtToken);
+  const headers = {
+    Authorization: `Bearer ${jwtToken}` ,
+  };
 
-    try {
-      const res = await axios.post(`${BaseUrl}/admin/addTheme`, themeModel);
+ async function handleSubmit(){
+  console.log("i am handle submit")
+        const themeModel={
+          "themeName":themeName.current.value,
+          "themeimgUrl":imageUrl.current.value,
+          "themephotographer":photographerDetails.current.value,
+          "themeVideographer":videographerDetails.current.value,
+          "themeReturnGift":returnGift.current.value,
+          "cost":themeCost.current.value,
+          "themeDescription":description.current.value
+        }
 
-      console.log(res.data);
-      themeName.current.value = "";
-      imageUrl.current.value = "";
-      photographerDetails.current.value = "";
-      videographerDetails.current.value = "";
-      returnGift.current.value = "";
-      themeCost.current.value = "";
-      description.current.value = "";
+        try{
+          
+            const res = await axios.post(`${BaseUrl}/admin/Theme`,themeModel,{headers})
+          
+        console.log(res.data)
+        themeName.current.value =""
+        imageUrl.current.value=""
+        photographerDetails.current.value=""
+       videographerDetails.current.value=""
+        returnGift.current.value=""
+        themeCost.current.value=""
+       description.current.value=""
 
-      alert(res.data);
-    } catch (e) {
-      console.log(e.message);
-    }
+        alert(res.data)
+        
+
+        }catch(e){
+          console.log(e.message)
+        }
+        
+     
   }
+
   useEffect(() => {
     const getAllThemes = async () => {
       const res = await axios.get(
-        "https://8080-fbfbcfdafefbdecbeaedcfdfabbdb.project.examly.io/admin/getTheme"
+        `${BaseUrl}/admin/getTheme`,{headers}
       );
       console.log(res.data);
       setData(res.data);
@@ -120,7 +134,7 @@ const AddTheme = () => {
                   <p>{item.themeName}</p>
                   <div className="">
                     <p>{`price:${item.cost}`}</p>
-                    <p>{"5 star"}</p>
+                   
                   </div>
                 </div>
               </div>)})}
