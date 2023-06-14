@@ -13,6 +13,8 @@ import java.util.Optional;
 public interface UserModelRepository extends JpaRepository<UserModel, Integer> {
 
     UserModel findByEmailAndPassword(String email, String password);
+    UserModel findByEmail(String email);
+
     UserModel findUserByEmail(String username);
 
 }
