@@ -1,4 +1,4 @@
-import { React, useRef, useState, useContext } from "react";
+import { React, useRef, useState, useContext,useEffect } from "react";
 import Navbar from "/home/coder/project/workspace/reactapp/src/components/Admin/Navbar/Navbar.js";
 import styles from  "/home/coder/project/workspace/reactapp/src/components/Admin/AddTheme/AddTheme.module.css";
 import { BaseUrl } from "../../../utils/authApi";
@@ -17,6 +17,12 @@ const AddTheme = () => {
 
   const [data,setData]=useState();
 
+  const jwtToken = appUser?.token;
+  console.log("token",jwtToken);
+  const headers = {
+    Authorization: `Bearer ${jwtToken}` ,
+  };
+
  async function handleSubmit(){
   console.log("i am handle submit")
         const themeModel={
@@ -30,12 +36,8 @@ const AddTheme = () => {
         }
 
         try{
-          const jwtToken = appUser.token;
-          console.log("token",jwtToken);
-          const headers = {
-            Authorization: `Bearer ${jwtToken}` ,
-          };
-            const res = await axios.post(`${BaseUrl}/admin/addTheme`,themeModel,{headers})
+          
+            const res = await axios.post(`${BaseUrl}/admin/Theme`,themeModel,{headers})
           
         console.log(res.data)
         themeName.current.value =""
@@ -56,19 +58,35 @@ const AddTheme = () => {
      
   }
 
+  useEffect(() => {
+    const getAllThemes = async () => {
+      const res = await axios.get(
+        `${BaseUrl}/admin/getTheme`,{headers}
+      );
+      console.log(res.data);
+      setData(res.data);
+    };
+    getAllThemes();
+  }, []);
 
   return (
-    
-     <>
-     <Navbar />
+    <>
+      <Navbar />
       <div className={styles.main_content}>
-        
         <div className={styles.container}>
           <div className={styles.theme_form}>
             <div className={styles.form}>
-              <input type="text" placeholder="Enter Theme Name" ref={themeName}/>
-              <input type="text" placeholder="Enter Image URL" ref={imageUrl}/>
-              <input type="text" placeholder="Enter Photographer Details" ref={photographerDetails}/>
+              <input
+                type="text"
+                placeholder="Enter Theme Name"
+                ref={themeName}
+              />
+              <input type="text" placeholder="Enter Image URL" ref={imageUrl} />
+              <input
+                type="text"
+                placeholder="Enter Photographer Details"
+                ref={photographerDetails}
+              />
               <div className={styles.add_btn_container}>
                 <input
                   type="submit"
@@ -79,9 +97,21 @@ const AddTheme = () => {
               </div>
             </div>
             <div className={styles.form}>
-              <input type="text" placeholder="Enter Videographer Details" ref={videographerDetails}/>
-              <input type="text" placeholder="Enter Theme Return Gift" ref={returnGift}/>
-              <input type="text" placeholder="Enter Theme Cost" ref={themeCost}/>
+              <input
+                type="text"
+                placeholder="Enter Videographer Details"
+                ref={videographerDetails}
+              />
+              <input
+                type="text"
+                placeholder="Enter Theme Return Gift"
+                ref={returnGift}
+              />
+              <input
+                type="text"
+                placeholder="Enter Theme Cost"
+                ref={themeCost}
+              />
               <textarea
                 type="text"
                 placeholder="Enter Theme Description"
@@ -93,56 +123,21 @@ const AddTheme = () => {
           </div>
           <div className={styles.themes_view}>
             <div className={styles.card_scroll_view}>
-              <div className={styles.card}>
-                <img src="https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fHww&w=1000&q=80" alt="" />
-                <div className={styles.event_details}>
-                  <p className={styles.event_text}>{"Birthday Event"}</p>
-                  <div className={styles.event_details_place}>
-                    <p className={styles.event_text}>{"place:Chennai IT"}</p>
-                    <p className={styles.event_text}>{"5Star"}</p>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.card}>
-                <img src="https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fHww&w=1000&q=80" alt="" />
+              {data?.map((item)=>{
+              return(
+              <div className={styles.card} key={item.themeId}>
+                <img
+                  src={item.themeimgUrl}
+                  alt=""
+                />
                 <div className="">
-                  <p>{"Birthday Event"}</p>
+                  <p>{item.themeName}</p>
                   <div className="">
-                    <p>{"place:Chennai"}</p>
-                    <p>{"5Star"}</p>
+                    <p>{`price:${item.cost}`}</p>
+                   
                   </div>
                 </div>
-              </div>
-              <div className={styles.card}>
-                <img src="https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fHww&w=1000&q=80" alt="" />
-                <div className="">
-                  <p>{"Birthday Event"}</p>
-                  <div className="">
-                    <p>{"place:Chennai"}</p>
-                    <p>{"5Star"}</p>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.card}>
-                <img src="" alt="" />
-                <div className="">
-                  <p>{"Birthday Event"}</p>
-                  <div className="">
-                    <p>{"place:Chennai"}</p>
-                    <p>{"5Star"}</p>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.card}>
-                <img src="" alt="" />
-                <div className="">
-                  <p>{"Birthday Event"}</p>
-                  <div className="">
-                    <p>{"place:Chennai"}</p>
-                    <p>{"5Star"}</p>
-                  </div>
-                </div>
-              </div>
+              </div>)})}
             </div>
           </div>
         </div>
