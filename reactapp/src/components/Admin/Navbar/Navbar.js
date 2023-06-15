@@ -3,6 +3,9 @@ import styles from './Navbar.module.css';
 import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
+ function handleLogout(){
+  localStorage.setItem("userModel",null);
+  }
   return (
     <div className={styles.navbar_div}>
       <div className={styles.logo}>
@@ -19,7 +22,7 @@ const Navbar = () => {
           Add Add-ons
         </NavLink>
       </div>
-      <NavLink to="/user/login" className={styles.links} activeClassName={styles.logout}>
+      <NavLink to="/user/login" className={styles.links} activeClassName={styles.logout} onClick={handleLogout} >
         Logout
         </NavLink>
       </div>
