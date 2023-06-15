@@ -17,8 +17,8 @@ public class ThemeModelServices {
     }
 
 
-    public void addTheme(ThemeModel themeModel){
-        themeModelRepository.save(themeModel);
+    public ThemeModel addTheme(ThemeModel themeModel){
+       return themeModelRepository.save(themeModel);
     }
     // for editing the theme
     public String editTheme(int themeId, ThemeModel updatedTheme){
