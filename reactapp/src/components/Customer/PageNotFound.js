@@ -1,11 +1,15 @@
 import React from 'react'
+import pic from '/home/coder/project/workspace/reactapp/src/404 error.png';
 const PageNotFound=()=>{
     return(
         <div>
-            <center>
+        <img src={pic} alt="ERROR"/>
+             <div>
+             <center>
                 <h2>Page Not Found 404 Error</h2>
                 <p>Please check the url (Page not found)</p>
-            </center>
+             </center>
+            </div>
         </div>
     )
 }
