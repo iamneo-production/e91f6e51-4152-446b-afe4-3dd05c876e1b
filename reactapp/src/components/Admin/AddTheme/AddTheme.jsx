@@ -1,73 +1,79 @@
-import { React, useRef, useState, useContext,useEffect } from "react";
+import { React, useRef, useState, useContext, useEffect } from "react";
 import Navbar from "/home/coder/project/workspace/reactapp/src/components/Admin/Navbar/Navbar.js";
-import styles from  "/home/coder/project/workspace/reactapp/src/components/Admin/AddTheme/AddTheme.module.css";
+import styles from "/home/coder/project/workspace/reactapp/src/components/Admin/AddTheme/AddTheme.module.css";
 import { BaseUrl } from "../../../utils/authApi";
 import axios from "axios";
 import UserContext from "../../../UserContext";
+import { useNavigate } from "react-router-dom";
 
 const AddTheme = () => {
   const { appUser, setAppUserl } = useContext(UserContext);
-  const themeName =useRef();
-  const imageUrl =useRef();
-  const photographerDetails =useRef();
-  const videographerDetails =useRef();
-  const returnGift =useRef();
-  const themeCost =useRef();
-  const description =useRef();
-
-  const [data,setData]=useState();
+  const themeName = useRef();
+  const imageUrl = useRef();
+  const photographerDetails = useRef();
+  const videographerDetails = useRef();
+  const returnGift = useRef();
+  const themeCost = useRef();
+  const description = useRef();
+  const navigate = useNavigate();
+  const [data, setData] = useState([]);
 
   const jwtToken = appUser?.token;
-  console.log("token",jwtToken);
+  console.log("token", jwtToken);
   const headers = {
-    Authorization: `Bearer ${jwtToken}` ,
+    Authorization: `Bearer ${jwtToken}`,
   };
 
- async function handleSubmit(){
-  console.log("i am handle submit")
-        const themeModel={
-          "themeName":themeName.current.value,
-          "themeimgUrl":imageUrl.current.value,
-          "themephotographer":photographerDetails.current.value,
-          "themeVideographer":videographerDetails.current.value,
-          "themeReturnGift":returnGift.current.value,
-          "cost":themeCost.current.value,
-          "themeDescription":description.current.value
-        }
+  async function handleSubmit() {
+    console.log("i am handle submit");
+    const themeModel = {
+      themeName: themeName.current.value,
+      themeimgUrl: imageUrl.current.value,
+      themephotographer: photographerDetails.current.value,
+      themeVideographer: videographerDetails.current.value,
+      themeReturnGift: returnGift.current.value,
+      cost: themeCost.current.value,
+      themeDescription: description.current.value,
+    };
 
-        try{
-          
-            const res = await axios.post(`${BaseUrl}/admin/Theme`,themeModel,{headers})
-          
-        console.log(res.data)
-        themeName.current.value =""
-        imageUrl.current.value=""
-        photographerDetails.current.value=""
-       videographerDetails.current.value=""
-        returnGift.current.value=""
-        themeCost.current.value=""
-       description.current.value=""
+    try {
+      const res = await axios.post(
+        `${BaseUrl}/admin/addTheme`,
+        themeModel,
+        { headers }
+      );
+      console.log("return from backend", res.data);
+      alert(res.data);
 
-        alert(res.data)
-        
+      // Refresh the data after adding the theme
+      getAllThemes();
 
-        }catch(e){
-          console.log(e.message)
-        }
-        
-     
+      // Reset the form fields
+      themeName.current.value = "";
+      imageUrl.current.value = "";
+      photographerDetails.current.value = "";
+      videographerDetails.current.value = "";
+      returnGift.current.value = "";
+      themeCost.current.value = "";
+      description.current.value = "";
+    } catch (e) {
+      console.log(e.message);
+    }
   }
 
-  useEffect(() => {
-    const getAllThemes = async () => {
-      const res = await axios.get(
-        `${BaseUrl}/admin/getTheme`,{headers}
-      );
+  const getAllThemes = async () => {
+    try {
+      const res = await axios.get(`${BaseUrl}/admin/getTheme`, { headers });
       console.log(res.data);
-      setData(res.data);
-    };
-    getAllThemes();
-  }, []);
+      
+      // Reverse the data array to display the last entry first
+      const reversedData = res.data.reverse();
+
+      setData(reversedData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <>

@@ -57,7 +57,7 @@ export default function Steps({ editMode, eventData }) {
     { value: "yellow", label: "Game show-----5000" },
     { value: "blue", label: "Mehendi-----3000" },
     { value: "white", label: "Comedy show-----5000" }
-  ];
+  ];     
   function handleSelect(data) {
     setSelectedOptions(data);
   }
