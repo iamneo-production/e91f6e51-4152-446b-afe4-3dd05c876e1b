@@ -1,13 +1,6 @@
 
 //Define base url for all operations
-
-<<<<<<< HEAD
 export const BaseUrl = "https://8080-ceddbecfbbacaefefbdecbeaedcfdfabbdb.project.examly.io";
-
-=======
-export const BaseUrl = "https://8081-ceddbecfbbacaefefbdecbeaedcfdfabbdb.project.examly.io";
->>>>>>> ec6ffec84372f08ec7649d31063ef44f2857e3b9
-
 
 
 export async function signUpUser(email, mobileNumber, password, userType, userName) {
