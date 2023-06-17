@@ -6,8 +6,8 @@ com/examly/springapp/models/UserRole.class
 com/examly/springapp/models/LoginModel.class
 com/examly/springapp/controller/AuthController.class
 com/examly/springapp/models/UserModel.class
-com/examly/springapp/controller/MessageResponse.class
 UserController.class
+com/examly/springapp/controller/MessageResponse.class
 com/examly/springapp/models/AdminModel.class
 EventBookingController.class
 com/examly/springapp/service/UserModelService.class
