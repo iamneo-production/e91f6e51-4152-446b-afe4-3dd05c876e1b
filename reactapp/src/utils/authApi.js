@@ -1,6 +1,6 @@
 
 //Define base url for all operations
-export const BaseUrl = "https://8080-fadbeafecbefefbdecbeaedcfdfabbdb.project.examly.io/";
+
 
 
 export async function signUpUser(email, mobileNumber, password, userType, userName) {
@@ -12,6 +12,7 @@ export async function signUpUser(email, mobileNumber, password, userType, userNa
       "username":userName
     };
   //ceddbecfbbacaefefbdecbeaedcfdfabbdb ------------ pratik terminal
+  //https://8081-ceddbecfbbacaefefbdecbeaedcfdfabbdb.project.examly.io/user/getBookedTheme
     try {
 
       const response = await fetch(`${BaseUrl}/user/signup`, {
@@ -28,8 +29,9 @@ export async function signUpUser(email, mobileNumber, password, userType, userNa
           username: userName,
         }),
       });
-      const data = await response.json()
-      alert(`${data.message}`);
+      console.log(response);
+      const data = await response.text()
+      alert(data);
       if(user.userRole==="admin"){
         window.location.href = "/admin/login";
       }else {
@@ -57,8 +59,9 @@ export async function loginUser(email, password) {
             password: password,
           }),
         });
-        
-        return res;
+        const data = await res.json();
+        console.log("utils use data",data);
+        return data;
       }catch(error){
           alert("Error logging user/admin" + error.message);
           return error;

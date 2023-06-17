@@ -5,6 +5,9 @@ import '/home/coder/project/workspace/reactapp/src/components/Customer/Navbaar/N
 
 
 function Navbaar() {
+  function handleLogout(){
+    localStorage.setItem("userModel",null);
+    }
   return (
     <nav className="navbar">
       <div>
@@ -15,7 +18,7 @@ function Navbaar() {
         <NavLink to="/user/getBookedTheme" className="navbar-link" activeClassName="active">View Booked event</NavLink>
       </div>
       <div>
-        <NavLink to="/user/login" className="navbar-link" activeClassName="active">Logout</NavLink>
+        <NavLink to="/user/login" className="navbar-link" activeClassName="active"  onClick={handleLogout}>Logout</NavLink>
       </div>
     </nav>
   );
