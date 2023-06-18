@@ -64,7 +64,7 @@ const AddTheme = () => {
   const getAllThemes = async () => {
     try {
       const res = await axios.get(`${BaseUrl}/admin/getTheme`, { headers });
-      console.log(res.data);
+      console.log("res",res.data);
       
       // Reverse the data array to display the last entry first
       const reversedData = res.data.reverse();
@@ -74,6 +74,11 @@ const AddTheme = () => {
       console.error(error);
     }
   };
+
+  //to fetch the data in starting  without it it will not fetch data
+  useEffect(() => {
+    getAllThemes();
+  }, []);
 
   return (
     <>
@@ -140,7 +145,7 @@ const AddTheme = () => {
                   <p>{item.themeName}</p>
                   <div className="">
                     <p>{`price:${item.cost}`}</p>
-                   
+                    <p>{"5 star"}</p>
                   </div>
                 </div>
               </div>)})}
