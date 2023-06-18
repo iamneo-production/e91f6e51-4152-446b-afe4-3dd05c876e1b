@@ -27,16 +27,12 @@ com/examly/springapp/repository/ThemeModelRepository.class
 com/examly/springapp/security/securityservices/UserDetailsServiceImpl.class
 com/examly/springapp/controller/ThemeController.class
 com/examly/springapp/controller/MessageResponse.class
-
 UserController.class
-com/examly/springapp/controller/MessageResponse.class
 com/examly/springapp/models/AdminModel.class
 com/examly/springapp/security/securityservices/UserDetailsImpl.class
 com/examly/springapp/models/ThemeModel$ThemeModelBuilder.class
 com/examly/springapp/service/UserModelService.class
-
 com/examly/springapp/security/securityconfig/SecurityConfig.class
 com/examly/springapp/repository/AddOnModelRepository.class
 com/examly/springapp/security/securityconfig/AuthTokenFilter.class
-
 com/examly/springapp/models/AddOnModel.class
