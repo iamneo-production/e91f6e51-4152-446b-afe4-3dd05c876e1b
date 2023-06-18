@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function EventCard({ singleEvent, handleRating }) {
   return (
     <div className="bday-card">
-      <Link to={`/user/bookTheme/${singleEvent.id}`}
+      <Link to={`/user/bookTheme/${singleEvent.themeId}`}
        state={{themeimgUrl : singleEvent.themeimgUrl, themeName:singleEvent.themeName, cost : singleEvent.cost}}
       >
 
