@@ -12,7 +12,7 @@ import AddTheme from "./components/Admin/AddTheme/AddTheme";
 import AddMenu from "./components/Admin/AddMenu/AddMenu";
 import Addons from "./components/Admin/AddOns/AddOns"
 import { UserProvider } from "./UserContext";
-import PageNotFound from "/home/coder/project/workspace/reactapp/src/components/Customer/PageNotFound";
+import PageNotFound from "/home/coder/project/workspace/reactapp/src/components/Customer/PageNotFound/PageNotFound.jsx";
 
 
 function App() {
