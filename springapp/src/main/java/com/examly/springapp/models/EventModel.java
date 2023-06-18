@@ -33,8 +33,9 @@ public class EventModel {
     private  String noOfPeople;
 
     private Integer eventMenuID;  // automitically mereged menu table id  so that we can fetch url and other things
-    private Integer addOnId;        // wants to automitically mereged with addon table id so that we can fetch image url
+    private String addOnId;        // wants to automitically mereged with addon table id so that we can fetch image url
     private String eventCost;
     private Integer userId;         // To retrieve which user booked which event
+    private String eventImg;
     
 }

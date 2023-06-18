@@ -57,8 +57,8 @@
     
   }
   .view-booking-search-box:hover {
-    /*box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2); / Change box shadow on hover to expand in all directions */
-    /*transform: translateY(2px); / Apply a vertical translation on hover */
+    /*box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2); /* Change box shadow on hover to expand in all directions */
+    /*transform: translateY(2px); /* Apply a vertical translation on hover */
   }
 
   .view-booking-search-box button {

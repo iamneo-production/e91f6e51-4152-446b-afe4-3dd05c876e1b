@@ -17,8 +17,9 @@ com/examly/springapp/controller/EventBookingController.class
 com/examly/springapp/models/UserModel.class
 com/examly/springapp/service/EventModelServices.class
 com/examly/springapp/security/securityservices/UserDetailsServiceImpl.class
-UserController.class
+com/examly/springapp/controller/ThemeController.class
 com/examly/springapp/controller/MessageResponse.class
+UserController.class
 com/examly/springapp/models/AdminModel.class
 com/examly/springapp/security/securityservices/UserDetailsImpl.class
 com/examly/springapp/models/ThemeModel$ThemeModelBuilder.class
