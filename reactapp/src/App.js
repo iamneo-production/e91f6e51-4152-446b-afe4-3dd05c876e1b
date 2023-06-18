@@ -19,7 +19,7 @@ function App() {
   return (
     <UserProvider>
       <div className="App">
-        <ThemeProvider theme={theme}>
+        {/* <ThemeProvider theme={theme}> */}
 
 
           <Routes>
@@ -46,7 +46,7 @@ function App() {
             <Route path="/admin/addAddon" element={<Addons />} />
           </Routes>
 
-        </ThemeProvider>
+        {/* </ThemeProvider> */}
 
       </div>
     </UserProvider>
