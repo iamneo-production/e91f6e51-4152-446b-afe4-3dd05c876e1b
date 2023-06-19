@@ -28,7 +28,27 @@ export default function Booking() {
   const themeName = location.state && location.state.themeName;
   console.log(eventData)
   const handlePageChange = (page) => {
+    // Check if all fields are filled on the first page
+    if (page === 2 && !isFirstPageFilled()) {
+      alert("Please fill all the fields before proceeding.");
+      return;
+    }
     setCurrentPage(page);
+  };
+
+  const isFirstPageFilled = () => {
+    // Check if all the required fields on the first page are filled
+    return (
+      eventData.eventName &&
+      eventData.applicantName &&
+      eventData.applicantAddress &&
+      eventData.applicantMobile &&
+      eventData.applicantEmail &&
+      eventData.eventAddress &&
+      eventData.eventDate &&
+      eventData.eventTime &&
+      eventData.noOfPeople
+    );
   };
   function handleChange(e) {
     const { name, value } = e.target;
@@ -75,38 +95,41 @@ export default function Booking() {
             </div>
          
           
-            <input
-              className="input-form"
-              type="text"
-              name="applicantName"
-              id="enterAddress"
-              placeholder="Enter applicant name"
-              data-testid="enterAddress"
-              onChange={handleChange}
-            />
-          
+              <input
+                className="input-form"
+                type="text"
+                name="applicantName"
+                id="enterAddress"
+                placeholder="Enter applicant name"
+                data-testid="enterAddress"
+                value={eventData.applicantName || ""}
+                onChange={handleChange}
+                required
+              />
 
-        
-            <input
-              className="input-form"
-              type="text"
-              name="applicantAddress"
-              id="enterMobile"
-              placeholder="Enter applicant address"
-              data-testid="enterMobile"
-              onChange={handleChange}
-            />
-         
-          
-            <input
-              className="input-form"
-              type="text"
-              name="applicantMobile"
-              id="enterEmail"
-              placeholder="Enter applicant mobile"
-              data-testid="enterEmail"
-              onChange={handleChange}
-            />
+              <input
+                className="input-form"
+                type="text"
+                name="applicantAddress"
+                id="enterMobile"
+                placeholder="Enter applicant address"
+                data-testid="enterMobile"
+                value={eventData.applicantAddress || ""}
+                onChange={handleChange}
+                required
+              />
+
+              <input
+                className="input-form"
+                type="text"
+                name="applicantMobile"
+                id="enterEmail"
+                placeholder="Enter applicant mobile"
+                data-testid="enterEmail"
+                value={eventData.applicantMobile || ""}
+                onChange={handleChange}
+                required
+              />
           
          
             <input
@@ -115,6 +138,7 @@ export default function Booking() {
               name="applicantEmail"
               id="enterAadhaarNo"
               placeholder="Enter applicant email "
+              value={eventData.applicantEmail || ""}
               data-testid="enterAadhaarNo"
               onChange={handleChange}
             />
@@ -126,6 +150,7 @@ export default function Booking() {
               name="eventAddress"
               id="enterPanNo"
               placeholder="Enter event address"
+              value={eventData.eventAddress || ""}
               data-testid="enterPanNo"
               onChange={handleChange}
             />
@@ -136,6 +161,7 @@ export default function Booking() {
              className="input-form"
               name="eventDate"
               placeholder="Enter date"
+              value={eventData.eventDate || ""}
               onChange={handleChange}
             />
           
@@ -146,6 +172,7 @@ export default function Booking() {
               name="eventTime"
               id="enterAmount"
               placeholder="Enter event time"
+              value={eventData.eventTime || ""}
               data-testid="enterAmount"
               onChange={handleChange}
             />
@@ -157,6 +184,7 @@ export default function Booking() {
               name="noOfPeople"
               id="enterMonths"
               placeholder="Enter no of people"
+              value={eventData.noOfPeople || ""}
               data-testid="enterMonths"
               onChange={handleChange}
             />
@@ -189,7 +217,6 @@ export default function Booking() {
     </div>
    </div>
     </div>
-  
   );
 }
 
