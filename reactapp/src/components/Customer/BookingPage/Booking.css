@@ -130,4 +130,34 @@
   background-color: #0f1314;
 }
 
+.floating-label-group {
+	position: relative;
+	margin-top: 15px;
+	margin-bottom: 25px;
+
+	.floating-label {
+		font-size: 13px;
+		color: #cccccc;
+		position: absolute;
+		pointer-events: none;
+		top: 9px;
+		left: 12px;
+		transition: all 0.1s ease;
+	}
+
+	input:focus ~ .floating-label,
+	input:not(:focus):valid ~ .floating-label {
+		top: -15px;
+		bottom: 0px;
+		left: 0px;
+		font-size: 11px;
+		opacity: 1;
+		color: #404040;
+	}
+}
+
+.row {
+	margin-top: 50px;
+}
+
 
