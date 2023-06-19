@@ -1,19 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useContext } from "react";
 import { BaseUrl } from "../../../utils/authApi";
 import Navbar from "/home/coder/project/workspace/reactapp/src/components/Admin/Navbar/Navbar.js";
 import Modal from "react-modal";
 import "./AddMenu.css";
 import axios from "axios";
+import UserContext from "../../../UserContext";
 
 
 import DataTable from "react-data-table-component";
 
 export default function FoodMenu() {
+  const { appUser, setAppUserl } = useContext(UserContext);
   const [newItem, setNewItem] = React.useState({});
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [itemsArray, setItemsArray] = React.useState([]);
   const [editingRow, setEditingRow] = React.useState(null);
   const [isEditItemModalOpen, setIsEditItemModalOpen] = React.useState(false);
+
+  const jwtToken = appUser?.token;
+  console.log("token",jwtToken);
+  const headers = {
+    Authorization: `Bearer ${jwtToken}` ,
+  };
+  
 
   async function handleEdit(row) {
     setIsEditItemModalOpen(true);
@@ -29,7 +38,7 @@ export default function FoodMenu() {
     try {
       const res = await axios.put(
         `${BaseUrl}/admin/editMenu/${editedItem.foodMenuId}`,
-        editedItem
+        editedItem,{headers}
       );
       const data = res.data;
       console.log("editi", data);
@@ -46,7 +55,7 @@ export default function FoodMenu() {
     console.log(row);
     try {
       const res = await axios.delete(
-        `${BaseUrl}/admin/deleteMenu/${row.foodMenuId}`
+        `${BaseUrl}/admin/deleteMenu/${row.foodMenuId}`,{headers}
       );
       const data = res.data;
       console.log("res after delte", data);
@@ -63,18 +72,21 @@ export default function FoodMenu() {
     {
       name: "Id",
       selector: (row) => row.foodMenuId,
+      style: {
+        width:'10px',
+    },
     },
     {
       name: "Name",
-      selector: (row) => row.foodMenuItems,
+      selector: (row) => <h1>{row.foodMenuItems}</h1>,
     },
     {
       name: "Price",
-      selector: (row) => row.foodMenuCost,
+      selector: (row) => <h1>{row.foodMenuCost}</h1>,
     },
     {
       name: "Category",
-      selector: (row) => row.foodMenuType,
+      selector: (row) => <h1>{row.foodMenuType}</h1>,
     },
     {
       name: "Image",
@@ -106,7 +118,7 @@ export default function FoodMenu() {
   useEffect(() => {
     async function getAllItems() {
       try {
-        const res = await axios.get(`${BaseUrl}/admin/getMenu`);
+        const res = await axios.get(`${BaseUrl}/admin/getMenu`,{headers});
         const data = res.data;
         console.log("all items ", data);
         setItemsArray(data);
@@ -138,7 +150,7 @@ export default function FoodMenu() {
     };
 
     try {
-      const res = await axios.post(`${BaseUrl}/admin/addMenu`, item);
+      const res = await axios.post(`${BaseUrl}/admin/addMenu`, item,{headers});
       console.log(res.data);
       console.log(res.status);
     
@@ -151,7 +163,7 @@ export default function FoodMenu() {
       console.log(e);
     }
   }
-
+  
   return (
     <div class="container">
         <Navbar />
