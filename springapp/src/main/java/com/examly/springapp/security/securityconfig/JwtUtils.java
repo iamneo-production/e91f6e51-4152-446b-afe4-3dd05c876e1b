@@ -9,7 +9,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import java.util.Date;
 @Component
 public class JwtUtils {
-    private String secret="IamSecret";
+    private String secret="Ihave-secreatkey-that-you-can't-able-to-decode-without-me-cant-able-login";
     private long expirationtime=43200000;
     public boolean validateJwt(String token) {
         try {
