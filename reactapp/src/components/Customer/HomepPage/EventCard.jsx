@@ -9,7 +9,6 @@ export default function EventCard({ singleEvent, handleRating }) {
        state={{themeimgUrl : singleEvent.themeimgUrl, themeName:singleEvent.themeName, cost : singleEvent.cost}}
       >
 
-
         <img height="200px" width="250px" src={singleEvent.themeimgUrl} alt="image" />
       </Link>
       <h2 className="event-name">{singleEvent.themeName}</h2>

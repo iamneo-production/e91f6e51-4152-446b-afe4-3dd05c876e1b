@@ -1,6 +1,8 @@
 com/examly/springapp/repository/AdminModelRepository.class
+
 com/examly/springapp/service/MenuModelServices.class
 com/examly/springapp/repository/EventModelRepository.class
+
 com/examly/springapp/repository/UserModelRepository.class
 com/examly/springapp/SpringappApplication.class
 com/examly/springapp/security/securityconfig/AuthEntryPoint.class
@@ -8,6 +10,7 @@ com/examly/springapp/models/MenuModel.class
 com/examly/springapp/service/AddOnModelServices.class
 com/examly/springapp/models/LoginResponseModel.class
 com/examly/springapp/models/UserRole.class
+
 com/examly/springapp/models/MenuModel$MenuModelBuilder.class
 com/examly/springapp/models/ThemeModel.class
 com/examly/springapp/models/LoginModel.class
@@ -28,3 +31,4 @@ com/examly/springapp/security/securityconfig/SecurityConfig.class
 com/examly/springapp/repository/AddOnModelRepository.class
 com/examly/springapp/security/securityconfig/AuthTokenFilter.class
 com/examly/springapp/models/AddOnModel.class
+
