@@ -1,17 +1,26 @@
-import React, { useState, useEffect } from "react";
-import {Link} from "react-router-dom";
+
+import React, { useState, useEffect,useContext } from "react";
+import {Link} from "react-router-dom"
+
 import "/home/coder/project/workspace/reactapp/src/components/Customer/HomepPage/HomePage.css";
 import { BASE_URL } from "../../../utils/userApi";
 import axios from 'axios'
 import Rating from "./Rating";
 import EventCard from "/home/coder/project/workspace/reactapp/src/components/Customer/HomepPage/EventCard";
 import Navbaar from "/home/coder/project/workspace/reactapp/src/components/Customer/Navbaar/Navbaar";
-
+import UserContext from '../../../UserContext'
 
 export default function HomePage() {
   const [data, setData] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [sortBy, setSortBy] = useState("");
+  const {appUser,setAppUser} =useContext(UserContext);
+
+  const jwtToken = appUser?.token;
+  console.log("token",jwtToken);
+  const headers = {
+    Authorization: `Bearer ${jwtToken}` ,
+  };
 
       
   //---fetching events----//
@@ -20,7 +29,7 @@ export default function HomePage() {
 
     async function getAllThemes() {
       try {
-        const res = await axios.get(`${BASE_URL}/admin/getTheme`);
+        const res = await axios.get(`${BASE_URL}/admin/getTheme`,{headers});
         setData(res.data)
         console.log("res",res);
       } catch (e) {

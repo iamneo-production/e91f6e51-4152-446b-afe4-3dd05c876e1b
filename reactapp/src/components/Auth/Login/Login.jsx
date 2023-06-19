@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
-
 import { loginUser } from "../../../utils/authApi";
+import UserContext from "../../../UserContext";
+
 
 export default function Login() {
   const navigate = useNavigate();
- const [userModel,setUserModel]= useState({
-
- });
-
+  const { appUser,setAppUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
  
@@ -33,21 +31,17 @@ export default function Login() {
       );
       return;
     } else {
-      const response = await loginUser(email, password);
-      const data =await response.json();
-      console.log("userModel is :",data.userModel)
-      console.log("login :",data.success)
-      if (response instanceof Error) {
-  //      alert(response.Error);
-     //   console.log(data.message);
-      } else if (data.userModel) {
-        if (data.userModel.userRole === "user") {
-          console.log(data.userModel)
-          setUserModel(data.userModel);
+      const data = await loginUser(email, password);
+      console.log("user is :",data)
+      if (data instanceof Error) {
+      } else if (data.roles) {
+        if (data.roles === "user") {
+          console.log(data.roles)
+          setAppUser(data);
           navigate("/user/getAllThemes");
-        } else if (data.userModel.userRole === "admin") {
-          console.log(data.userModel)
-          setUserModel(data.userModel);
+        } else if (data.roles === "admin") {
+          console.log(data.roles)
+          setAppUser(data);
           navigate("/admin/home");
         }
       } else {
@@ -102,7 +96,7 @@ export default function Login() {
               }}
             />
             <p className="loginPara">
-              &nbsp; New user/admin
+              
               <Link 
                 data-testid="signupLink"
               id="signinLink" to="/user/signup">
