@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
 import "/home/coder/project/workspace/reactapp/src/components/Customer/HomepPage/HomePage.css";
 import { BASE_URL } from "../../../utils/userApi";
 import axios from 'axios'
