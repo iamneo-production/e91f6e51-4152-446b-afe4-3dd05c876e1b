@@ -52,12 +52,13 @@ export default function Signup() {
       
     }
   }
+  //https://wallpaperaccess.com/full/1912551.jpg
   return (
-    <div >
+    <div style={{ backgroundImage: `url("https://shorturl.at/gijlR")` }}>
       <div className="navbar-register">
          Register 
       </div>
-      <div className="register-form">
+        <div className="register-form">
         
           <div>
             <select
@@ -158,7 +159,7 @@ export default function Signup() {
               />
           </div>
           <p className="loginPara" >
-                  Aldready a user ?
+                  Already a user ?
               <Link data-testid='signinLink' id="signinLink" to="/user/login">&nbsp; Login</Link>
 
           </p>
