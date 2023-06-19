@@ -79,9 +79,8 @@ export default function Booking() {
      <div className="apply-form">
       {currentPage === 1 && (
         <form className="form-container">
-       
-          
-            <input
+       <div className="floating-label-group">
+       <input
               data-testid="enterName"
               id="enterName"
               className="input-form"
@@ -92,7 +91,8 @@ export default function Booking() {
               readOnly
               style={{ fontWeight: 'bold'}}
               onChange={handleChange}
-            />
+            /><label class="floating-label">Enter Event  Name</label>
+            </div>
          
           
               <input
@@ -188,7 +188,7 @@ export default function Booking() {
               data-testid="enterMonths"
               onChange={handleChange}
             />
-         
+     
         </form>
       )}
       {currentPage === 2 && <BookEventSecondPage handleSubmit={handleSubmit} eventData={eventData} setEventData={setEventData}/>}
