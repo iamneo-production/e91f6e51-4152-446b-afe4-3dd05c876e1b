@@ -56,9 +56,21 @@ export default function Login() {
 
   return (
     <div className="login-container">
-      <div className="login-form">
-        <h1 className="login-title">Login</h1>
-        <div className="login-box">
+      <div className="image-form-container">
+        <div className="image-container">
+          <img
+            src="https://weddingsbymarius.co.za/wp-content/uploads/sb-instagram-feed-images/353833167_819714532496312_4572391967306604318_nfull.jpg"
+            alt="Image"
+            className="form-image"
+          />
+          <div className="image-overlay"></div>
+          <div className="image-text">
+            <h2>India's Favourite Event Planning Platform</h2>
+          </div>
+        </div>
+        <div className="login-form">
+          <h1 className="login-title">Login</h1>
+          <div className="login-box">
           <div>
             <input
               className="input-style-login"
@@ -108,6 +120,7 @@ export default function Login() {
             </p>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
