@@ -2,44 +2,80 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-image: url("https://wallpaperaccess.com/full/1912551.jpg");
-}
-{/*background-image: radial-gradient(circle, #342970 0%, hsl(250, 88%, 47%) 80%);*/}
-
-.login-form {
-  max-width: 400px;
-  padding: 20px;
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #8df6f6, #f5aacf, #ff69b4);
+  background-size: cover;
 }
 
-.login-title {
-  text-align: center;
-  margin-bottom: 20px;
+.image-form-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: rgb(255, 255, 255);
+  width: 1000px;
+  height: 600px;
 }
 
-.login-box {
+.image-container {
+  position: relative;
+  width: 80%;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(119, 117, 117, 0.3); /* Adjust the opacity as needed */
+}
+
+.image-text {
   display: flex;
   flex-direction: column;
-  height: 150px;
-  width: 250px;
-
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  z-index: 1;
 }
+
+
+.login-form {
+  background-color: rgb(255, 255, 255);
+  padding: 50px;
+  max-width: 300px;
+  text-align: center;
+}
+
+
 
 .input-style-login {
   padding: 10px;
-  margin-bottom: 10px;
+  width: 100%;
+  margin-bottom: 20px;
   border-radius: 5px;
-  border: 1px solid #ccc;
-  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
+  border: 1px solid hsl(0, 2%, 61%);
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  
 }
 
 .container-btn-para {
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
   margin-top: 20px;
 }
 
@@ -47,8 +83,8 @@
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
-  background-color: #c388e1;
-  color: #fff;
+  background-color: #333333;
+  color: #ffffff;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
@@ -58,16 +94,68 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
+.signup-btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #ffffff;
+  color: #333333;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.signup-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.login-title {
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: monospace;
+  margin-bottom: 40px;
+  background: linear-gradient(to bottom right, #1aecec, 	#f50d81);
+  -webkit-background-clip: text; /* For Safari */
+  -webkit-text-fill-color: transparent; /* For Safari */
+  background-clip: text;
+}
+
+
 .loginPara {
   font-family: 'Times New Roman', Times, serif;
+  font-size: 18px;
+  margin-left: 150px;
+  margin-right: 20px;
 }
 
-#signinLink {
-  text-decoration: none;
-  color: #000;
+.loginPara {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 18px;
+  margin-left: 150px;
+  margin-right: 20px;
+}
+
+
+
+.loginPara:hover {
+  color: #f16c13; /* Change the text color on hover */
+  transform: translateY(-3px);
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+.password-input-container {
+  position: relative;
+}
+
+.password-input {
+  padding-right: 35px; /* Adjust the padding to accommodate the icon */
+}
+
+.password-toggle-icon {
+  position: absolute;
+  top: 33%;
+  right: 3px;
+  transform: translateY(-50%);
+  cursor: pointer;
   
-}
-
-#signinLink:hover {
-  color: #c388e1;
 }
