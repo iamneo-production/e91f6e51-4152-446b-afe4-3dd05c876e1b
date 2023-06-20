@@ -2,44 +2,38 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-image: url("https://wallpaperaccess.com/full/1912551.jpg");
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #8df6f6,	#f5aacf,	#FF69B4);
+  background-size: cover;
 }
-{/*background-image: radial-gradient(circle, #342970 0%, hsl(250, 88%, 47%) 80%);*/}
 
 .login-form {
-  max-width: 400px;
-  padding: 20px;
-  border-radius: 5px;
-  background-color: #f2f2f2;
   
-}
-
-.login-title {
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  padding: 50px;
+  /* width: 300px; */
+  max-width: 400px; /*Increase the width to your desired value */ /*not working dought */
   text-align: center;
-  margin-bottom: 20px;
-}
-
-.login-box {
-  display: flex;
-  flex-direction: column;
-  height: 150px;
-  width: 250px;
-
+  box-shadow: 0px 0px 10px rgba(226, 8, 146, 0.5); /* adjust the shadow */
+  border: 1px solid #db0b7a;
 }
 
 .input-style-login {
   padding: 10px;
-  margin-bottom: 10px;
+  width: 100%;
+  margin-bottom: 20px;
   border-radius: 5px;
-  border: 1px solid #ccc;
-  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
+  border: 1px solid hsl(0, 2%, 61%);
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  
 }
 
 .container-btn-para {
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
   margin-top: 20px;
 }
 
@@ -47,8 +41,8 @@
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
-  background-color: #c388e1;
-  color: #fff;
+  background-color: #333333;
+  color: #ffffff;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
@@ -58,16 +52,68 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
+.signup-btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #ffffff;
+  color: #333333;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.signup-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.login-title {
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: monospace;
+  margin-bottom: 40px;
+  background: linear-gradient(to bottom right, #1aecec, 	#f50d81);
+  -webkit-background-clip: text; /* For Safari */
+  -webkit-text-fill-color: transparent; /* For Safari */
+  background-clip: text;
+}
+
+
 .loginPara {
   font-family: 'Times New Roman', Times, serif;
+  font-size: 18px;
+  margin-left: 150px;
+  margin-right: 20px;
 }
 
-#signinLink {
-  text-decoration: none;
-  color: #000;
+.loginPara {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 18px;
+  margin-left: 150px;
+  margin-right: 20px;
+}
+
+
+
+.loginPara:hover {
+  color: #f16c13; /* Change the text color on hover */
+  transform: translateY(-3px);
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+.password-input-container {
+  position: relative;
+}
+
+.password-input {
+  padding-right: 35px; /* Adjust the padding to accommodate the icon */
+}
+
+.password-toggle-icon {
+  position: absolute;
+  top: 33%;
+  right: 3px;
+  transform: translateY(-50%);
+  cursor: pointer;
   
-}
-
-#signinLink:hover {
-  color: #c388e1;
 }
