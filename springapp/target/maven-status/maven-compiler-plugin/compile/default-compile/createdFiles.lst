@@ -16,9 +16,14 @@ com/examly/springapp/controller/EventBookingController.class
 com/examly/springapp/controller/AuthController.class
 com/examly/springapp/models/UserModel.class
 com/examly/springapp/service/EventModelServices.class
+com/examly/springapp/models/AddOnModel$AddOnModelBuilder.class
+com/examly/springapp/controller/AddOnController.class
+com/examly/springapp/repository/MenuModelRepository.class
+com/examly/springapp/models/EventModel.class
+com/examly/springapp/controller/MenuController.class
+com/examly/springapp/repository/ThemeModelRepository.class
 com/examly/springapp/security/securityservices/UserDetailsServiceImpl.class
 com/examly/springapp/controller/ThemeController.class
-com/examly/springapp/controller/MessageResponse.class
 UserController.class
 com/examly/springapp/models/AdminModel.class
 com/examly/springapp/security/securityservices/UserDetailsImpl.class
