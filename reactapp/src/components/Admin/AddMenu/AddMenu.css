@@ -1,5 +1,5 @@
 
-.container {
+.add-menu-container {
   display: flex;
   flex-direction: column;
 }
@@ -10,18 +10,18 @@
   padding-top: 20px;
 } */
 
-.container > div > button {
+.add-menu-container > div > button {
   order: -1;
 }
 
-.container ul {
+.add-menu-container ul {
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
   padding: 0;
 }
 
-.container ul li {
+.add-menu-container ul li {
   flex-basis: 20%;
   padding: 10px;
   box-sizing: border-box;

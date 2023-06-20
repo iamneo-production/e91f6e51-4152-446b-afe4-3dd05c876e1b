@@ -42,7 +42,8 @@ public class EventModelServices {
         }
     }
 
-    public List<EventModel> getEventList() {
-        return eventModelRepository.findAll();
+    public List<EventModel> getEventList(Integer userId) {
+        return eventModelRepository.findByUserId(userId);
     }
+    
 }

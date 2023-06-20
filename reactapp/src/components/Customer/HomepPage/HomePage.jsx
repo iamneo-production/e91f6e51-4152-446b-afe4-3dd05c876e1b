@@ -99,7 +99,7 @@ export default function HomePage() {
       {data.length === 0
         ? <div>loading... please check connection </div>
         : (
-          <div>
+          <div className="Homepage">
             <div className="wrap"> 
            { /*Add SearchBar*/}
              <div className="search-box">
