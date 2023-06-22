@@ -89,12 +89,12 @@ const BookedEventsPage = () => {
           </div>
           {/* <h2>My Booked Events</h2> */}
           
-          <nav class="second-viewBooking-navbar">
-            <div class="second-viewBooking-navbar-element-one">Event Image</div>
-            <div class="second-viewBooking-navbar-element">Event Name</div>
-            <div class="second-viewBooking-navbar-element">Booking-Time</div>
-            <div class="second-viewBooking-navbar-element">Date</div>
-            <div class="second-viewBooking-navbar-element-last">Total Price</div>
+          <nav className="second-viewBooking-navbar">
+            <div className="second-viewBooking-navbar-element-one">Event Image</div>
+            <div className="second-viewBooking-navbar-element">Event Name</div>
+            <div className="second-viewBooking-navbar-element">Booking-Time</div>
+            <div className="second-viewBooking-navbar-element">Date</div>
+            <div className="second-viewBooking-navbar-element-last">Total Price</div>
           </nav>
           
           {filterEvents.map((event, index) => (
