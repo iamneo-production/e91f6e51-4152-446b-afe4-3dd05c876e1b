@@ -1,4 +1,14 @@
-.container {
+.PNF{
+  background-image: url("/home/coder/project/workspace/reactapp/src/404_error.png");
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  
+}
+
+/* .container {
     max-width: 500px;
     margin: 0 auto;
     padding: 40px 20px;
@@ -21,20 +31,30 @@
     margin-bottom: 20px;
     color: #777;
   }
-  
+    */
   .errorLink {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
+    
+    padding-top: 20px;
+    background-color: rgb(18, 17, 17);
     color: #fff;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 2px;
     transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2vh;
+
   }
   
   .errorLink:hover {
-    background-color: #0056b3;
+    background-color: #dd2ec5;
   }
-  
+  .center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2vh; /* Adjust the height as needed */
+  }
   
   
