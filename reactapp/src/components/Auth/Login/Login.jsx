@@ -4,6 +4,7 @@ import "./Login.css";
 import { loginUser } from "../../../utils/authApi";
 import UserContext from "../../../UserContext";
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import Navbar from "../../Customer/Navbaar/Navbaar";
 
 
 export default function Login() {
@@ -55,7 +56,10 @@ export default function Login() {
   }
 
   return (
+    <div>
+      {/* <Navbar/> */}
     <div className="login-container">
+      
       <div className="image-form-container">
         <div className="image-container">
           <img
@@ -122,6 +126,7 @@ export default function Login() {
         </div>
       </div>
       </div>
+    </div>
     </div>
   );
 }

@@ -1,3 +1,6 @@
+.Homepage{
+  background: linear-gradient(to bottom right, #8df6f6, #f5aacf, #ff69b4);
+}
 .search-box {
     display: flex;
     align-items: center;

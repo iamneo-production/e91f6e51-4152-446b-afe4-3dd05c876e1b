@@ -15,6 +15,7 @@ const BookedEventsPage = () => {
   const [sortBy, setSortBy] = useState("");
   
   const jwtToken = appUser?.token;
+  const userId = appUser?.id;
   console.log("token", jwtToken);
   const headers = {
     Authorization: `Bearer ${jwtToken}`,
@@ -22,7 +23,7 @@ const BookedEventsPage = () => {
 
   const fetchBookedEvents = async () => {
     try {
-      const res = await axios.get(`${BaseUrl}/user/viewEvent`, { headers });
+      const res = await axios.get(`${BaseUrl}/user/viewEvent/${userId}`, { headers });
       console.log(res.data);
       
       const reqData = res.data.filter((event)=>{
