@@ -115,7 +115,8 @@
 .login-title {
   font-size: 3rem;
   font-weight: bold;
-  font-family: monospace;
+  font-family: 'Alegreya', serif;
+  /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
   margin-bottom: 40px;
   background: linear-gradient(to bottom right, #1aecec, 	#f50d81);
   -webkit-background-clip: text; /* For Safari */
