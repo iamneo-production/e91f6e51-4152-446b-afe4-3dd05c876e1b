@@ -165,7 +165,7 @@ export default function FoodMenu() {
   }
   
   return (
-    <div class="container">
+    <div class="add-menu-container">
         <Navbar />
       <div className="add-item">
         <p className="add-item-text">For adding a new Item, click here: </p>
