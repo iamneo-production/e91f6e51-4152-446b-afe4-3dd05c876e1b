@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "/home/coder/project/workspace/reactapp/src/components/Customer/PageNotFound/PageNotFound.css";
-import errorImage from "/home/coder/project/workspace/reactapp/src/404 error.png";
+import errorImage from "/home/coder/project/workspace/reactapp/src/Images/404 error.png";
 
 const PageNotFound = () => {
   return (
