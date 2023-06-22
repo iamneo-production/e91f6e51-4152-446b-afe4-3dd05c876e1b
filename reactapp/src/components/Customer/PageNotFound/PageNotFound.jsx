@@ -6,7 +6,7 @@ import Navbaar from "/home/coder/project/workspace/reactapp/src/components/Custo
 const PageNotFound = () => {
   return (
     <div>
-{/* <Navbaar/> */}
+ <Navbaar/> 
 
     <div className='PNF'>
       
@@ -16,7 +16,7 @@ const PageNotFound = () => {
       <p className={styles.errorMessage}>
         The page you're looking for doesn't exist or has been moved.
       </p>*/}
-      <p>
+      <p >
       <center>
       <a href="/" className="errorLink">
         Go to Login
