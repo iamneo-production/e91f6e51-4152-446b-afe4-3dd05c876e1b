@@ -87,6 +87,7 @@ export default function AddOn() {
               name="addOnName"
               value={addOnItem.addOnName}
               onChange={handleChange}
+              className="input_field_addons"
             />
           </div>
           
@@ -97,6 +98,7 @@ export default function AddOn() {
               name="addOnDescription"
               value={addOnItem.addOnDescription}
               onChange={handleChange}
+              className="input_field_addons"
             />
           </div>
           <div>
@@ -106,6 +108,7 @@ export default function AddOn() {
               name="addOnPrice"
               value={addOnItem.addOnPrice}
               onChange={handleChange}
+              className="input_field_addons"
             />
           </div>
           <div>
@@ -115,6 +118,7 @@ export default function AddOn() {
               name="imgUrlAddons"
               value={addOnItem.imgUrlAddons}
               onChange={handleChange}
+              className="input_field_addons"
             />
           </div>
         </div>

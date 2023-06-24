@@ -101,6 +101,7 @@ export default function FoodMenu() {
           onClick={() => {
             handleEdit(row);
           }}
+          className="add-item-button"
         >
           Edit
         </button>
@@ -109,7 +110,7 @@ export default function FoodMenu() {
     },
     {
       name: "Delete",
-      cell: (row) => <button onClick={() => handleDelete(row)}>Delete</button>,
+      cell: (row) => <button onClick={() => handleDelete(row)} className="add-item-button">Delete</button>,
       button: true,
     },
   ];
