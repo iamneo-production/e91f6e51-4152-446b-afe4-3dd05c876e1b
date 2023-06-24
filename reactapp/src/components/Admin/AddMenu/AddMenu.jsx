@@ -69,12 +69,18 @@ export default function FoodMenu() {
   }
 
   const columns = [
+    // {
+    //   name: "Id",
+    //   selector: (row) => row.foodMenuId,
+    //   style: {
+    //     width:'10px',
+    // },
+    // },
     {
-      name: "Id",
-      selector: (row) => row.foodMenuId,
-      style: {
-        width:'10px',
-    },
+      name: "Image",
+      cell: (row) => (
+        <img src={row.imageUrl} alt="Food" style={{ width: "200px" }} className="image_add_menu"/>
+      ),
     },
     {
       name: "Name",
@@ -88,12 +94,7 @@ export default function FoodMenu() {
       name: "Category",
       selector: (row) => <h1>{row.foodMenuType}</h1>,
     },
-    {
-      name: "Image",
-      cell: (row) => (
-        <img src={row.imageUrl} alt="Food" style={{ width: "200px" }} />
-      ),
-    },
+    
     {
       name: "Edit",
       cell: (row) => (
