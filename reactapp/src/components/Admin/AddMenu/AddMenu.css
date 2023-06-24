@@ -4,6 +4,21 @@
   flex-direction: column;
 }
 
+.kdgCYE{
+    gap: 10px !important;
+}
+.hbgCLW{
+  padding: 10px;
+}
+
+.blGEez{
+  justify-content: center !important;
+}
+
+.dKzMcW{
+  justify-content: center !important;
+}
+
 /* .container > div {
   display: flex;
   flex-wrap: wrap;
@@ -185,4 +200,10 @@ table th {
   color:white;
   font-weight:bold;
   cursor:pointer;
+}
+
+.image_add_menu{
+    width: 200px !important;
+    height: 150px !important;
+    border-radius: 10px !important;
 }
