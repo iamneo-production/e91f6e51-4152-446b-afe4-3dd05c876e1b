@@ -1,3 +1,13 @@
+.ReactModal__Content{
+  width: fit-content !important;
+  height: 400px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-around;
+  align-items: center;
+  left:40% !important;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
@@ -69,10 +79,9 @@
 
   .AddOnButton,
   .AddnewButton button {
-    position: fixed;
     background-color: black;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 10px;
     border-radius: 10px;
     cursor: pointer;
   }
@@ -81,8 +90,15 @@
   .AddnewButton button:hover {
     background-color: rgb(169, 33, 228);
   }
-  
-    
     .AddOnButton:hover {
       background-color: rgb(169, 33, 228);
+    }
+    .input_field_addons{
+      border: 2px solid black;
+      padding: 10px 10px !important;
+    }
+    .input-tags-container{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
