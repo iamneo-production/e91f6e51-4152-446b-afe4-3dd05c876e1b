@@ -1,24 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: com.examly.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 6.925 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
-BE_spring_update_foodMenu  Time elapsed: 0.237 s  <<< FAILURE!
+Tests run: 6, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 10.51 s <<< FAILURE! - in com.examly.springapp.SpringappApplicationTests
+BE_spring_update_foodMenu  Time elapsed: 0.243 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<404>
 	at com.examly.springapp.SpringappApplicationTests.BE_spring_update_foodMenu(SpringappApplicationTests.java:97)
 
-BE_spring_update_theme  Time elapsed: 0.025 s  <<< FAILURE!
+BE_spring_update_theme  Time elapsed: 0.051 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<404>
 	at com.examly.springapp.SpringappApplicationTests.BE_spring_update_theme(SpringappApplicationTests.java:72)
-
-BE_spring_add_theme  Time elapsed: 0.013 s  <<< FAILURE!
-java.lang.AssertionError: Status expected:<200> but was:<404>
-	at com.examly.springapp.SpringappApplicationTests.BE_spring_add_theme(SpringappApplicationTests.java:48)
-
-BE_spring_get_theme  Time elapsed: 0.036 s  <<< FAILURE!
-java.lang.AssertionError: Status expected:<200> but was:<404>
-	at com.examly.springapp.SpringappApplicationTests.BE_spring_get_theme(SpringappApplicationTests.java:58)
-
-BE_spring_add_foodMenu  Time elapsed: 0.014 s  <<< FAILURE!
-java.lang.AssertionError: Status expected:<200> but was:<404>
-	at com.examly.springapp.SpringappApplicationTests.BE_spring_add_foodMenu(SpringappApplicationTests.java:84)
 
