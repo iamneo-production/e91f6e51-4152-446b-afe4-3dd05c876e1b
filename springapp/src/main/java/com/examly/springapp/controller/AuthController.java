@@ -35,19 +35,20 @@ public class AuthController {
     @ResponseBody
 
     public ResponseEntity <?> saveUser(@RequestBody UserModel userModel) {
+        return userModelService.saveUser(userModel);
 
-        if(userModelService.userAldreadyExist(userModel.getEmail())){
-            return  new ResponseEntity<>("User Aldredy exist in db go login",HttpStatus.CONFLICT);
-        }
+        // if(userModelService.userAldreadyExist(userModel.getEmail())){
+        //     return  new ResponseEntity<>("User Aldredy exist in db go login",HttpStatus.CONFLICT);
+        // }
 
-         UserModel savedUser = userModelService.saveUser(userModel);
-        if (savedUser != null) {
-            String role = savedUser.getUserRole();
-            String message = role.equals("admin") ? "Admin added" : "User added";
-            return ResponseEntity.ok(new MessageResponse(message));
-        } else {
-            return new ResponseEntity<>("Failed to register user.", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        //  UserModel savedUser = userModelService.saveUser(userModel);
+        // if (savedUser != null) {
+        //     String role = savedUser.getUserRole();
+        //     String message = role.equals("admin") ? "Admin added" : "User added";
+        //     return ResponseEntity.ok(new MessageResponse(message));
+        // } else {
+        //     return new ResponseEntity<>("Failed to register user.", HttpStatus.INTERNAL_SERVER_ERROR);
+        // }
     }
 
 
@@ -71,25 +72,28 @@ public class AuthController {
 
     @PostMapping("/user/login")
     @ResponseBody
-    public LoginResponseModel loginUser(@RequestBody LoginModel data) {
-        String redirectUrl = userModelService.validateUser(data);
-        if (redirectUrl.contains("error")) {
-            return new LoginResponseModel(null, false);
-        } else {
-            UserModel userModel = userModelService.findUserByEmail(data.getEmail());
-            return new LoginResponseModel(userModel, true);
-        }
+    public  ResponseEntity<?> loginUser(@RequestBody LoginModel data) {
+        return userModelService.validateUser(data);
+    //    String redirectUrl = userModelService.validateUser(data);
+    //     if (redirectUrl.contains("error")) {
+    //         return new LoginResponseModel(null, false);
+    //     } else {
+            
+    //         UserModel userModel = userModelService.findUserByEmail(data.getEmail());
+    //         return new LoginResponseModel(userModel, true);
+    //     } 
     }
     @PostMapping("/")
     @ResponseBody
     public ResponseEntity <?> login(@RequestBody LoginModel data) {
-        String redirectUrl = userModelService.validateUser(data);
-        if (redirectUrl.contains("error")) {
-            return new ResponseEntity<>("login failed",HttpStatus.INTERNAL_SERVER_ERROR);
-        } else {
-            UserModel userModel = userModelService.findUserByEmail(data.getEmail());
-            return  ResponseEntity.ok(userModel);
-        }
+        return userModelService.validateUser(data);
+        // String redirectUrl = userModelService.validateUser(data);
+        // if (redirectUrl.contains("error")) {
+        //     return new ResponseEntity<>("login failed",HttpStatus.INTERNAL_SERVER_ERROR);
+        // } else {
+        //     UserModel userModel = userModelService.findUserByEmail(data.getEmail());
+        //     return  ResponseEntity.ok(userModel);
+        // }
     }
 
     // NOT WORKING TEST //

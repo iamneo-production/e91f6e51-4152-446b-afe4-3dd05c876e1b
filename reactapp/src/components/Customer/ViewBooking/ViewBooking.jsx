@@ -1,139 +1,118 @@
-import {
-    Button,
-    Grid,
-    IconButton,
-    Stack,
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableRow,
-  } from "@mui/material";
-  import React from "react";
-  import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-  import EditCalendarIcon from "@mui/icons-material/EditCalendar";
-  import DeleteIcon from "@mui/icons-material/Delete";
-  import { Link, useNavigate } from "react-router-dom";
-  import axios from "axios";
-  import endpoints from "/home/coder/project/workspace/reactapp/src/config/config";
-  import Swal from "sweetalert2";
-  import Navbaar from "../Navbaar/Navbaar";
-  const ViewBookedEvents = () => {
-    const [eventList, setEventList] = React.useState({
-      loading: false,
-      data: [],
-    });
-    const navigate = useNavigate();
-  
-    const FetchEvents = () => {
-      setEventList((prev) => ({ ...prev, loading: true }));
-      axios
-        .get(endpoints?.listEvents)
-        .then((resp) => {
-          setEventList((prev) => ({ ...prev, data: resp?.data }));
-        })
-        .catch((er) => {
-          console.error(er);
-          Swal.fire({
-            icon: "error",
-            title: "Fetching Events Failed",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        })
-        .finally(() => setEventList((prev) => ({ ...prev, loading: false })));
-    };
-  
-    React.useEffect(() => {
-      FetchEvents();
-    }, []);
-  
-    const deleteHandler = (evId) => {
-      axios
-        .delete(endpoints?.deleteEvent + evId)
-        .then((resp) => {
-          FetchEvents();
-        })
-        .catch((er) => {
-          console.error(er);
-          Swal.fire({
-            icon: "error",
-            title: "Deleting Event Failed",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        });
-    };
-  
-    return (
-      <div className="maincontainer">
-        <Navbaar/>
-        <Grid container alignItems="center" spacing={2}>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
+import React, { useRef, useState, useContext, useEffect } from "react";
+import Navbaar from "/home/coder/project/workspace/reactapp/src/components/Customer/Navbaar/Navbaar";
+import { BaseUrl } from "../../../utils/authApi";
+import axios from "axios";
+import UserContext from "../../../UserContext";
+import { useNavigate } from "react-router-dom";
 
+import './ViewBooking.css'; // Import the CSS file 
 
-            <Link to={"/user/getAllThemes"}>
+const BookedEventsPage = () => {
+  const { appUser, setAppUserl } = useContext(UserContext);
+  const [data, setData] = useState([]);
 
-              <Button variant="outlined" startIcon={<ArrowBackIosIcon />}>
-                Back
-              </Button>
-            </Link>
-          </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={12} sx={{ mt: "10px" }}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Event Id</TableCell>
-                  <TableCell>Event Name</TableCell>
-                  <TableCell>Time</TableCell>
-                  <TableCell>Date</TableCell>
-                  <TableCell>Price</TableCell>
-                  <TableCell align="right">Actions</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {eventList?.data?.map((row) => (
-                  <TableRow
-                    key={row.eventId}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
-                    <TableCell>{row.eventId}</TableCell>
-                    <TableCell>{row.eventName}</TableCell>
-                    <TableCell>{row.eventTime}</TableCell>
-                    <TableCell>{row.eventDate}</TableCell>
-                    <TableCell>{row.eventCost}</TableCell>
-                    <TableCell align="right">
-                      <Stack
-                        direction="row"
-                        spacing={0.5}
-                        justifyContent="flex-end"
-                      >
-                        <IconButton
-                          onClick={() =>
-                            navigate("/user/bookTheme?eventId=" + row?.eventId)
-                          }
-                          color="primary"
-                          aria-label="edit"
-                        >
-                          <EditCalendarIcon />
-                        </IconButton>
-                        <IconButton
-                          onClick={() => deleteHandler(row.eventId)}
-                          color="error"
-                          aria-label="delete"
-                        >
-                          <DeleteIcon />
-                        </IconButton>
-                      </Stack>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </Grid>
-        </Grid>
-      </div>
-    );
+  const [searchText, setSearchText] = useState("");
+  const [sortBy, setSortBy] = useState("");
+  
+  const jwtToken = appUser?.token;
+  const userId = appUser?.id;
+  console.log("token", jwtToken);
+  const headers = {
+    Authorization: `Bearer ${jwtToken}`,
   };
+
+  const fetchBookedEvents = async () => {
+    try {
+      const res = await axios.get(`${BaseUrl}/user/viewEvent/${userId}`, { headers });
+      console.log(res.data);
+      
+      const reqData = res.data.filter((event)=>{
+        return appUser.id === event.userId;
+      })
+      // Reverse the data array to display the last entry first
+      const reversedData = reqData.reverse();
+      
+      setData(reversedData);
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchBookedEvents();
+  }, []);
+
+  function handleSearch(e) {
+    setSearchText(e.target.value);
+  }
+
+  const convertTo12HourFormat = (time) => {
+    const eventTime = new Date(`2050-01-01T${time}`);
+    const formattedEventTime = eventTime.toLocaleString('en-US', {
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true
+    });
+    return formattedEventTime;
+  };
+
   
-  export default ViewBookedEvents;
+
+  const filterEvents = data.filter((singleEvent) => {
+    return singleEvent.eventName.toLowerCase().includes(searchText.toLowerCase());
+  });
+
+  
+  return (
+    <div>
+      <div className="viewbooking-main-navbaar">
+        <Navbaar />
+      </div>
+      
+      {data.length === 0 ? (
+        <div>You have not made any bookings yet.</div>
+      ) : (
+        <>
+          <div className="view-booking-wrap"> 
+            <div className="view-booking-search-box">
+              <input
+                className="search_input"
+                type="text"
+                placeholder="Type here to Search"
+                name="searchText"
+                value={searchText}
+                onChange={handleSearch}
+              />
+               <button type="submit" data-testid="searchEventButton" id="searchEventButton"></button>
+            </div>
+          </div>
+          {/* <h2>My Booked Events</h2> */}
+          
+          <nav className="second-viewBooking-navbar">
+            <div className="second-viewBooking-navbar-element-one">Event Image</div>
+            <div className="second-viewBooking-navbar-element">Event Name</div>
+            <div className="second-viewBooking-navbar-element">Booking-Time</div>
+            <div className="second-viewBooking-navbar-element">Date</div>
+            <div className="second-viewBooking-navbar-element-last">Total Price</div>
+          </nav>
+          
+          {filterEvents.map((event, index) => (
+            <div key={index} className="event-card">
+              
+              <div className="event-details-2">
+                <img src={event.eventImg} alt={event.eventName} className="event-image" />
+                <h3>{event.eventName}</h3>
+                <p>{convertTo12HourFormat(event.eventTime)}</p>
+                <p>{event.eventDate}</p>
+                <p>₹{event.eventCost}</p>
+              </div>
+            </div>
+          ))}
+        </>
+      )}
+    </div>
+  );
+};
+
+export default BookedEventsPage;

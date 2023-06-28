@@ -1,10 +1,13 @@
-import { React, useEffect, useRef, useState } from "react";
-import Navbar from "../Navbar/Navbar";
-import styles from "./AddTheme.module.css";
+import { React, useRef, useState, useContext, useEffect } from "react";
+import Navbar from "/home/coder/project/workspace/reactapp/src/components/Admin/Navbar/Navbar.js";
+import styles from "/home/coder/project/workspace/reactapp/src/components/Admin/AddTheme/AddTheme.module.css";
 import { BaseUrl } from "../../../utils/authApi";
 import axios from "axios";
+import UserContext from "../../../UserContext";
+import { useNavigate } from "react-router-dom";
 
 const AddTheme = () => {
+  const { appUser, setAppUserl } = useContext(UserContext);
   const themeName = useRef();
   const imageUrl = useRef();
   const photographerDetails = useRef();
@@ -12,8 +15,14 @@ const AddTheme = () => {
   const returnGift = useRef();
   const themeCost = useRef();
   const description = useRef();
+  const navigate = useNavigate();
+  const [data, setData] = useState([]);
 
-  const [data, setData] = useState();
+  const jwtToken = appUser?.token;
+  console.log("token", jwtToken);
+  const headers = {
+    Authorization: `Bearer ${jwtToken}`,
+  };
 
   async function handleSubmit() {
     console.log("i am handle submit");
@@ -28,9 +37,18 @@ const AddTheme = () => {
     };
 
     try {
-      const res = await axios.post(`${BaseUrl}/admin/addTheme`, themeModel);
+      const res = await axios.post(
+        `${BaseUrl}/admin/addTheme`,
+        themeModel,
+        { headers }
+      );
+      console.log("return from backend", res.data);
+      alert(res.data);
 
-      console.log(res.data);
+      // Refresh the data after adding the theme
+      getAllThemes();
+
+      // Reset the form fields
       themeName.current.value = "";
       imageUrl.current.value = "";
       photographerDetails.current.value = "";
@@ -38,20 +56,27 @@ const AddTheme = () => {
       returnGift.current.value = "";
       themeCost.current.value = "";
       description.current.value = "";
-
-      alert(res.data);
     } catch (e) {
       console.log(e.message);
     }
   }
+
+  const getAllThemes = async () => {
+    try {
+      const res = await axios.get(`${BaseUrl}/admin/getTheme`, { headers });
+      console.log("res",res.data);
+      
+      // Reverse the data array to display the last entry first
+      const reversedData = res.data.reverse();
+
+      setData(reversedData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  //to fetch the data in starting  without it it will not fetch data
   useEffect(() => {
-    const getAllThemes = async () => {
-      const res = await axios.get(
-        "https://8080-fbfbcfdafefbdecbeaedcfdfabbdb.project.examly.io/admin/getTheme"
-      );
-      console.log(res.data);
-      setData(res.data);
-    };
     getAllThemes();
   }, []);
 
