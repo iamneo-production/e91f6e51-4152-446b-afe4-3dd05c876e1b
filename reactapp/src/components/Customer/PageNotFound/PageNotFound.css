@@ -1,0 +1,61 @@
+.PNF{
+  background-image: url("/home/coder/project/workspace/reactapp/src/404_error.png");
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  
+  
+}
+
+/* .container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .errorImage {
+    width: 200px;
+    margin-bottom: 20px;
+  }
+  
+  .errorTitle {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .errorMessage {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #777;
+  }
+    */
+  .errorLink {
+    
+    padding: 10px;
+    background-color: rgb(18, 17, 17);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2vh;
+
+  }
+  
+  .errorLink:hover {
+    background-color: #dd2ec5;
+  }
+  .center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2vh; /* Adjust the height as needed */
+  }
+  
+  

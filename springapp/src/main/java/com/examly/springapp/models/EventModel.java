@@ -1,26 +1,13 @@
 package com.examly.springapp.models;
-import javax.persistence.Table;
-import javax.persistence.*;
-import org.springframework.web.bind.annotation.DeleteMapping; 
-import org.springframework.web.bind.annotation.GetMapping; 
-import org.springframework.web.bind.annotation.PathVariable; 
-import org.springframework.web.bind.annotation.PostMapping; 
-import org.springframework.web.bind.annotation.PutMapping; 
-import org.springframework.web.bind.annotation.RequestBody; 
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.*;
-import java.time.LocalDateTime;
 
-
-import org.springframework.http.*;
-import org.springframework.stereotype.*;
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.http.*;
-import java.util.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Data
@@ -32,7 +19,7 @@ public class EventModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer eventId;
-    // private Integer id;
+//    private Integer id;
     private String eventName;
     private String applicantName;
     private String applicantAddress;
@@ -40,12 +27,15 @@ public class EventModel {
     private String applicantEmail;
     private String eventAddress;
 
-    
-    private Date eventDate;
-    private LocalDateTime eventTime;
+    @JsonFormat(pattern = "dd MM yyyy")
+    private String eventDate;
+    private String eventTime;
+    private  String noOfPeople;
 
     private Integer eventMenuID;  // automitically mereged menu table id  so that we can fetch url and other things
-    private Integer addOnId;        // wants to automitically mereged with addon table id so that we can fetch image url
+    private String addOnId;        // wants to automitically mereged with addon table id so that we can fetch image url
     private String eventCost;
+    private Integer userId;         // To retrieve which user booked which event
+    private String eventImg;
     
 }
