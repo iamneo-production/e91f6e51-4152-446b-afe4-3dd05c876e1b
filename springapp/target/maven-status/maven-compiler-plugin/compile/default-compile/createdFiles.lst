@@ -34,5 +34,4 @@ com/examly/springapp/models/ThemeModel$ThemeModelBuilder.class
 com/examly/springapp/service/UserModelService.class
 com/examly/springapp/security/securityconfig/SecurityConfig.class
 com/examly/springapp/repository/AddOnModelRepository.class
-com/examly/springapp/security/securityconfig/AuthTokenFilter.class
 com/examly/springapp/models/AddOnModel.class

@@ -1,10 +1,11 @@
 import React, { useState, useEffect,useContext } from "react";
 import {Link} from "react-router-dom"
-import "/home/coder/project/workspace/reactapp/src/components/Customer/HomepPage/HomePage.css";
+
+import "./HomePage.css";
 import { BASE_URL } from "../../../utils/userApi";
 import axios from 'axios'
 import Rating from "./Rating";
-import EventCard from "/home/coder/project/workspace/reactapp/src/components/Customer/HomepPage/EventCard";
+import EventCard from "./EventCard.jsx";
 import Navbaar from "/home/coder/project/workspace/reactapp/src/components/Customer/Navbaar/Navbaar";
 import UserContext from '../../../UserContext'
 
@@ -97,7 +98,7 @@ export default function HomePage() {
       {data.length === 0
         ? <div>loading... please check connection </div>
         : (
-          <div>
+          <div className="Homepage">
             <div className="wrap"> 
            { /*Add SearchBar*/}
              <div className="search-box">
