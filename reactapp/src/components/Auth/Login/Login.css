@@ -77,37 +77,48 @@
 
 .container-btn-para {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   margin-top: 20px;
+  width: 107%;
 }
 
 .login-btn {
+  flex: 1;
+  letter-spacing: 1px;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 20px;
   border: none;
-  background-color: #333333;
+  background-color: #a564ab;
   color: #ffffff;
+  text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  font-weight: bold;
 }
 
 .login-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
-
-.signup-btn {
+.sign-up{
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 20px;
+  margin-top: 20px;
+  letter-spacing: 1px;
   border: none;
-  background-color: #ffffff;
-  color: #333333;
+  background-color: #a564ab;
+  color: #ffffff;
   cursor: pointer;
+  text-transform: uppercase;
   transition: all 0.3s ease-in-out;
+  font-weight: bold;
+  width: 107%;
 }
 
-.signup-btn:hover {
+
+
+.sign-up:hover {
   transform: translateY(-3px);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
@@ -115,7 +126,7 @@
 .login-title {
   font-size: 3rem;
   font-weight: bold;
-  font-family: 'Alegreya', serif;
+  font-family: 'Montserrat', sans-serif;
   /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
   margin-bottom: 40px;
   background: linear-gradient(to bottom right, #1aecec, 	#f50d81);
@@ -130,14 +141,10 @@
   font-size: 18px;
   margin-left: 150px;
   margin-right: 20px;
+  width: 100%;
 }
 
-.loginPara {
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 18px;
-  margin-left: 150px;
-  margin-right: 20px;
-}
+
 
 
 
