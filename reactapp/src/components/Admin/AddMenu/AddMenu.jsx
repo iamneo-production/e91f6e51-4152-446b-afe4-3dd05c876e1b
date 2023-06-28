@@ -6,8 +6,6 @@ import "./AddMenu.css";
 import axios from "axios";
 import UserContext from "../../../UserContext";
 
-// Testing
-
 
 import DataTable from "react-data-table-component";
 
@@ -167,7 +165,7 @@ export default function FoodMenu() {
   }
   
   return (
-    <div class="container">
+    <div class="add-menu-container">
         <Navbar />
       <div className="add-item">
         <p className="add-item-text">For adding a new Item, click here: </p>

@@ -1,3 +1,131 @@
-.dropdown-container {
-    width: 300px;
+.main-container {
+  /* background-image: url('https://img.freepik.com/free-vector/white-abstract-background_23-2148817571.jpg');
+   background-image: url('https://uploads-ssl.webflow.com/5a9ee6416e90d20001b20038/6289efcc9a52f65ff46e8400_white-gradient.png');
+    */
+  
+  /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUt893lmNu7AExT2AedGz8udpIPRKXkCNSAFI_-nKgBm12KWc6-3xQvQHQv_q-5GZm-EY&usqp=CAU');
+   */
+   /* background-image: url('https://uploads-ssl.webflow.com/5a9ee6416e90d20001b20038/6289efcc9a52f65ff46e8400_white-gradient.png');*/
+ background-repeat: no-repeat;
+  background-size: cover; 
+}
+
+.apply-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 30px;
+  height: 100vh;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-form {
+  height: 40px;
+  padding: 8px;
+  font-size: 17px;
+  border-radius: 4px;
+  width: 500px;
+  margin-left: 60px;
+  margin-bottom: 2px;
+  /* box-shadow: 0 2px 4px rgba(82, 81, 81, 0.2); */
+
+  border: 1px solid rgba(0, 0, 0, 0.6); /* Add a less solid black border */
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+  opacity: 0.7;
+}
+
+.input-form :hover {
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
+  /* transform: translateY(-4px); */
+}
+.form-group input[type="date"],
+.form-group input[type="time"] {
+  width: auto;
+}
+
+.page-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
+}
+
+.page-button {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.page-button.current-page {
+  background-color: #ccc;
+}
+
+.page-button:hover {
+  background-color: #e5e5e5;
+}
+
+@media (min-width: 768px) {
+  .form-container {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
+    width: 100%;
+    height: 80vh;
+    border-radius: none;
   }
+}
+
+/* SECOND PAGE */
+/* Styles for the second-page-container */
+
+.second-page-container {
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 200px;
+  padding: 20px;
+}
+.grid-container-2 input {
+  margin-top: 80px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.3); /* Add a less solid black border */
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  width: 92%;
+  height: 6px;
+}
+.addOnDropdown,
+.category {
+  font-size: 17px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.3); /* Add a less solid black border */
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+/* Styles for the submit button */
+.submit-btn {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #b950ea;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 200px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the submit button */
+.submit-btn:hover {
+  background-color: #0f1314;
+}

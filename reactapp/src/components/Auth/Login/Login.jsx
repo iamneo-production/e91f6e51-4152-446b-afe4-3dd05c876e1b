@@ -3,14 +3,16 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { loginUser } from "../../../utils/authApi";
 import UserContext from "../../../UserContext";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import Navbar from "../../Customer/Navbaar/Navbaar";
 
 
 export default function Login() {
   const navigate = useNavigate();
-  const { appUser,setAppUser } = useContext(UserContext);
+  const { appUser, setAppUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
- 
+  const [showPassword, setShowPassword] = useState(false);
 
   const emailRegex =
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -54,13 +56,27 @@ export default function Login() {
   }
 
   return (
+    <div>
+      {/* <Navbar/> */}
     <div className="login-container">
-      <div className="login-form">
-        <h1 className="login-title">Login</h1>
-        <div  data-testid="loginBox" className="login-box">
+      
+      <div className="image-form-container">
+        <div className="image-container">
+          <img
+            src="https://weddingsbymarius.co.za/wp-content/uploads/sb-instagram-feed-images/353833167_819714532496312_4572391967306604318_nfull.jpg"
+            alt="Image"
+            className="form-image"
+          />
+          <div className="image-overlay"></div>
+          <div className="image-text">
+            <h2>India's Favourite Event Planning Platform</h2>
+          </div>
+        </div>
+        <div className="login-form">
+          <h1 className="login-title">Login</h1>
+          <div className="login-box">
           <div>
             <input
-             data-testid="email"
               className="input-style-login"
               type="email"
               name="email"
@@ -72,40 +88,45 @@ export default function Login() {
             />
           </div>
           <div>
-            <input
-             data-testid="password"
-              className="input-style-login"
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Enter Password"
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
+            <div className="password-input-container">
+              <input
+                className="input-style-login "
+                type={showPassword ? "text" : "password"}
+                name="password"
+                id="password"
+                placeholder="Enter Password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
+              <i
+                className={`password-toggle-icon fas ${
+                  showPassword ? "fa-eye-slash" : "fa-eye"
+                }`}
+                onClick={() => setShowPassword(!showPassword)}
+                style={{ color: showPassword ? "#FF69B4" : " #515153" }}
+              ></i>
+            </div>
           </div>
           <div className="container-btn-para">
             <input
-              data-testid="loginButton"
               className="login-btn"
               type="submit"
               id="loginButton"
               value="Login"
-              onClick={() => {
-                handleLogin();
-              }}
+              onClick={handleLogin}
             />
             <p className="loginPara">
-              
-              <Link 
-                data-testid="signupLink"
-              id="signinLink" to="/user/signup">
+              <Link id="signinLink" to="/user/signup">
                 &nbsp; Signup
               </Link>
             </p>
           </div>
         </div>
       </div>
+      </div>
+    </div>
     </div>
   );
 }
