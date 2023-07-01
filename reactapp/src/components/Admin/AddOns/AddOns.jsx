@@ -74,7 +74,7 @@ export default function AddOn() {
   return (
     <div className="">
       <Navbar />
-      <button onClick={openModal}>Add ons</button>
+      <button onClick={openModal} className="add-item-button_addons">Add ons</button>
       <Modal isOpen={isModalOpen}>
         <h2>Add new Add-on</h2>
         

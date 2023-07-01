@@ -5,6 +5,8 @@ import Modal from "react-modal";
 import "./AddMenu.css";
 import axios from "axios";
 import UserContext from "../../../UserContext";
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 import DataTable from "react-data-table-component";
@@ -104,14 +106,14 @@ export default function FoodMenu() {
           }}
           className="add-item-button"
         >
-          Edit
+          <ModeEditIcon/>
         </button>
       ),
       button: true,
     },
     {
       name: "Delete",
-      cell: (row) => <button onClick={() => handleDelete(row)} className="add-item-button">Delete</button>,
+      cell: (row) => <button onClick={() => handleDelete(row)} className="add-item-button"><DeleteIcon/></button>,
       button: true,
     },
   ];
