@@ -34,5 +34,9 @@ public class EventBookingController {
     @GetMapping("user/viewEvent/{id}")
     public List<EventModel> viewEvents(@PathVariable("id") Integer userId) {
     return eventService.getEventList(userId);
-}
+    }
+    @GetMapping("/admin/event")
+    public List<EventModel> viewEvents() {
+    return eventService.getEvent();
+    }
 }
