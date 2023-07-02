@@ -118,7 +118,7 @@ export default function FoodMenu() {
   useEffect(() => {
     async function getAllItems() {
       try {
-        const res = await axios.get(`${BaseUrl}/admin/getMenu`,{headers});
+        const res = await axios.get(`${BaseUrl}/admin/menu`,{headers});
         const data = res.data;
         console.log("all items ", data);
         setItemsArray(data);

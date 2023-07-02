@@ -29,7 +29,7 @@ export default function HomePage() {
 
     async function getAllThemes() {
       try {
-        const res = await axios.get(`${BASE_URL}/admin/getTheme`,{headers});
+        const res = await axios.get(`${BASE_URL}/admin/theme`,{headers});
         setData(res.data)
         console.log("res",res);
       } catch (e) {

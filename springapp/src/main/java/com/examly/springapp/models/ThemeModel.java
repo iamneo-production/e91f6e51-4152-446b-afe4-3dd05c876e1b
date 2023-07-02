@@ -25,6 +25,7 @@ public class ThemeModel {
     private Integer themeId;
     // private Integer id;
     private String themeName;
+    @Column(columnDefinition = "LONGTEXT")
     private String themeimgUrl;
     private String themeDescription;
     private String themephotographer;
