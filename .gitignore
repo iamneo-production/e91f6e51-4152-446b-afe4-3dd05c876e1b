@@ -1,7 +1,7 @@
 node_modules/
 done
 junit
-target/
+target
 .vscode/
 react
 puppeteer
