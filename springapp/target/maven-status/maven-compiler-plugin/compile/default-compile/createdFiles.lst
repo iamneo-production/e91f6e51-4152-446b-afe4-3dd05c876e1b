@@ -11,7 +11,6 @@ com/examly/springapp/models/UserRole.class
 com/examly/springapp/models/MenuModel$MenuModelBuilder.class
 com/examly/springapp/models/LoginModel.class
 com/examly/springapp/models/ThemeModel.class
-EventController.class
 com/examly/springapp/security/securityconfig/JwtUtils.class
 com/examly/springapp/controller/EventBookingController.class
 com/examly/springapp/controller/AuthController.class
