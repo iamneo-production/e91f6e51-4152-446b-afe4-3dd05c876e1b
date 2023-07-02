@@ -10,7 +10,7 @@ export default function EventCard({ singleEvent, handleRating }) {
       >
 
         <img height="200px" width="250px" src={singleEvent.themeimgUrl} alt="image" />
-      </Link>
+        
       <h2 className="event-name">{singleEvent.themeName}</h2>
       <div className="place-rating-container">
         <div className="">
@@ -19,6 +19,7 @@ export default function EventCard({ singleEvent, handleRating }) {
         </div>
         {/* <Rating singleEvent={singleEvent} handleRating={handleRating} /> */}
       </div>
+      </Link>
 
     </div>
   )
