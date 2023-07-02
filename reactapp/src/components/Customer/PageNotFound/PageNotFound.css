@@ -6,6 +6,7 @@
   background-size: cover;
   display: flex;
   
+  
 }
 
 /* .container {
@@ -34,7 +35,7 @@
     */
   .errorLink {
     
-    padding-top: 20px;
+    padding: 10px;
     background-color: rgb(18, 17, 17);
     color: #fff;
     text-decoration: none;
