@@ -63,7 +63,7 @@ const AddTheme = () => {
 
   const getAllThemes = async () => {
     try {
-      const res = await axios.get(`${BaseUrl}/admin/getTheme`, { headers });
+      const res = await axios.get(`${BaseUrl}/admin/theme`, { headers });
       console.log("res",res.data);
       
       // Reverse the data array to display the last entry first
