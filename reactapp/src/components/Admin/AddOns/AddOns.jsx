@@ -77,8 +77,6 @@ export default function AddOn() {
       <button onClick={openModal} className="add-item-button_addons">Add ons</button>
       <Modal isOpen={isModalOpen}>
         <h2>Add new Add-on</h2>
-        
-
         <div className="input-tags-container">
           <div>
             <input

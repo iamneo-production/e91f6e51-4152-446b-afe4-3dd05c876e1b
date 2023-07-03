@@ -1,4 +1,4 @@
-import React, { useEffect,useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { BaseUrl } from "../../../utils/authApi";
 import Navbar from "/home/coder/project/workspace/reactapp/src/components/Admin/Navbar/Navbar.js";
 import Modal from "react-modal";
@@ -20,11 +20,11 @@ export default function FoodMenu() {
   const [isEditItemModalOpen, setIsEditItemModalOpen] = React.useState(false);
 
   const jwtToken = appUser?.token;
-  console.log("token",jwtToken);
+  console.log("token", jwtToken);
   const headers = {
-    Authorization: `Bearer ${jwtToken}` ,
+    Authorization: `Bearer ${jwtToken}`,
   };
-  
+
 
   async function handleEdit(row) {
     setIsEditItemModalOpen(true);
@@ -40,7 +40,7 @@ export default function FoodMenu() {
     try {
       const res = await axios.put(
         `${BaseUrl}/admin/editMenu/${editedItem.foodMenuId}`,
-        editedItem,{headers}
+        editedItem, { headers }
       );
       const data = res.data;
       console.log("editi", data);
@@ -57,7 +57,7 @@ export default function FoodMenu() {
     console.log(row);
     try {
       const res = await axios.delete(
-        `${BaseUrl}/admin/deleteMenu/${row.foodMenuId}`,{headers}
+        `${BaseUrl}/admin/deleteMenu/${row.foodMenuId}`, { headers }
       );
       const data = res.data;
       console.log("res after delte", data);
@@ -81,22 +81,22 @@ export default function FoodMenu() {
     {
       name: "Image",
       cell: (row) => (
-        <img src={row.imageUrl} alt="Food" style={{ width: "200px" }} className="image_add_menu"/>
+        <img src={row.imageUrl} alt="Food" style={{ width: "200px" }} className="image_add_menu" />
       ),
     },
     {
       name: "Name",
-      selector: (row) => <h1>{row.foodMenuItems}</h1>,
+      selector: (row) => <h1 className="row_values">{row.foodMenuItems}</h1>,
     },
     {
       name: "Price",
-      selector: (row) => <h1>{row.foodMenuCost}</h1>,
+      selector: (row) => <h1 className="row_values">₹{row.foodMenuCost}</h1>,
     },
     {
       name: "Category",
-      selector: (row) => <h1>{row.foodMenuType}</h1>,
+      selector: (row) => <h1 className="row_values">{row.foodMenuType}</h1>,
     },
-    
+
     {
       name: "Edit",
       cell: (row) => (
@@ -106,14 +106,14 @@ export default function FoodMenu() {
           }}
           className="add-item-button"
         >
-          <ModeEditIcon/>
+          <ModeEditIcon />
         </button>
       ),
       button: true,
     },
     {
       name: "Delete",
-      cell: (row) => <button onClick={() => handleDelete(row)} className="add-item-button"><DeleteIcon/></button>,
+      cell: (row) => <button onClick={() => handleDelete(row)} className="add-item-button"><DeleteIcon /></button>,
       button: true,
     },
   ];
@@ -122,7 +122,7 @@ export default function FoodMenu() {
   useEffect(() => {
     async function getAllItems() {
       try {
-        const res = await axios.get(`${BaseUrl}/admin/getMenu`,{headers});
+        const res = await axios.get(`${BaseUrl}/admin/getMenu`, { headers });
         const data = res.data;
         console.log("all items ", data);
         setItemsArray(data);
@@ -154,10 +154,10 @@ export default function FoodMenu() {
     };
 
     try {
-      const res = await axios.post(`${BaseUrl}/admin/addMenu`, item,{headers});
+      const res = await axios.post(`${BaseUrl}/admin/addMenu`, item, { headers });
       console.log(res.data);
       console.log(res.status);
-    
+
       console.log("ading item to state");
       setItemsArray((prev) => {
         return [...prev, item];
@@ -167,13 +167,13 @@ export default function FoodMenu() {
       console.log(e);
     }
   }
-  
+
   return (
     <div class="add-menu-container">
-        <Navbar />
+      <Navbar />
       <div className="add-item">
         <p className="add-item-text">For adding a new Item, click here: </p>
-      
+
         <p>
           <button className="add-item-button" onClick={openModal}>
             Add Item
@@ -183,42 +183,44 @@ export default function FoodMenu() {
 
       <Modal isOpen={isModalOpen}>
         <h2 style={{ color: "#a921e4" }}>Add New Item</h2>
-        <div className="new-item-container">
-          <div>
-            <input
-              type="text"
-              placeholder="name"
-              name="name"
-              onChange={handleChange}
-              className="rounded-input"
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              placeholder="imageUrl"
-              name="imageUrl"
-              onChange={handleChange}
-              className="rounded-input"
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              placeholder="price"
-              name="price"
-              onChange={handleChange}
-              className="rounded-input"
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              placeholder="category"
-              name="category"
-              onChange={handleChange}
-              className="rounded-input"
-            />
+        <div className="input-tags-container_addMenu">
+          <div className="inputs_addMenu">
+            <div>
+              <input
+                type="text"
+                placeholder="name"
+                name="name"
+                onChange={handleChange}
+                className="rounded-input"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="imageUrl"
+                name="imageUrl"
+                onChange={handleChange}
+                className="rounded-input"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="price"
+                name="price"
+                onChange={handleChange}
+                className="rounded-input"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="category"
+                name="category"
+                onChange={handleChange}
+                className="rounded-input"
+              />
+            </div>
           </div>
         </div>
         <div className="new-item-buttons-container">
@@ -236,7 +238,7 @@ export default function FoodMenu() {
         <Modal isOpen={isEditItemModalOpen}>
           {editingRow && (
             <div className="custom-item-container">
-                <div><h2 style={{ color: "#a921e4" }}>Edit record</h2></div>
+              <div><h2 style={{ color: "#a921e4" ,textAlign:'center'}}>Edit record</h2></div>
               <input
                 type="text"
                 name="foodMenuItems"

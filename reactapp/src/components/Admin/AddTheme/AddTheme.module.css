@@ -100,3 +100,10 @@ img{
     font-size: 1em;
     font-weight: bold;
 }
+
+.theme_price_rating{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+}
