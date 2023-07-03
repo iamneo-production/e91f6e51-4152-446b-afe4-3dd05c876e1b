@@ -1,7 +1,7 @@
 import React from "react";
 // import styles from "/home/coder/project/workspace/reactapp/src/components/Customer/PageNotFound/PageNotFound.css";
 import errorImage from "/home/coder/project/workspace/reactapp/src/404_error.png";
-import "./PageNotFound.css"
+import "./PageNotFound.css" 
 // import Navbaar from "/home/coder/project/workspace/reactapp/src/components/Customer/Navbaar/Navbaar";
 const PageNotFound = () => {
   return (

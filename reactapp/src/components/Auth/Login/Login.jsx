@@ -9,7 +9,7 @@ import Navbar from "../../Customer/Navbaar/Navbaar";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { appUser, setAppUser } = useContext(UserContext);
+  const {appUser, setAppUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -73,7 +73,7 @@ export default function Login() {
           </div>
         </div>
         <div className="login-form">
-          <h1 className="login-title">Login</h1>
+          <h1 className="login-title">LOGIN</h1>
           <div className="login-box">
           <div>
             <input
@@ -110,18 +110,26 @@ export default function Login() {
             </div>
           </div>
           <div className="container-btn-para">
-            <input
+            <button className="login-btn" onClick={handleLogin}>Log in</button>
+            {/*<input
               className="login-btn"
               type="submit"
               id="loginButton"
               value="Login"
               onClick={handleLogin}
-            />
-            <p className="loginPara">
+              />*/}
+            
+            {/*<p className="loginPara">
               <Link id="signinLink" to="/user/signup">
-                &nbsp; Signup
+                <button>Signup</button>
               </Link>
-            </p>
+              </p>*/}
+            
+          </div>
+          <div className="signup-btn">
+              <Link id="signinLink" to="/user/signup">
+                <button className="sign-up">Sign up</button>
+              </Link>
           </div>
         </div>
       </div>
