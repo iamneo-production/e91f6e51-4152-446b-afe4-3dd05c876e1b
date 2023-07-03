@@ -143,8 +143,8 @@ const AddTheme = () => {
                 />
                 <div className="">
                   <p>{item.themeName}</p>
-                  <div className="">
-                    <p>{`price:${item.cost}`}</p>
+                  <div className={styles.theme_price_rating}>
+                    <p>{`price:₹${item.cost}`}</p>
                     <p>{"5 star"}</p>
                   </div>
                 </div>
