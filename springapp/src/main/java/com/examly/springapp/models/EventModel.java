@@ -38,5 +38,9 @@ public class EventModel {
     private Integer userId;        // To retrieve which user booked which event
     @Column(columnDefinition = "LONGTEXT")
     private String eventImg;
+
+
+    private Integer rating;
+    private String rating_Discription;
     
 }
