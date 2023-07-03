@@ -1,9 +1,10 @@
 node_modules/
 done
-junit/
-target/
+junit
+target
 .vscode/
 react
+puppeteer
 
 node_modules/
 node_modules/

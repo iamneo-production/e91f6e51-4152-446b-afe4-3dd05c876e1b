@@ -3,7 +3,6 @@ package com.examly.springapp.controller;
 import org.springframework.web.bind.annotation.*;
 import com.examly.springapp.service.*;
 import com.examly.springapp.models.*;
-
 import org.springframework.beans.factory.annotation.*;
 
 import java.util.*;
@@ -34,5 +33,9 @@ public class EventBookingController {
     @GetMapping("user/viewEvent/{id}")
     public List<EventModel> viewEvents(@PathVariable("id") Integer userId) {
     return eventService.getEventList(userId);
-}
+    }
+    @GetMapping("/admin/event")
+    public List<EventModel> viewEvents() {
+    return eventService.getEvent();
+    }
 }

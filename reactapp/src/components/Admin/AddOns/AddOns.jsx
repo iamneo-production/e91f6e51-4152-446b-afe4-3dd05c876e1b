@@ -25,7 +25,7 @@ export default function AddOn() {
   useEffect(() => {
     async function getAddons() {
       try{
-        const res = await axios.get(`${BaseUrl}/admin/getAddon`,{headers});
+        const res = await axios.get(`${BaseUrl}/admin/add-on`,{headers});
         console.log(res.data);
         setData(res.data);
       
