@@ -96,7 +96,6 @@ export default function FoodMenu() {
       name: "Category",
       selector: (row) => <h1 className="row_values">{row.foodMenuType}</h1>,
     },
-
     {
       name: "Edit",
       cell: (row) => (
