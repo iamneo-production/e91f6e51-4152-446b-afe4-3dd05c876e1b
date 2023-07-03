@@ -33,10 +33,12 @@ public class MenuController {
 
  }
 
- @GetMapping("admin/getMenu")
- public List<MenuModel> viewMenu() {
-  return menuService.getMenu();
- }
+    //for testcases
+    @GetMapping("/admin/menu")
+    public List<MenuModel> viewMenu() {
+    return menuService.getMenu();
+    }
+
 }
 
 
