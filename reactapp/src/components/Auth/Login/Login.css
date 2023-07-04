@@ -53,6 +53,17 @@
   width: 300px;
   z-index: 1;
 }
+.image-container .form-image {
+  transition: filter 0.5s ease; 
+}
+.image-container:hover .form-image {
+  filter: brightness(0.5); 
+}
+
+/*.image-container:hover .image-text h2 {
+  background-color: yellow; 
+}*/
+
 
 
 .login-form {
@@ -72,7 +83,9 @@
   border: 1px solid hsl(0, 2%, 61%);
   background-color: rgba(255, 255, 255, 0.5);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  
+  color:hsl(0, 7%, 39%);
+  font-weight: bold;
+  /*font-family: 'Helvetica', Arial, Lucida Grande, sans-serif;*/
 }
 
 .container-btn-para {
@@ -87,7 +100,7 @@
   flex: 1;
   letter-spacing: 1px;
   padding: 10px 20px;
-  border-radius: 20px;
+  border-radius: 10px;
   border: none;
   background-color: #b824a6;
   color: #ffffff;
@@ -103,7 +116,7 @@
 }
 .sign-up{
   padding: 10px 20px;
-  border-radius: 20px;
+  border-radius: 10px;
   margin-top: 20px;
   letter-spacing: 1px;
   border: none;
@@ -169,4 +182,20 @@
   transform: translateY(-50%);
   cursor: pointer;
   
+}
+input:focus::placeholder {
+  transform: translateY(-150%);
+  transition: transform 0.3s ease;
+}
+
+input:not(:focus)::placeholder {
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+::placeholder {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.input-style-login::placeholder{
+  color:hsl(0, 8%, 36%);
 }
