@@ -10,6 +10,10 @@ import DeleteIcon from '@mui/icons-material/Delete';
 //commit
 import DataTable from "react-data-table-component";
 
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Avatar, Card } from 'antd';
+const { Meta } = Card;
+
 export default function FoodMenu() {
   const { appUser, setAppUserl } = useContext(UserContext);
   const [newItem, setNewItem] = React.useState({});
@@ -69,7 +73,7 @@ export default function FoodMenu() {
     }
   }
 
-  const columns = [
+  // const columns = [
     // {
     //   name: "Id",
     //   selector: (row) => row.foodMenuId,
@@ -77,50 +81,50 @@ export default function FoodMenu() {
     //     width:'10px',
     // },
     // },
-    {
-      name: "Image",
-      cell: (row) => (
-        <img src={row.imageUrl} alt="Food" style={{ width: "200px" }} className="image_add_menu" />
-      ),
-    },
-    {
-      name: "Name",
-      selector: (row) => <h1 className="row_values">{row.foodMenuItems}</h1>,
-    },
-    {
-      name: "Price",
-      selector: (row) => <h1 className="row_values">₹{row.foodMenuCost}</h1>,
-    },
-    {
-      name: "Category",
-      selector: (row) => <h1 className="row_values">{row.foodMenuType}</h1>,
-    },
-    {
-      name: "Edit",
-      cell: (row) => (
-        <button
-          onClick={() => {
-            handleEdit(row);
-          }}
-          className="add-item-button"
-        >
-          <ModeEditIcon />
-        </button>
-      ),
-      button: true,
-    },
-    {
-      name: "Delete",
-      cell: (row) => <button onClick={() => handleDelete(row)} className="add-item-button"><DeleteIcon /></button>,
-      button: true,
-    },
-  ];
+  //   {
+  //     name: "Image",
+  //     cell: (row) => (
+  //       <img src={row.imageUrl} alt="Food" style={{ width: "200px" }} className="image_add_menu" />
+  //     ),
+  //   },
+  //   {
+  //     name: "Name",
+  //     selector: (row) => <h1 className="row_values">{row.foodMenuItems}</h1>,
+  //   },
+  //   {
+  //     name: "Price",
+  //     selector: (row) => <h1 className="row_values">₹{row.foodMenuCost}</h1>,
+  //   },
+  //   {
+  //     name: "Category",
+  //     selector: (row) => <h1 className="row_values">{row.foodMenuType}</h1>,
+  //   },
+  //   {
+  //     name: "Edit",
+  //     cell: (row) => (
+  //       <button
+  //         onClick={() => {
+  //           handleEdit(row);
+  //         }}
+  //         className="add-item-button"
+  //       >
+  //         <ModeEditIcon />
+  //       </button>
+  //     ),
+  //     button: true,
+  //   },
+  //   {
+  //     name: "Delete",
+  //     cell: (row) => <button onClick={() => handleDelete(row)} className="add-item-button"><DeleteIcon /></button>,
+  //     button: true,
+  //   },
+  // ];
 
   // //  get all items food menu items
   useEffect(() => {
     async function getAllItems() {
       try {
-        const res = await axios.get(`${BaseUrl}/admin/menu`,{headers});
+        const res = await axios.get(`${BaseUrl}/admin/menu`, { headers });
         const data = res.data;
         console.log("all items ", data);
         setItemsArray(data);
@@ -236,7 +240,7 @@ export default function FoodMenu() {
         <Modal isOpen={isEditItemModalOpen}>
           {editingRow && (
             <div className="custom-item-container">
-              <div><h2 style={{ color: "#a921e4" ,textAlign:'center'}}>Edit record</h2></div>
+              <div><h2 style={{ color: "#a921e4", textAlign: 'center' }}>Edit record</h2></div>
               <input
                 type="text"
                 name="foodMenuItems"
@@ -295,11 +299,41 @@ export default function FoodMenu() {
           )}
         </Modal>
 
-        {itemsArray.length === 0 ? (
-          <div> No items found </div>
-        ) : (
-          <DataTable columns={columns} data={itemsArray}></DataTable>
-        )}
+        <div className="cards_container">
+          {itemsArray.length === 0 ? (
+            <div> No items found </div>
+          ) : (
+            itemsArray.map((item) => {
+              return (
+                <div className="card_items">
+                  <Card
+                    style={{
+                      width: 300,
+                    }}
+                    cover={
+                      <img
+                        alt="example"
+                        src={item.imageUrl}
+                      />
+                    }
+                    actions={[
+                      <EditOutlined key="edit" onClick={() => {
+                        handleEdit(item);
+                      }}/>,
+                      <DeleteOutlined key="ellipsis" onClick={() => handleDelete(item)}/>,
+                    ]}
+                  >
+                    <Meta
+                      title={item.foodMenuItems}
+                      description={'₹' + item.foodMenuCost + ' ' + item.foodMenuType}
+                    />
+                  </Card>
+                </div>
+              )
+            })
+
+          )}
+        </div>
       </div>
     </div>
   );
