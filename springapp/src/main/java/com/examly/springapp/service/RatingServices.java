@@ -46,6 +46,7 @@ public class RatingServices {
             ThemeModel theme = themeModelRepository.findById(event.getThemeId()).orElse(null);
             if (theme != null) {
                 theme.setAverageRating(averageRating);
+                theme.setTotalRating(count);
                 themeModelRepository.save(theme);
             }
             return "Rating Updated";
