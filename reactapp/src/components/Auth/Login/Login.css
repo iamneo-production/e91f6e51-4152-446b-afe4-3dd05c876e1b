@@ -88,7 +88,7 @@
   /*font-family: 'Helvetica', Arial, Lucida Grande, sans-serif;*/
 }
 
-.container-btn-para {
+.login-page-container-btn-para {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -100,9 +100,9 @@
   flex: 1;
   letter-spacing: 1px;
   padding: 10px 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   border: none;
-  background-color: #b824a6;
+  background-color: #fa5dbe;
   color: #ffffff;
   text-transform: uppercase;
   cursor: pointer;
@@ -116,11 +116,11 @@
 }
 .sign-up{
   padding: 10px 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   margin-top: 20px;
   letter-spacing: 1px;
   border: none;
-  background-color: #b824a6;
+  background-color: #fa5dbe;
   color: #ffffff;
   cursor: pointer;
   text-transform: uppercase;
