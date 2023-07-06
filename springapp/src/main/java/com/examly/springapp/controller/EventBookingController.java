@@ -30,6 +30,14 @@ public class EventBookingController {
         return eventService.editEvent(eventId, updatedEvent);
     }
 
+
+    //to not delete event
+    @PutMapping("user/CancelEvent/{id}")
+    private String cancelEvent(@PathVariable("id") Integer eventId, @RequestBody EventModel updatedEvent) {
+        return eventService.cancelEvent(eventId, updatedEvent);
+    }
+
+
     @GetMapping("user/viewEvent/{id}")
     public List<EventModel> viewEvents(@PathVariable("id") Integer userId) {
     return eventService.getEventList(userId);
