@@ -6,7 +6,8 @@ export default function EventCard({ singleEvent, handleRating }) {
   return (
     <div className="bday-card">
       <Link to={`/user/bookTheme/${singleEvent.themeId}`}
-       state={{themeimgUrl : singleEvent.themeimgUrl, themeName:singleEvent.themeName, cost : singleEvent.cost}}
+       state={{themeimgUrl : singleEvent.themeimgUrl, themeName:singleEvent.themeName, cost : singleEvent.cost,
+        themeId : singleEvent.themeId}}
       >
 
         <img height="200px" width="250px" src={singleEvent.themeimgUrl} alt="image" />
