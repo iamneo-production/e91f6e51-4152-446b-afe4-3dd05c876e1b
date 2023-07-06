@@ -26,6 +26,8 @@ export default function Booking() {
   const themeimgUrl = location.state && location.state.themeimgUrl;
   const cost = location.state && location.state.cost;
   const themeName = location.state && location.state.themeName;
+  const themeId = location.state && location.state.themeId;
+
   console.log(eventData)
   const handlePageChange = (page) => {
     // Check if all fields are filled on the first page
@@ -54,7 +56,8 @@ export default function Booking() {
     const { name, value } = e.target;
 
     setEventData((prev) => {
-      return { ...prev, [name]: value, userId:appUser?.id , eventImg:themeimgUrl,eventName:themeName,eventCost:cost  };
+      return { ...prev, [name]: value, userId:appUser?.id , eventImg:themeimgUrl,eventName:themeName,eventCost:cost,
+        themeId:themeId  };
     });
   }
 
