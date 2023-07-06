@@ -42,7 +42,7 @@ public class RatingServices {
             }
             
             double averageRating = count > 0 ? Math.round((totalRating / count) * 10) / 10.0 : 0;
-            // Update the averageRating in the corresponding theme table
+            // Update the averageRating in the  theme table
             ThemeModel theme = themeModelRepository.findById(event.getThemeId()).orElse(null);
             if (theme != null) {
                 theme.setAverageRating(averageRating);
@@ -58,3 +58,4 @@ public class RatingServices {
     
     
 }
+//-------------------------------pratik - raj--------------------------
