@@ -109,7 +109,7 @@ export default function Login() {
               ></i>
             </div>
           </div>
-          <div className="container-btn-para">
+          <div className="login-page-container-btn-para">
             <button className="login-btn" onClick={handleLogin}>Log in</button>
             {/*<input
               className="login-btn"
@@ -126,7 +126,7 @@ export default function Login() {
               </p>*/}
             
           </div>
-          <div className="signup-btn">
+          <div className="login-page-signup-btn">
               <Link id="signinLink" to="/user/signup">
                 <button className="sign-up">Sign up</button>
               </Link>
