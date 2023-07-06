@@ -32,6 +32,7 @@ public class ThemeModel {
     private String themeVideographer;
     private String themeReturnGift;
     private Long cost;
+    private Double averageRating;
     
 
     
