@@ -27,13 +27,7 @@ public class RatingServices {
 
             eventModelRepository.save(event);
 
-            ThemeModel theme = null;
-            Optional<ThemeModel> optionalTheme = themeModelRepository.findByThemeId(event.getThemeId());
-            if (optionalTheme.isPresent()) {
-                theme = optionalTheme.get();
-            } else {
-                return "Theme not found";
-            }
+            
 
             // Calculate average rating for each themeId
             List<EventModel> eventsByThemeId = eventModelRepository.findByThemeId(event.getThemeId());
@@ -47,9 +41,9 @@ public class RatingServices {
                 }
             }
             
-            double averageRating = count > 0 ? totalRating / count : 0;
+            double averageRating = count > 0 ? Math.round((totalRating / count) * 10) / 10.0 : 0;
             // Update the averageRating in the corresponding theme table
-            
+            ThemeModel theme = themeModelRepository.findById(event.getThemeId()).orElse(null);
             if (theme != null) {
                 theme.setAverageRating(averageRating);
                 themeModelRepository.save(theme);
