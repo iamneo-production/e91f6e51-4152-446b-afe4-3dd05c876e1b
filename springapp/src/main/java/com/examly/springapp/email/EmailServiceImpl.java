@@ -1,9 +1,4 @@
-// Java Program to Illustrate Creation Of
-// Service implementation class
-
 package com.examly.springapp.email;
-
-// Importing required classes
 
 import com.examly.springapp.email.EmailMOdel;
 import java.io.File;
@@ -17,10 +12,9 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-// Annotation
+
 @Service
-// Class
-// Implementing EmailService interface
+
 public class EmailServiceImpl implements EmailService {
 
 	@Autowired private JavaMailSender javaMailSender;
@@ -93,8 +87,6 @@ public class EmailServiceImpl implements EmailService {
 
 		// Catch block to handle MessagingException
 		catch (MessagingException e) {
-
-			// Display message when exception occurred
 			return "Error while sending mail!!!";
 		}
 	}
