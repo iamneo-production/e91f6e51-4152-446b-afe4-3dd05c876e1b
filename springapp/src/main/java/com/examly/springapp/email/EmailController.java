@@ -1,9 +1,5 @@
-// Java Program to Create Rest Controller that
-// Defines various API for Sending Mail
-
 package com.examly.springapp.email;
 
-// Importing required classes
 import com.examly.springapp.email.EmailMOdel;
 import com.examly.springapp.email.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
-// Annotation
+
 @RestController
-// Class
+
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class EmailController {
 
