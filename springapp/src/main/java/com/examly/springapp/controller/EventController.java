@@ -15,23 +15,40 @@ public class EventController {
 
     @GetMapping("/")
     public ResponseEntity<String> getAppStatus() {
-        String message = "App is running fine. Started at: " + LocalDateTime.now() ;
+        String message = "Server is running fine. Started at: " + LocalDateTime.now() ;
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.TEXT_HTML);
         headers.add("X-Content-Type-Options", "nosniff");
 
         String htmlContent = "<html><body style=\"background-color: black; color: white;\">";
-        htmlContent += "<h1>Welcome to My App</h1>";
+        htmlContent += "<h1>Welcome to Our Event Management App Server</h1>";
         htmlContent += "<p>" + message + "</p>";
         htmlContent += "</body></html>";
-        htmlContent += "<h1> This App has been developed by Team Decoders </h1>";
+        htmlContent += "<h1> This Server has been developed by Team Decoders for Event Management App </h1>";
 
         return new ResponseEntity<>(htmlContent, headers, HttpStatus.OK);
     }
 }
 
 //to not display white label error
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // import com.fasterxml.jackson.core.JsonProcessingException;
 // import com.fasterxml.jackson.databind.ObjectMapper;
