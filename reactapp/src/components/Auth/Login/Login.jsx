@@ -104,18 +104,20 @@ export default function Login() {
                 width: "103%"
                 // ... other styles
               }}
+              inputProps={{
+                autoComplete: "off",
+              }}
             />
           </div>
           <div>
             <div className="password-input-container">
               <TextField
                 className="input-style-login "
-                label="Password" variant="outlined"
+                label="Password" 
+                variant="outlined"
                 type={showPassword ? "text" : "password"}
                 name="password"
                 id="password"
-                placeholder="Enter Password"
-                value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
@@ -126,6 +128,9 @@ export default function Login() {
                   height:"30px",
                   width: "103%"
                   // ... other styles
+                }}
+                inputProps={{
+                  autoComplete: "off", // Disable autofill for password field
                 }}
               />
               <i
