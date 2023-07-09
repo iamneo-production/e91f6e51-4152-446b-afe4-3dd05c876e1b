@@ -186,8 +186,12 @@
 
 table {
   border-collapse: separate;
-  border-spacing: 0 30px; /* Add spacing between table rows */
-  width: 100%;
+  border-spacing: 10px 40px; /* Add spacing between table rows */
+  width: 50%;
+}
+th:first-child,
+td:first-child {
+  width: 50%; /* Adjust the width as needed */
 }
 
 table tr {
@@ -197,11 +201,11 @@ table tr {
 table th,
 table td {
   padding: 10px;
-  text-align: left;
+  text-align: center;
 }
 
 table th {
-  background-color: #f1b5b5;
+  background-color: #5c4f4f;
 }
 
 .edit_delete_button{

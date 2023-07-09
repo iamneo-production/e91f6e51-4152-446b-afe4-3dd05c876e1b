@@ -1,0 +1,10 @@
+{
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.4.0",
+        "multiselect-react-dropdown": "^2.0.25",
+        "react-bootstrap": "^2.7.4",
+        "react-floating-label-input": "^4.3.4",
+        "react-select": "^5.7.3",
+        "select": "^1.1.2"
+    }
+}
