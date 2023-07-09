@@ -43,10 +43,12 @@
     color: linear-gradient(to bottom right, #1aecec, 	#f50d81);
     border-radius: 2px;
     transition: background-color 0.3s ease;
-    text-decoration: underline;
-    font-size: 1.5rem;
-    font-weight: bold;
-    font-family: 'Alegreya', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2vh;
+
+
   }
   
   .errorLink:hover {
