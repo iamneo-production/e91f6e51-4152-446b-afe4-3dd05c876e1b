@@ -5,12 +5,13 @@ import Modal from "react-modal";
 import "./AddMenu.css";
 import axios from "axios";
 import UserContext from "../../../UserContext";
+import { FloatButton } from 'antd';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
 //commit
 import DataTable from "react-data-table-component";
 
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined ,PlusOutlined } from '@ant-design/icons';
 import { Avatar, Card } from 'antd';
 const { Meta } = Card;
 
@@ -173,7 +174,7 @@ export default function FoodMenu() {
   return (
     <div class="add-menu-container">
       <Navbar />
-      <div className="add-item">
+      {/* <div className="add-item">
         <p className="add-item-text">For adding a new Item, click here: </p>
 
         <p>
@@ -181,7 +182,7 @@ export default function FoodMenu() {
             Add Item
           </button>
         </p>
-      </div>
+      </div> */}
 
       <Modal isOpen={isModalOpen}>
         <h2 style={{ color: "#a921e4" }}>Add New Item</h2>
@@ -307,6 +308,7 @@ export default function FoodMenu() {
               return (
                 <div className="card_items">
                   <Card
+                    hoverable
                     style={{
                       width: 300,
                     }}
@@ -335,6 +337,7 @@ export default function FoodMenu() {
           )}
         </div>
       </div>
+      <FloatButton onClick={openModal} icon={<PlusOutlined width={70}/>} tooltip={<div>Add Food</div>}/>
     </div>
   );
 }

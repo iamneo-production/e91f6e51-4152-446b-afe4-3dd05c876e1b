@@ -2,6 +2,8 @@
 .add-menu-container {
   display: flex;
   flex-direction: column;
+  background: linear-gradient(to right, #b2fefa, #0ed2f7);
+  min-height: 100vh;
 }
 
 .ReactModal__Content{
@@ -254,6 +256,19 @@ table th {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  border-top: 2px solid rgb(215, 215, 215) !important;
+}
+
+.ant-card-bordered{
+  border: 2px solid rgb(215, 215, 215) !important;
+}
+
+.ant-card-actions > li {
+  flex-basis: 50% !important;
+}
+
+.ant-card-actions > li:first-child{
+  border-inline-end: 2px solid rgb(215, 215, 215) !important;
 }
 
 .cards_container{
