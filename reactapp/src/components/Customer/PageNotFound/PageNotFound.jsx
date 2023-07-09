@@ -7,6 +7,7 @@ const PageNotFound = () => {
   return (
     <div>
  {/* <Navbaar/>  */}
+ {/* <Navbaar/>  */}
 
     <div className='PNF' style={{
         display: "flex",
@@ -24,7 +25,7 @@ const PageNotFound = () => {
       <p >
       <center>
       <a href="/" className="errorLink">
-        Go to Login
+        Login
       </a> 
       </center>
       </p>
