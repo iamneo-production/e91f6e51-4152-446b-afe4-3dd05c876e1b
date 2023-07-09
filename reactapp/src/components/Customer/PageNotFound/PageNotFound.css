@@ -34,11 +34,13 @@
   }
     */
   .errorLink {
-    
+    position: absolute;
+    left: 19%;
+    bottom: 48%;
+    transform: translate(-50%, 50%);
     padding: 10px;
-    background-color: rgb(18, 17, 17);
-    color: #fff;
-    text-decoration: none;
+    background-color: #FFFFFF;
+    color: linear-gradient(to bottom right, #1aecec, 	#f50d81);
     border-radius: 2px;
     transition: background-color 0.3s ease;
     display: flex;
@@ -50,13 +52,20 @@
   }
   
   .errorLink:hover {
-    background-color: #dd2ec5;
-  }
-  .center-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 2vh; /* Adjust the height as needed */
+    background-color: #101010;
+    text-decoration: none;
+    color: #fff;
+    /* transform: translateY(0.2px); */
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    /* transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out; */
   }
   
+  /* .errorLink:focus {
+    outline: none;
+    text-decoration: none;
+  }
+  
+  .errorLink:active {
+    transform: scale(0.95);
+  } */
   
