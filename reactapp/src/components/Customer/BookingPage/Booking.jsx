@@ -145,6 +145,7 @@ export default function Booking() {
               data-testid="enterAadhaarNo"
               onChange={handleChange}
             />
+            
      
          
             <input

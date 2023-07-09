@@ -5,6 +5,9 @@ import { loginUser } from "../../../utils/authApi";
 import UserContext from "../../../UserContext";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Navbar from "../../Customer/Navbaar/Navbaar";
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import { styled } from '@mui/system';
 
 
 export default function Login() {
@@ -54,6 +57,12 @@ export default function Login() {
      
     }
   }
+  const CustomButton = styled(Button)`
+        background-color: #fa5dbe;
+          &:hover {
+          background-color: #f73baf;
+  }
+`;
 
   return (
     <div>
@@ -76,8 +85,9 @@ export default function Login() {
           <h1 className="login-title">LOGIN</h1>
           <div className="login-box">
           <div>
-            <input
+            <TextField
               className="input-style-login"
+              label="Email" variant="outlined"
               type="email"
               name="email"
               id="email"
@@ -85,12 +95,22 @@ export default function Login() {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
+              sx={{
+                // Add your custom CSS styles here
+                //border: "1px solid #ccc",
+                borderRadius: "8px",
+                height:"30px",
+                marginBottom: "40px",
+                width: "103%"
+                // ... other styles
+              }}
             />
           </div>
           <div>
             <div className="password-input-container">
-              <input
+              <TextField
                 className="input-style-login "
+                label="Password" variant="outlined"
                 type={showPassword ? "text" : "password"}
                 name="password"
                 id="password"
@@ -99,18 +119,39 @@ export default function Login() {
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
+                sx={{
+                  // Add your custom CSS styles here
+                  //border: "1px solid #ccc",
+                  borderRadius: "8px",
+                  height:"30px",
+                  width: "103%"
+                  // ... other styles
+                }}
               />
               <i
                 className={`password-toggle-icon fas ${
                   showPassword ? "fa-eye-slash" : "fa-eye"
                 }`}
                 onClick={() => setShowPassword(!showPassword)}
-                style={{ color: showPassword ? "#FF69B4" : " #515153" }}
+                style={{ color: showPassword ? "#FF69B4" : " #515153",
+                transform: showPassword ? "translateY(50%)" : "translateY(51%)",
+                //transform: showPassword ? "translateX(-50%)" : "translateX(-49%)",
+               }}
               ></i>
             </div>
           </div>
           <div className="login-page-container-btn-para">
-            <button className="login-btn" onClick={handleLogin}>Log in</button>
+            <CustomButton className="login-btn" 
+            onClick={handleLogin}
+            type="submit"
+            //fullWidth
+            variant="contained"
+            sx={{ mt: 6, mb: 1,
+               
+            }}
+            >
+              Log in
+              </CustomButton>
             {/*<input
               className="login-btn"
               type="submit"
@@ -128,7 +169,13 @@ export default function Login() {
           </div>
           <div className="login-page-signup-btn">
               <Link id="signinLink" to="/user/signup">
-                <button className="sign-up">Sign up</button>
+                <CustomButton selected className="sign-up"
+                 type="submit"
+                 //fullWidth
+                 variant="contained"
+                 sx={{ mt: 2, mb: 2 }}>
+                  Sign up
+                 </CustomButton>
               </Link>
           </div>
         </div>
