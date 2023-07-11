@@ -5,6 +5,9 @@ import { BaseUrl } from "../../../utils/authApi";
 import axios from "axios";
 import UserContext from "../../../UserContext";
 import { useNavigate } from "react-router-dom";
+import { EditOutlined, DeleteOutlined  } from '@ant-design/icons';
+import { Card } from 'antd';
+const { Meta } = Card;
 
 const AddTheme = () => {
   const { appUser, setAppUserl } = useContext(UserContext);
@@ -63,7 +66,7 @@ const AddTheme = () => {
 
   const getAllThemes = async () => {
     try {
-      const res = await axios.get(`${BaseUrl}/admin/getTheme`, { headers });
+      const res = await axios.get(`${BaseUrl}/admin/theme`, { headers });
       console.log("res",res.data);
       
       // Reverse the data array to display the last entry first
@@ -136,19 +139,31 @@ const AddTheme = () => {
             <div className={styles.card_scroll_view}>
               {data?.map((item)=>{
               return(
-              <div className={styles.card} key={item.themeId}>
-                <img
-                  src={item.themeimgUrl}
-                  alt=""
-                />
-                <div className="">
-                  <p>{item.themeName}</p>
-                  <div className="">
-                    <p>{`price:${item.cost}`}</p>
-                    <p>{"5 star"}</p>
-                  </div>
-                </div>
-              </div>)})}
+                <Card
+                key={item.themeId}
+                    hoverable
+                    style={{
+                      width: 300,
+                    }}
+                    cover={
+                      <img
+                        alt="example"
+                        src={item.themeimgUrl}
+                      />
+                    }
+                    actions={[
+                      <EditOutlined key="edit" onClick={() => {
+                        console.log("clicked")
+                      }}/>,
+                      <DeleteOutlined key="ellipsis" onClick={() => console.log("clicked")}/>,
+                    ]}
+                  >
+                    <Meta
+                      title={item.themeName}
+                      description={`₹ ${item.cost}`}
+                    />
+                  </Card>
+              )})}
             </div>
           </div>
         </div>

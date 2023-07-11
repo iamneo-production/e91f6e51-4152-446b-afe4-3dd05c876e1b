@@ -37,12 +37,15 @@ public class ThemeController {
     return ThemeService.editTheme(themeId, updatedTheme);
 
     }
+    
 
-
-    @GetMapping("admin/getTheme")
+    //for test cases
+    @GetMapping("/admin/theme")
     public List<ThemeModel> viewtheme() {
         return ThemeService.getTheme();
     }
+
+    
 }
 
 
