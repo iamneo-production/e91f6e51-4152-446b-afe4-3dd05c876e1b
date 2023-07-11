@@ -23,7 +23,7 @@ export default function BookEventSecondPage({ eventData, setEventData }) {
   useEffect(() => {
     async function getAllAddOns() {
       try {
-        const res = await axios.get(`${BaseUrl}/admin/getAddon`,{headers});
+        const res = await axios.get(`${BaseUrl}/admin/add-on`,{headers});
         setAllAddOns(res.data);
         // [1,2,3]
       } catch (e) {}

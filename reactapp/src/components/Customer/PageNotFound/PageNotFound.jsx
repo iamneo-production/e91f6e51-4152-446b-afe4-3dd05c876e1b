@@ -2,13 +2,19 @@ import React from "react";
 // import styles from "/home/coder/project/workspace/reactapp/src/components/Customer/PageNotFound/PageNotFound.css";
 import errorImage from "/home/coder/project/workspace/reactapp/src/404_error.png";
 import "./PageNotFound.css"
-import Navbaar from "/home/coder/project/workspace/reactapp/src/components/Customer/Navbaar/Navbaar";
+// import Navbaar from "..Navbaar/Navbaar";
 const PageNotFound = () => {
   return (
     <div>
- <Navbaar/> 
+ {/* <Navbaar/>  */}
+ {/* <Navbaar/>  */}
 
-    <div className='PNF'>
+    <div className='PNF' style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100%"
+      }}>
       
 
       {/* <img src={errorImage} alt="404 Error" className={styles.errorImage} />
@@ -19,7 +25,7 @@ const PageNotFound = () => {
       <p >
       <center>
       <a href="/" className="errorLink">
-        Go to Login
+        Login
       </a> 
       </center>
       </p>

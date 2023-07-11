@@ -31,10 +31,13 @@ public class AddOnController {
         return addOnService.editAddOn(addOnId, updatedAddOn);
     }
 
-    @GetMapping("admin/getAddon")
+    //for test cases
+    @GetMapping("/admin/add-on")
     public List<AddOnModel> viewAddOn() {
         return addOnService.getAddOnList();
     }
+
+    
 }
 
 
