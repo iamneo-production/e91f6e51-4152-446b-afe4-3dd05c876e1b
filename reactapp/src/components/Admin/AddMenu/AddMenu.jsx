@@ -1,19 +1,18 @@
 import React, { useEffect, useContext } from "react";
 import { BaseUrl } from "../../../utils/authApi";
-import Navbar from "/home/coder/project/workspace/reactapp/src/components/Admin/Navbar/Navbar.js";
+import Navbar from "../Navbar/Navbar"
 import Modal from "react-modal";
 import "./AddMenu.css";
 import axios from "axios";
 import UserContext from "../../../UserContext";
-import { FloatButton } from 'antd';
-import ModeEditIcon from '@mui/icons-material/ModeEdit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { Card,FloatButton } from 'antd';
+// import ModeEditIcon from '@mui/icons-material/ModeEdit';
+// import DeleteIcon from '@mui/icons-material/Delete';
 //commit
-import DataTable from "react-data-table-component";
+// import DataTable from "react-data-table-component";
 
 import { EditOutlined, DeleteOutlined ,PlusOutlined } from '@ant-design/icons';
-import { Avatar, Card } from 'antd';
-const { Meta } = Card;
+
 
 export default function FoodMenu() {
   const { appUser, setAppUserl } = useContext(UserContext);
@@ -22,6 +21,7 @@ export default function FoodMenu() {
   const [itemsArray, setItemsArray] = React.useState([]);
   const [editingRow, setEditingRow] = React.useState(null);
   const [isEditItemModalOpen, setIsEditItemModalOpen] = React.useState(false);
+  const { Meta } = Card;
 
   const jwtToken = appUser?.token;
   console.log("token", jwtToken);
@@ -43,12 +43,16 @@ export default function FoodMenu() {
     console.log("edited item object is:", editedItem);
     try {
       const res = await axios.put(
-        `${BaseUrl}/admin/editMenu/${editedItem.foodMenuId}`,
-        editedItem, { headers }
-      );
-      const data = res.data;
-      console.log("editi", data);
+        `${BaseUrl}/admin/editMenu/${editedItem.foodMenuId}`,editedItem, { headers });
+        const updatedData = itemsArray.map((item) => {
+          if (item.addOnId === editedItem.addOnId) {
+            return editedItem;
+          }
+          return item;
+        });
+      console.log("editi", res.data);
       setEditingRow(null);
+      setItemsArray(updatedData);
       setIsEditItemModalOpen(false);
     } catch (e) {
       console.log(e);
@@ -310,7 +314,7 @@ export default function FoodMenu() {
                   <Card
                     hoverable
                     style={{
-                      width: 300,
+                      width: 320,
                     }}
                     cover={
                       <img
@@ -319,9 +323,7 @@ export default function FoodMenu() {
                       />
                     }
                     actions={[
-                      <EditOutlined key="edit" onClick={() => {
-                        handleEdit(item);
-                      }}/>,
+                      <EditOutlined key="edit" onClick={() => {handleEdit(item);}}/>,
                       <DeleteOutlined key="ellipsis" onClick={() => handleDelete(item)}/>,
                     ]}
                   >
