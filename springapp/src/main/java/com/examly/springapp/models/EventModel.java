@@ -46,5 +46,5 @@ public class EventModel {
 
     //to check wether event got cancelled or not
     private String DeletedEvent;
-    
+    private String EmailId;
 }
