@@ -1,11 +1,11 @@
 com/examly/springapp/repository/AdminModelRepository.class
 com/examly/springapp/service/MenuModelServices.class
-com/examly/springapp/repository/EventModelRepository.class
 com/examly/springapp/repository/UserModelRepository.class
+com/examly/springapp/repository/EventModelRepository.class
 com/examly/springapp/SpringappApplication.class
+com/examly/springapp/service/AddOnModelServices.class
 com/examly/springapp/models/MenuModel.class
 com/examly/springapp/security/securityconfig/AuthEntryPoint.class
-com/examly/springapp/service/AddOnModelServices.class
 com/examly/springapp/models/LoginResponseModel.class
 com/examly/springapp/models/UserRole.class
 com/examly/springapp/models/MenuModel$MenuModelBuilder.class
@@ -17,9 +17,8 @@ com/examly/springapp/security/securityconfig/JwtUtils.class
 com/examly/springapp/controller/RatingController.class
 com/examly/springapp/controller/AuthController.class
 com/examly/springapp/controller/EventBookingController.class
-com/examly/springapp/controller/AuthController.class
-com/examly/springapp/models/UserModel.class
 com/examly/springapp/models/EventModel$EventModelBuilder.class
+com/examly/springapp/models/UserModel.class
 com/examly/springapp/service/EventModelServices.class
 com/examly/springapp/models/AddOnModel$AddOnModelBuilder.class
 com/examly/springapp/email/EmailService.class
@@ -27,7 +26,6 @@ com/examly/springapp/controller/AddOnController.class
 com/examly/springapp/email/EmailController.class
 com/examly/springapp/models/EventModel.class
 com/examly/springapp/repository/MenuModelRepository.class
-com/examly/springapp/models/EventModel.class
 com/examly/springapp/controller/MenuController.class
 com/examly/springapp/repository/ThemeModelRepository.class
 com/examly/springapp/security/securityservices/UserDetailsServiceImpl.class
@@ -44,4 +42,3 @@ com/examly/springapp/repository/AddOnModelRepository.class
 com/examly/springapp/email/EmailServiceImpl.class
 com/examly/springapp/models/AddOnModel.class
 com/examly/springapp/security/securityconfig/AuthTokenFilter.class
-com/examly/springapp/models/AddOnModel.class
