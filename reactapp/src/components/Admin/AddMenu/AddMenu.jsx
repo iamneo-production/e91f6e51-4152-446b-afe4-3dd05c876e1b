@@ -1,13 +1,18 @@
-import React, { useEffect,useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { BaseUrl } from "../../../utils/authApi";
-import Navbar from "/home/coder/project/workspace/reactapp/src/components/Admin/Navbar/Navbar.js";
+import Navbar from "../Navbar/Navbar"
 import Modal from "react-modal";
 import "./AddMenu.css";
 import axios from "axios";
 import UserContext from "../../../UserContext";
+import { Card,FloatButton } from 'antd';
+// import ModeEditIcon from '@mui/icons-material/ModeEdit';
+// import DeleteIcon from '@mui/icons-material/Delete';
+//commit
+// import DataTable from "react-data-table-component";
 
+import { EditOutlined, DeleteOutlined ,PlusOutlined } from '@ant-design/icons';
 
-import DataTable from "react-data-table-component";
 
 export default function FoodMenu() {
   const { appUser, setAppUserl } = useContext(UserContext);
@@ -16,13 +21,14 @@ export default function FoodMenu() {
   const [itemsArray, setItemsArray] = React.useState([]);
   const [editingRow, setEditingRow] = React.useState(null);
   const [isEditItemModalOpen, setIsEditItemModalOpen] = React.useState(false);
+  const { Meta } = Card;
 
   const jwtToken = appUser?.token;
-  console.log("token",jwtToken);
+  console.log("token", jwtToken);
   const headers = {
-    Authorization: `Bearer ${jwtToken}` ,
+    Authorization: `Bearer ${jwtToken}`,
   };
-  
+
 
   async function handleEdit(row) {
     setIsEditItemModalOpen(true);
@@ -37,12 +43,16 @@ export default function FoodMenu() {
     console.log("edited item object is:", editedItem);
     try {
       const res = await axios.put(
-        `${BaseUrl}/admin/editMenu/${editedItem.foodMenuId}`,
-        editedItem,{headers}
-      );
-      const data = res.data;
-      console.log("editi", data);
+        `${BaseUrl}/admin/editMenu/${editedItem.foodMenuId}`,editedItem, { headers });
+        const updatedData = itemsArray.map((item) => {
+          if (item.addOnId === editedItem.addOnId) {
+            return editedItem;
+          }
+          return item;
+        });
+      console.log("editi", res.data);
       setEditingRow(null);
+      setItemsArray(updatedData);
       setIsEditItemModalOpen(false);
     } catch (e) {
       console.log(e);
@@ -55,7 +65,7 @@ export default function FoodMenu() {
     console.log(row);
     try {
       const res = await axios.delete(
-        `${BaseUrl}/admin/deleteMenu/${row.foodMenuId}`,{headers}
+        `${BaseUrl}/admin/deleteMenu/${row.foodMenuId}`, { headers }
       );
       const data = res.data;
       console.log("res after delte", data);
@@ -68,57 +78,58 @@ export default function FoodMenu() {
     }
   }
 
-  const columns = [
-    {
-      name: "Id",
-      selector: (row) => row.foodMenuId,
-      style: {
-        width:'10px',
-    },
-    },
-    {
-      name: "Name",
-      selector: (row) => <h1>{row.foodMenuItems}</h1>,
-    },
-    {
-      name: "Price",
-      selector: (row) => <h1>{row.foodMenuCost}</h1>,
-    },
-    {
-      name: "Category",
-      selector: (row) => <h1>{row.foodMenuType}</h1>,
-    },
-    {
-      name: "Image",
-      cell: (row) => (
-        <img src={row.imageUrl} alt="Food" style={{ width: "200px" }} />
-      ),
-    },
-    {
-      name: "Edit",
-      cell: (row) => (
-        <button
-          onClick={() => {
-            handleEdit(row);
-          }}
-        >
-          Edit
-        </button>
-      ),
-      button: true,
-    },
-    {
-      name: "Delete",
-      cell: (row) => <button onClick={() => handleDelete(row)}>Delete</button>,
-      button: true,
-    },
-  ];
+  // const columns = [
+    // {
+    //   name: "Id",
+    //   selector: (row) => row.foodMenuId,
+    //   style: {
+    //     width:'10px',
+    // },
+    // },
+  //   {
+  //     name: "Image",
+  //     cell: (row) => (
+  //       <img src={row.imageUrl} alt="Food" style={{ width: "200px" }} className="image_add_menu" />
+  //     ),
+  //   },
+  //   {
+  //     name: "Name",
+  //     selector: (row) => <h1 className="row_values">{row.foodMenuItems}</h1>,
+  //   },
+  //   {
+  //     name: "Price",
+  //     selector: (row) => <h1 className="row_values">₹{row.foodMenuCost}</h1>,
+  //   },
+  //   {
+  //     name: "Category",
+  //     selector: (row) => <h1 className="row_values">{row.foodMenuType}</h1>,
+  //   },
+  //   {
+  //     name: "Edit",
+  //     cell: (row) => (
+  //       <button
+  //         onClick={() => {
+  //           handleEdit(row);
+  //         }}
+  //         className="add-item-button"
+  //       >
+  //         <ModeEditIcon />
+  //       </button>
+  //     ),
+  //     button: true,
+  //   },
+  //   {
+  //     name: "Delete",
+  //     cell: (row) => <button onClick={() => handleDelete(row)} className="add-item-button"><DeleteIcon /></button>,
+  //     button: true,
+  //   },
+  // ];
 
   // //  get all items food menu items
   useEffect(() => {
     async function getAllItems() {
       try {
-        const res = await axios.get(`${BaseUrl}/admin/getMenu`,{headers});
+        const res = await axios.get(`${BaseUrl}/admin/menu`, { headers });
         const data = res.data;
         console.log("all items ", data);
         setItemsArray(data);
@@ -150,10 +161,10 @@ export default function FoodMenu() {
     };
 
     try {
-      const res = await axios.post(`${BaseUrl}/admin/addMenu`, item,{headers});
+      const res = await axios.post(`${BaseUrl}/admin/addMenu`, item, { headers });
       console.log(res.data);
       console.log(res.status);
-    
+
       console.log("ading item to state");
       setItemsArray((prev) => {
         return [...prev, item];
@@ -163,58 +174,60 @@ export default function FoodMenu() {
       console.log(e);
     }
   }
-  
+
   return (
-    <div class="container">
-        <Navbar />
-      <div className="add-item">
+    <div class="add-menu-container">
+      <Navbar />
+      {/* <div className="add-item">
         <p className="add-item-text">For adding a new Item, click here: </p>
-      
+
         <p>
           <button className="add-item-button" onClick={openModal}>
             Add Item
           </button>
         </p>
-      </div>
+      </div> */}
 
       <Modal isOpen={isModalOpen}>
         <h2 style={{ color: "#a921e4" }}>Add New Item</h2>
-        <div className="new-item-container">
-          <div>
-            <input
-              type="text"
-              placeholder="name"
-              name="name"
-              onChange={handleChange}
-              className="rounded-input"
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              placeholder="imageUrl"
-              name="imageUrl"
-              onChange={handleChange}
-              className="rounded-input"
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              placeholder="price"
-              name="price"
-              onChange={handleChange}
-              className="rounded-input"
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              placeholder="category"
-              name="category"
-              onChange={handleChange}
-              className="rounded-input"
-            />
+        <div className="input-tags-container_addMenu">
+          <div className="inputs_addMenu">
+            <div>
+              <input
+                type="text"
+                placeholder="name"
+                name="name"
+                onChange={handleChange}
+                className="rounded-input"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="imageUrl"
+                name="imageUrl"
+                onChange={handleChange}
+                className="rounded-input"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="price"
+                name="price"
+                onChange={handleChange}
+                className="rounded-input"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="category"
+                name="category"
+                onChange={handleChange}
+                className="rounded-input"
+              />
+            </div>
           </div>
         </div>
         <div className="new-item-buttons-container">
@@ -232,7 +245,7 @@ export default function FoodMenu() {
         <Modal isOpen={isEditItemModalOpen}>
           {editingRow && (
             <div className="custom-item-container">
-                <div><h2 style={{ color: "#a921e4" }}>Edit record</h2></div>
+              <div><h2 style={{ color: "#a921e4", textAlign: 'center' }}>Edit record</h2></div>
               <input
                 type="text"
                 name="foodMenuItems"
@@ -291,12 +304,42 @@ export default function FoodMenu() {
           )}
         </Modal>
 
-        {itemsArray.length === 0 ? (
-          <div> No items found </div>
-        ) : (
-          <DataTable columns={columns} data={itemsArray}></DataTable>
-        )}
+        <div className="cards_container">
+          {itemsArray.length === 0 ? (
+            <div> No items found </div>
+          ) : (
+            itemsArray.map((item) => {
+              return (
+                <div className="card_items">
+                  <Card
+                    hoverable
+                    style={{
+                      width: 320,
+                    }}
+                    cover={
+                      <img
+                        alt="example"
+                        src={item.imageUrl}
+                      />
+                    }
+                    actions={[
+                      <EditOutlined key="edit" onClick={() => {handleEdit(item);}}/>,
+                      <DeleteOutlined key="ellipsis" onClick={() => handleDelete(item)}/>,
+                    ]}
+                  >
+                    <Meta
+                      title={item.foodMenuItems}
+                      description={'₹' + item.foodMenuCost + ' ' + item.foodMenuType}
+                    />
+                  </Card>
+                </div>
+              )
+            })
+
+          )}
+        </div>
       </div>
+      <FloatButton onClick={openModal} icon={<PlusOutlined width={70}/>} tooltip={<div>Add Food</div>}/>
     </div>
   );
 }

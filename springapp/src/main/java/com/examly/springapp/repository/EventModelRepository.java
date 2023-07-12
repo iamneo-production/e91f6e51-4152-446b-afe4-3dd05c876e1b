@@ -11,5 +11,7 @@ import java.util.*;
 public interface EventModelRepository extends JpaRepository<EventModel,Integer> {
 
     List<EventModel> findAll();
-
+    List<EventModel> findByUserId(Integer userId);
+    EventModel findByEventId(Integer eventId);
+    List<EventModel> findByThemeId(Integer themeId);
 }
