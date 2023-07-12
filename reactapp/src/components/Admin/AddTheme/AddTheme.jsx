@@ -1,10 +1,13 @@
 import { React, useRef, useState, useContext, useEffect } from "react";
-import Navbar from "/home/coder/project/workspace/reactapp/src/components/Admin/Navbar/Navbar.js";
-import styles from "/home/coder/project/workspace/reactapp/src/components/Admin/AddTheme/AddTheme.module.css";
+import Navbar from "../Navbar/Navbar"
+import styles from "./AddTheme.module.css";
 import { BaseUrl } from "../../../utils/authApi";
 import axios from "axios";
 import UserContext from "../../../UserContext";
 import { useNavigate } from "react-router-dom";
+import { EditOutlined, DeleteOutlined  } from '@ant-design/icons';
+import { Card } from 'antd';
+const { Meta } = Card;
 
 const AddTheme = () => {
   const { appUser, setAppUserl } = useContext(UserContext);
@@ -37,11 +40,7 @@ const AddTheme = () => {
     };
 
     try {
-      const res = await axios.post(
-        `${BaseUrl}/admin/addTheme`,
-        themeModel,
-        { headers }
-      );
+      const res = await axios.post(`${BaseUrl}/admin/addTheme`,themeModel,{ headers });
       console.log("return from backend", res.data);
       alert(res.data);
 
@@ -79,6 +78,23 @@ const AddTheme = () => {
   useEffect(() => {
     getAllThemes();
   }, []);
+
+    async function handleDelete(row) {
+    console.log(row);
+    try {
+      const res = await axios.delete(
+        `${BaseUrl}/admin/deleteTheme/${row.themeId}`, { headers }
+      );
+      const data = res.data;
+      console.log("res after delte", data);
+
+      setData((prevItems) =>
+        prevItems.filter((item) => item.themeId !== row.themeId)
+      );
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   return (
     <>
@@ -136,19 +152,31 @@ const AddTheme = () => {
             <div className={styles.card_scroll_view}>
               {data?.map((item)=>{
               return(
-              <div className={styles.card} key={item.themeId}>
-                <img
-                  src={item.themeimgUrl}
-                  alt=""
-                />
-                <div className="">
-                  <p>{item.themeName}</p>
-                  <div className="">
-                    <p>{`price:${item.cost}`}</p>
-                    <p>{"5 star"}</p>
-                  </div>
-                </div>
-              </div>)})}
+                <Card
+                key={item.themeId}
+                    hoverable
+                    style={{
+                      width: 300,
+                    }}
+                    cover={
+                      <img
+                        alt="example"
+                        src={item.themeimgUrl}
+                      />
+                    }
+                    actions={[
+                      <EditOutlined key="edit" onClick={() => {
+                        console.log("clicked")
+                      }}/>,
+                      <DeleteOutlined key="ellipsis" onClick={() => handleDelete(item)}/>,
+                    ]}
+                  >
+                    <Meta
+                      title={item.themeName}
+                      description={`₹ ${item.cost}`}
+                    />
+                  </Card>
+              )})}
             </div>
           </div>
         </div>
