@@ -4,7 +4,6 @@ import "./Login.css";
 import { loginUser } from "../../../utils/authApi";
 import UserContext from "../../../UserContext";
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import Navbar from "../../Customer/Navbaar/Navbaar";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/system';
@@ -92,6 +91,7 @@ export default function Login() {
               name="email"
               id="email"
               placeholder="Enter email"
+              size="small"
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
@@ -118,6 +118,7 @@ export default function Login() {
                 type={showPassword ? "text" : "password"}
                 name="password"
                 id="password"
+                size = "small"
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
