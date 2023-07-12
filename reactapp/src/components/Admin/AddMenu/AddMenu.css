@@ -2,8 +2,9 @@
 .add-menu-container {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to right, #b2fefa, #0ed2f7);
+  /* background: linear-gradient(to right, #b2fefa, #0ed2f7); */
   min-height: 100vh;
+  padding-bottom: 10%;
 }
 
 .ReactModal__Content{
@@ -194,9 +195,8 @@ td:first-child {
   width: 50%; /* Adjust the width as needed */
 }
 
-table tr {
+/* table tr {
   background: linear-gradient(to right, #b2fefa, #0ed2f7); /* Add gradient background to table rows */
-}
 
 table th,
 table td {
@@ -280,7 +280,11 @@ table th {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 100px;
-  padding: 2%;
+  justify-content: start;
+  align-items: center;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 4%;
 }
 
 .ant-card-body{
