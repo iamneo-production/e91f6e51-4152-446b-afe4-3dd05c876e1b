@@ -1,26 +1,32 @@
 .main-container {
-  /* background-image: url('https://img.freepik.com/free-vector/white-abstract-background_23-2148817571.jpg');
-   background-image: url('https://uploads-ssl.webflow.com/5a9ee6416e90d20001b20038/6289efcc9a52f65ff46e8400_white-gradient.png');
-    */
-  
-  /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUt893lmNu7AExT2AedGz8udpIPRKXkCNSAFI_-nKgBm12KWc6-3xQvQHQv_q-5GZm-EY&usqp=CAU');
-   */
-   /* background-image: url('https://uploads-ssl.webflow.com/5a9ee6416e90d20001b20038/6289efcc9a52f65ff46e8400_white-gradient.png');*/
- background-repeat: no-repeat;
-  background-size: cover; 
+  background: linear-gradient(to bottom right, #8df6f6, #f5aacf, #ff69b4);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .apply-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 30px;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1000px;
   height: 100vh;
+}
+
+.form-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 }
 
 .input-form {
@@ -28,42 +34,32 @@
   padding: 8px;
   font-size: 17px;
   border-radius: 4px;
-  width: 500px;
-  margin-left: 60px;
-  margin-bottom: 2px;
-  /* box-shadow: 0 2px 4px rgba(82, 81, 81, 0.2); */
-
-  border: 1px solid rgba(0, 0, 0, 0.6); /* Add a less solid black border */
+  width: 100%;
+  margin-bottom: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
   transition: box-shadow 0.2s ease, transform 0.2s ease;
-
-  opacity: 0.7;
-}
-
-.input-form :hover {
-  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
-  /* transform: translateY(-4px); */
-}
-.form-group input[type="date"],
-.form-group input[type="time"] {
-  width: auto;
 }
 
 .page-buttons {
   display: flex;
   justify-content: center;
-  margin-top: 0px;
+  margin-top: 20px;
 }
 
 .page-button {
-  border: 1px solid #ccc;
-  background-color: #fff;
-  padding: 5px 10px;
-  margin-right: 5px;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #ffffff;
+  color: #333333;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .page-button.current-page {
-  background-color: #ccc;
+  background-color: #cccccc;
 }
 
 .page-button:hover {
@@ -75,8 +71,7 @@
     margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
+    gap: 15px; /* Decreased gap */
     width: 100%;
     height: 80vh;
     border-radius: none;
@@ -97,7 +92,7 @@
   margin-top: 80px;
   border-radius: 4px;
   border: 1px solid rgba(0, 0, 0, 0.3); /* Add a less solid black border */
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  /* transition: box-shadow 0.2s ease, transform 0.2s ease; */
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
   width: 92%;
   height: 6px;
@@ -128,4 +123,43 @@
 /* Hover effect for the submit button */
 .submit-btn:hover {
   background-color: #0f1314;
+}
+.page-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.previous-button {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 200px;
+  transition: background-color 0.3s ease;
+}
+.previous-button:hover {
+  background-color: #0f1314;
+}
+
+.next-button {
+  background-color: #06d606;
+  
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 200px;
+  transition: background-color 0.3s ease;
+}
+.next-button:hover {
+  background-color: #0f1314;
+}
+
+.input-form error {
+  border-color: red;
 }
