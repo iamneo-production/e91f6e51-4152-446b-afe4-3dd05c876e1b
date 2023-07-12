@@ -2,6 +2,33 @@
 .add-menu-container {
   display: flex;
   flex-direction: column;
+  background: linear-gradient(to right, #b2fefa, #0ed2f7);
+  min-height: 100vh;
+}
+
+.ReactModal__Content{
+  width: fit-content !important;
+  height: 400px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-around;
+  align-items: center;
+  left:30% !important;
+}
+
+.kdgCYE{
+    gap: 10px !important;
+}
+.hbgCLW{
+  padding: 10px;
+}
+
+.blGEez{
+  justify-content: center !important;
+}
+
+.dKzMcW{
+  justify-content: center !important;
 }
 
 /* .container > div {
@@ -57,8 +84,8 @@
   padding: 20px;
   border-radius: 8px;
   background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  width: 300px;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
+  width: 400px;
 }
 
 .custom-input {
@@ -118,12 +145,14 @@
 .new-item-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
-  padding: 20px;
+  /* padding: 20px; */
   border-radius: 8px;
   background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  width: 300px;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
+  width: 200px;
   padding-bottom: 20px;
 }
 
@@ -187,4 +216,73 @@ table th {
   color:white;
   font-weight:bold;
   cursor:pointer;
+}
+
+.image_add_menu{
+    width: 200px !important;
+    height: 150px !important;
+    border-radius: 10px !important;
+}
+
+.input-tags-container_addMenu{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width:500px;
+}
+
+.inputs_addMenu{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width:400px;
+}
+.inputs_addMenu > div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.inputs_addMenu > div > input {
+  width: 80%;
+}
+
+.row_values{
+  font-size: large;
+}
+
+.ant-card-actions{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: 2px solid rgb(215, 215, 215) !important;
+}
+
+.ant-card-bordered{
+  border: 2px solid rgb(215, 215, 215) !important;
+}
+
+.ant-card-actions > li {
+  flex-basis: 50% !important;
+}
+
+.ant-card-actions > li:first-child{
+  border-inline-end: 2px solid rgb(215, 215, 215) !important;
+}
+
+.cards_container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 100px;
+  padding: 2%;
+}
+
+.ant-card-body{
+  padding: 10px !important;
 }
