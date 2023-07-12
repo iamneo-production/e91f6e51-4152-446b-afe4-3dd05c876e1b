@@ -74,11 +74,9 @@ export default function AddOn() {
   return (
     <div className="">
       <Navbar />
-      <button onClick={openModal}>Add ons</button>
+      <button onClick={openModal} className="add-item-button_addons">Add ons</button>
       <Modal isOpen={isModalOpen}>
         <h2>Add new Add-on</h2>
-        
-
         <div className="input-tags-container">
           <div>
             <input
@@ -87,6 +85,7 @@ export default function AddOn() {
               name="addOnName"
               value={addOnItem.addOnName}
               onChange={handleChange}
+              className="input_field_addons"
             />
           </div>
           
@@ -97,6 +96,7 @@ export default function AddOn() {
               name="addOnDescription"
               value={addOnItem.addOnDescription}
               onChange={handleChange}
+              className="input_field_addons"
             />
           </div>
           <div>
@@ -106,6 +106,7 @@ export default function AddOn() {
               name="addOnPrice"
               value={addOnItem.addOnPrice}
               onChange={handleChange}
+              className="input_field_addons"
             />
           </div>
           <div>
@@ -115,6 +116,7 @@ export default function AddOn() {
               name="imgUrlAddons"
               value={addOnItem.imgUrlAddons}
               onChange={handleChange}
+              className="input_field_addons"
             />
           </div>
         </div>
