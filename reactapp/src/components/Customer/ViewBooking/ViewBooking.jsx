@@ -1,17 +1,16 @@
 import React, { useRef, useState, useContext, useEffect } from "react";
-import Navbaar from "/home/coder/project/workspace/reactapp/src/components/Customer/Navbaar/Navbaar";
+import Navbaar from "../Navbaar/Navbaar";
 import { BaseUrl } from "../../../utils/authApi";
 import axios from "axios";
 import UserContext from "../../../UserContext";
 
 import './ViewBooking.css'; // Import the CSS file 
 
-const BookedEventsPage = () => {
-  const { appUser, setAppUserl } = useContext(UserContext);
+export default function BookedEventsPage () {
+  const { appUser } = useContext(UserContext);
   const [data, setData] = useState([]);
 
   const [searchText, setSearchText] = useState("");
-  const [sortBy, setSortBy] = useState("");
   
   const jwtToken = appUser?.token;
   const userId = appUser?.id;
@@ -115,4 +114,3 @@ const BookedEventsPage = () => {
   );
 };
 
-export default BookedEventsPage;
