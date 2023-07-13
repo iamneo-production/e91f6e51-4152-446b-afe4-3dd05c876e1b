@@ -119,7 +119,9 @@ export default function Booking() {
 
   return (
     <div>
-      <Navbaar />
+      <div className="booking-first-page-main-navbar">
+        <Navbaar />
+      </div>
       <div className="main-container">
         <div className="apply-form">
           {currentPage === 1 && (

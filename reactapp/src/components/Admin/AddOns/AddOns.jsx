@@ -140,6 +140,7 @@ export default function AddOn() {
               value={addOnItem.addOnName}
               onChange={handleChange}
               className="input_field_addons"
+              data-testid="addOnName"
             />
           </div>
           
@@ -151,6 +152,7 @@ export default function AddOn() {
               value={addOnItem.addOnDescription}
               onChange={handleChange}
               className="input_field_addons"
+              data-testid="addAddOns"
             />
           </div>
           <div>
@@ -175,6 +177,7 @@ export default function AddOn() {
           </div>
         </div>
         <div className="AddnewButton">
+          
           <button onClick={handleSubmit}>Add-new Addon</button>
           <button
             onClick={() => {
