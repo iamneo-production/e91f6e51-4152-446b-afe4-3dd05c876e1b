@@ -137,42 +137,67 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
-    padding:0 5px;
+    padding: 0 5px;
   }
   
   .event-name {
     text-align: center;
     margin-top: 10px;
     font-family: Georgia, 'Times New Roman', Times, serif;
-  
   }
   
-  /*Rating stars styles*/
+  /* Rating stars styles */
   
-  .checked {
-    color: orange;
-  }
-  
-  .rating-stars {
-    font-size: 20px;
-  }
-  
-  #rating-button{
-    background-color: transparent;
-    border: none;
-    outline: none;
+  .rating {
+    font-size: 24px;
     cursor: pointer;
   }
   
-  .on {
+  .gold-star {
     color: gold;
-    font-size: 24px;
-    cursor: pointer;
   }
   
-  .off {
+  .silver-star {
     color: silver;
-    font-size: 24px;
-    cursor: pointer;
-  } 
+  }
+  .half-star {
+    color: silver;
+    position: relative;
+    display: inline-block;
+  }
   
+  .half-star::before {
+    content: "\2605";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+    color: gold;
+    z-index: 1;
+  }
+  
+  .half-star::after {
+    content: "\2605";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+    color: silver;
+    z-index: 0;
+  }
+  /* Add this CSS code to your styles */
+.link-wrapper {
+  text-decoration: none;
+  color: inherit;
+}
+
+.link-wrapper:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+  
+  
+    
