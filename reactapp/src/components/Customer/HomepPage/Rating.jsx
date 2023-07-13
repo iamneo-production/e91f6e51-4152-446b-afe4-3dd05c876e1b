@@ -1,23 +1,16 @@
+export default function Rating({ rating }) {
+  const fullStars = Math.floor(rating);
+  const decimal = rating - fullStars;
 
+  const starIcons = [...Array(5)].map((_, index) => {
+    if (index < fullStars) {
+      return <span key={index} className="gold-star">&#9733;</span>;
+    } else if (index === fullStars && decimal > 0) {
+      return <span key={index} className="half-star">&#9733;</span>;
+    } else {
+      return <span key={index} className="silver-star">&#9733;</span>;
+    }
+  });
 
-export default function Rating({ singleEvent, handleRating }) {
-    return (
-      <div>
-        <div className="">
-          {[...Array(5)].map((_, i) => {
-            const starRating = i + 1;
-            const className = starRating <= singleEvent.rating ? "on" : "off";
-            return (
-              <span
-                key={i}
-                className={className}
-                onClick={() => handleRating(singleEvent.themeid, starRating)}
-              >
-                &#9733;
-              </span>
-            );
-          })}
-        </div>
-      </div>
-    )
-  }
+  return <div className="rating">{starIcons}</div>;
+}

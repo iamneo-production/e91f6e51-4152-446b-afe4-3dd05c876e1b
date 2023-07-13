@@ -17,6 +17,45 @@
   }
   
   
+  .event-card {
+    position: relative;
+  }
+  
+  .event-details-2 {
+    position: relative;
+  }
+  
+  .canceled {
+    opacity: 0.5;
+    background-color: white;
+  }
+  
+  .canceled-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    z-index: 1;
+  }
+  
+  .canceled-tag::after {
+    content: 'Canceled';
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  
+  
+  
+  
+
   
   
   .event-image {

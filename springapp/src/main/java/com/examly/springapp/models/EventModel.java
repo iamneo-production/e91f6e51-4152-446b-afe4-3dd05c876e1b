@@ -44,7 +44,7 @@ public class EventModel {
     private Integer rating;
     private String rating_Discription;
 
-    //to check wether event got cancelled or not
+    //to check wether event got cancelled or notf
     private String DeletedEvent;
     private String EmailId;
 }

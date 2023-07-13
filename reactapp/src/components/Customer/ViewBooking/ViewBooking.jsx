@@ -96,18 +96,24 @@ export default function BookedEventsPage () {
             <div className="second-viewBooking-navbar-element-last">Total Price</div>
           </nav>
           
+          
           {filterEvents.map((event, index) => (
-            <div key={index} className="event-card">
-              
-              <div className="event-details-2">
-                <img src={event.eventImg} alt={event.eventName} className="event-image" />
-                <h3>{event.eventName}</h3>
-                <p>{convertTo12HourFormat(event.eventTime)}</p>
-                <p>{event.eventDate}</p>
-                <p>₹{event.eventCost}</p>
-              </div>
-            </div>
-          ))}
+        <div
+          key={index}
+          className={`event-card ${event.deletedEvent ? 'canceled' : ''}`}
+        >
+          {event.deletedEvent && <div className="canceled-tag">Canceled</div>}
+          <div className="event-details-2">
+            <img src={event.eventImg} alt={event.eventName} className="event-image" />
+            <h3>{event.eventName}</h3>
+            <p>{convertTo12HourFormat(event.eventTime)}</p>
+            <p>{event.eventDate}</p>
+            <p>₹{event.eventCost}</p>
+          </div>
+        </div>
+      ))}
+
+
         </>
       )}
     </div>
