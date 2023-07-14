@@ -1,13 +1,13 @@
 
 import React, { useState, useEffect,useContext } from "react";
 import {Link} from "react-router-dom"
-
 import "./HomePage.css";
 import { BASE_URL } from "../../../utils/userApi";
 import axios from 'axios'
 import Rating from "./Rating";
+import Modal from "react-modal";
 import EventCard from "./EventCard.jsx";
-import Navbaar from "/home/coder/project/workspace/reactapp/src/components/Customer/Navbaar/Navbaar";
+import Navbaar from "../Navbaar/Navbaar";
 import UserContext from '../../../UserContext'
 
 export default function HomePage() {
@@ -15,14 +15,16 @@ export default function HomePage() {
   const [searchText, setSearchText] = useState("");
   const [sortBy, setSortBy] = useState("");
   const {appUser,setAppUser} =useContext(UserContext);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const jwtToken = appUser?.token;
   console.log("token",jwtToken);
   const headers = {
     Authorization: `Bearer ${jwtToken}` ,
   };
 
-      
+  function openModal() {
+    setIsModalOpen(true);
+  } 
   //---fetching events----//
 
   useEffect(() => {
@@ -56,14 +58,15 @@ export default function HomePage() {
       }
     });
                 //------- Rating --------//
-  //   axios.patch(`${BASE_URL}/user/getAllThemes/${id}`, updatedData.find((event) => event.themeid === id))
-  //   .then((res) => {
-  //     console.log("updated", res.data.id, res.data);
-  //     setData(updatedData);
-  //   })
-  //   .catch((e) => {
-  //     console.log(e);
-  //   });
+    // axios.patch(`${BASE_URL}/user/getAllThemes/${id}`, updatedData.find((event) => event.themeid === id))
+    // .then((res) => {
+    //   console.log("updated", res.data.id, res.data);
+    //   setData(updatedData);
+    // })
+    // .catch((e) => {
+    //   console.log(e);
+    // });
+
    }
 
   const filterEvents = data.filter((singleEvent) => {
@@ -100,6 +103,10 @@ export default function HomePage() {
         ? <div>loading... please check connection </div>
         : (
           <div className="Homepage">
+            <Modal isOpen={isModalOpen} >
+              <div>Modal is opend</div>
+              <div><button onClick={()=>{ setIsModalOpen(false) }} >close</button></div>
+            </Modal>
             <div className="wrap"> 
            { /*Add SearchBar*/}
              <div className="search-box">
