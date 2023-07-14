@@ -3,7 +3,6 @@ import Navbaar from "/home/coder/project/workspace/reactapp/src/components/Custo
 import { BaseUrl } from "../../../utils/authApi";
 import axios from "axios";
 import UserContext from "../../../UserContext";
-import { useNavigate } from "react-router-dom";
 
 import './ViewBooking.css'; // Import the CSS file 
 
@@ -49,12 +48,13 @@ const BookedEventsPage = () => {
 
   const convertTo12HourFormat = (time) => {
     const eventTime = new Date(`2050-01-01T${time}`);
-    const formattedEventTime = eventTime.toLocaleString('en-US', {
+    // const formattedEventTime = eventTime.toLocaleString('en-US', {
+      return eventTime.toLocaleString('en-US', {
       hour: 'numeric',
       minute: 'numeric',
       hour12: true
     });
-    return formattedEventTime;
+    // return formattedEventTime;
   };
 
   

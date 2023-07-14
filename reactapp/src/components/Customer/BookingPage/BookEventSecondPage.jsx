@@ -1,14 +1,20 @@
 import axios from "axios";
-import React, { useEffect, useState,useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Select from "react-select";
 import { BaseUrl } from "../../../utils/authApi";
 import UserContext from "../../../UserContext";
-import "./Booking.css"
+import "./Booking.css";
+import Swal from "sweetalert2";
+
+import TextField from "@mui/material/TextField";
+
 export default function BookEventSecondPage({ eventData, setEventData }) {
   console.log("object", eventData);
   const [allAddOns, setAllAddOns] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedAddOns, setSelectedAddOns] = useState([]);
+  const [nonVegItemsPlaceholder, setNonVegItemsPlaceholder] = useState("Non-Veg Items");
+  const [vegItemsPlaceholder, setVegItemsPlaceholder] = useState("Veg Items");
 
   const [selectedOption, setSelectedOption] = useState(null);
   console.log("selected add ons id is ", selectedAddOns);
@@ -23,7 +29,7 @@ export default function BookEventSecondPage({ eventData, setEventData }) {
   useEffect(() => {
     async function getAllAddOns() {
       try {
-        const res = await axios.get(`${BaseUrl}/admin/getAddon`,{headers});
+        const res = await axios.get(`${BaseUrl}/admin/add-on`, { headers });
         setAllAddOns(res.data);
         // [1,2,3]
       } catch (e) {}
@@ -57,9 +63,10 @@ export default function BookEventSecondPage({ eventData, setEventData }) {
     console.log("event with add on list is", eD);
 
     try {
-      const res = await axios.post(`${BaseUrl}/user/addEvent`, eD,{headers});
+      const res = await axios.post(`${BaseUrl}/user/addEvent`, eD, { headers });
+      Swal.fire("Success", res.data, "success");
       console.log(res.data);
-      alert(res.data);
+      // alert(res.data);
     } catch (e) {}
   }
 
@@ -70,8 +77,8 @@ export default function BookEventSecondPage({ eventData, setEventData }) {
     setSelectedAddOns(selectedAddonsList);
   }
   const options = [
-    { value: 'veg', label: 'Veg' },
-    { value: 'nonveg', label: 'Non-Veg' },
+    { value: "veg", label: "Veg" },
+    { value: "nonveg", label: "Non-Veg" },
   ];
   const handleChange = (option) => {
     setSelectedOption(option);
@@ -82,45 +89,59 @@ export default function BookEventSecondPage({ eventData, setEventData }) {
       width: "400px", // Adjust the width here as needed
     }),
   };
+
+  const handleNonVegItemsFocus = () => {
+    setNonVegItemsPlaceholder("");
+  };
+
+  const handleVegItemsFocus = () => {
+    setVegItemsPlaceholder("");
+  };
+
   return (
     <div>
-      
       <div className="second-page-container">
-      <div className="grid-container-2">
+        <div className="grid-container-2">
+          <div>
+            <label htmlFor="category">Category</label>
+            <Select
+              id="category"
+              className="category"
+              options={options}
+              value={selectedOption}
+              onChange={handleChange}
+              styles={customStyles}
+            />
+          </div>
+
+          <input
+            type="number"
+            placeholder={nonVegItemsPlaceholder}
+            onFocus={handleNonVegItemsFocus}
+          />
+
+          <input
+            type="number"
+            placeholder={vegItemsPlaceholder}
+            onFocus={handleVegItemsFocus}
+          />
+        </div>
+
         <div>
+          <label htmlFor="addOns">Add Ons</label>
           <Select
-            className="category"
-            placeholder="Select Category"
-            options={options}
-            value={selectedOption}
-            onChange={handleChange}
+            id="addOns"
+            className="addOnDropdown"
+            options={addOnList}
+            onChange={handleSelectTag}
+            isMulti
             styles={customStyles}
           />
-        </div >
-
-        <input type="number" placeholder="Enter quantity of veg items" />
-
-        <input type="number" placeholder="Enter quantity of non-veg items" />
+        </div>
       </div>
-
-      <div>
-        {" "}
-        <Select
-          className="addOnDropdown"
-          placeholder="Select Add Ons"
-          options={addOnList}
-          onChange={handleSelectTag}
-          isMulti
-          styles={customStyles}
-        />
-      </div>
-    </div>
-    <button
-    className="submit-btn"
-     onClick={handleSubmit}>
-      Submit
-    </button>
+      <button className="submit-btn" onClick={handleSubmit}>
+        Submit
+      </button>
     </div>
   );
 }
-

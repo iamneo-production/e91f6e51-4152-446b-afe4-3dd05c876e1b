@@ -27,6 +27,7 @@ public class MenuModel {
     private String foodMenuType;
     private String foodMenuItems;
     private String foodMenuCost;
+    @Column(columnDefinition = "LONGTEXT")
     private String imageUrl;
     
 }
