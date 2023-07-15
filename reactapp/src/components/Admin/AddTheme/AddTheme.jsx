@@ -1,6 +1,6 @@
 import { React, useRef, useState, useContext, useEffect } from "react";
-import Navbar from "/home/coder/project/workspace/reactapp/src/components/Admin/Navbar/Navbar.js";
-import styles from "/home/coder/project/workspace/reactapp/src/components/Admin/AddTheme/AddTheme.module.css";
+import Navbar from "../Navbar/Navbar"
+import styles from "./AddTheme.module.css";
 import { BaseUrl } from "../../../utils/authApi";
 import axios from "axios";
 import UserContext from "../../../UserContext";
@@ -40,11 +40,7 @@ const AddTheme = () => {
     };
 
     try {
-      const res = await axios.post(
-        `${BaseUrl}/admin/addTheme`,
-        themeModel,
-        { headers }
-      );
+      const res = await axios.post(`${BaseUrl}/admin/addTheme`,themeModel,{ headers });
       console.log("return from backend", res.data);
       alert(res.data);
 
@@ -82,6 +78,23 @@ const AddTheme = () => {
   useEffect(() => {
     getAllThemes();
   }, []);
+
+    async function handleDelete(row) {
+    console.log(row);
+    try {
+      const res = await axios.delete(
+        `${BaseUrl}/admin/deleteTheme/${row.themeId}`, { headers }
+      );
+      const data = res.data;
+      console.log("res after delte", data);
+
+      setData((prevItems) =>
+        prevItems.filter((item) => item.themeId !== row.themeId)
+      );
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   return (
     <>
@@ -155,7 +168,7 @@ const AddTheme = () => {
                       <EditOutlined key="edit" onClick={() => {
                         console.log("clicked")
                       }}/>,
-                      <DeleteOutlined key="ellipsis" onClick={() => console.log("clicked")}/>,
+                      <DeleteOutlined key="ellipsis" onClick={() => handleDelete(item)}/>,
                     ]}
                   >
                     <Meta
