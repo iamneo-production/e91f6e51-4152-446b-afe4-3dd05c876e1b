@@ -11,7 +11,7 @@ import AddTheme from "./components/Admin/AddTheme/AddTheme";
 import AddMenu from "./components/Admin/AddMenu/AddMenu";
 import Addons from "./components/Admin/AddOns/AddOns";
 import { UserProvider,UserContext } from "./UserContext";
-import PageNotFound from "/home/coder/project/workspace/reactapp/src/components/Customer/PageNotFound/PageNotFound.jsx";
+import PageNotFound from "./components/Customer/PageNotFound/PageNotFound.jsx";
 import FoodMenuPage from "./components/Customer/Food_menu/Foodmenu";
 
 
