@@ -1,0 +1,38 @@
+/* EditEventPage.css */
+
+.edit-event-page {
+  background-color: #faebd7;
+  padding: 20px;
+}
+
+.edit-event-page h2 {
+  margin-bottom: 20px;
+}
+
+.edit-event-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.edit-event-form input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.edit-event-form button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-event-form button:hover {
+  background-color: #45a049;
+}
