@@ -5,6 +5,7 @@ import { BaseUrl } from "../../../utils/authApi";
 import axios from "axios";
 import UserContext from "../../../UserContext";
 import EventDetailsPage from "./EventDetailsPage";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./ViewBooking.css"; // Import the CSS file
 
