@@ -1,18 +1,20 @@
+
 import React, { useRef, useState, useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Navbaar from "/home/coder/project/workspace/reactapp/src/components/Customer/Navbaar/Navbaar";
 import { BaseUrl } from "../../../utils/authApi";
 import axios from "axios";
 import UserContext from "../../../UserContext";
+import EventDetailsPage from "./EventDetailsPage";
 
-import './ViewBooking.css'; // Import the CSS file 
+import "./ViewBooking.css"; // Import the CSS file
 
 const BookedEventsPage = () => {
   const { appUser, setAppUserl } = useContext(UserContext);
   const [data, setData] = useState([]);
-
   const [searchText, setSearchText] = useState("");
   const [sortBy, setSortBy] = useState("");
-  
+
   const jwtToken = appUser?.token;
   const userId = appUser?.id;
   console.log("token", jwtToken);
@@ -20,19 +22,20 @@ const BookedEventsPage = () => {
     Authorization: `Bearer ${jwtToken}`,
   };
 
+  const navigate = useNavigate();
+
   const fetchBookedEvents = async () => {
     try {
       const res = await axios.get(`${BaseUrl}/user/viewEvent/${userId}`, { headers });
       console.log(res.data);
-      
-      const reqData = res.data.filter((event)=>{
+
+      const reqData = res.data.filter((event) => {
         return appUser.id === event.userId;
-      })
+      });
       // Reverse the data array to display the last entry first
       const reversedData = reqData.reverse();
-      
-      setData(reversedData);
 
+      setData(reversedData);
     } catch (error) {
       console.error(error);
     }
@@ -57,24 +60,25 @@ const BookedEventsPage = () => {
     // return formattedEventTime;
   };
 
-  
-
   const filterEvents = data.filter((singleEvent) => {
     return singleEvent.eventName.toLowerCase().includes(searchText.toLowerCase());
   });
 
-  
+  const handleEventClick = (eventId) => {
+    navigate(`/event/${eventId}`); // Navigates to the event details page with the specified eventId
+  };
+
   return (
     <div>
       <div className="viewbooking-main-navbaar">
         <Navbaar />
       </div>
-      
+
       {data.length === 0 ? (
         <div>You have not made any bookings yet.</div>
       ) : (
         <>
-          <div className="view-booking-wrap"> 
+          <div className="view-booking-wrap">
             <div className="view-booking-search-box">
               <input
                 className="search_input"
@@ -84,11 +88,10 @@ const BookedEventsPage = () => {
                 value={searchText}
                 onChange={handleSearch}
               />
-               <button type="submit" data-testid="searchEventButton" id="searchEventButton"></button>
+              <button type="submit" data-testid="searchEventButton" id="searchEventButton"></button>
             </div>
           </div>
-          {/* <h2>My Booked Events</h2> */}
-          
+
           <nav className="second-viewBooking-navbar">
             <div className="second-viewBooking-navbar-element-one">Event Image</div>
             <div className="second-viewBooking-navbar-element">Event Name</div>
@@ -96,10 +99,9 @@ const BookedEventsPage = () => {
             <div className="second-viewBooking-navbar-element">Date</div>
             <div className="second-viewBooking-navbar-element-last">Total Price</div>
           </nav>
-          
+
           {filterEvents.map((event, index) => (
-            <div key={index} className="event-card">
-              
+            <div key={index} className="event-card" onClick={() => handleEventClick(event.eventId)}>
               <div className="event-details-2">
                 <img src={event.eventImg} alt={event.eventName} className="event-image" />
                 <h3>{event.eventName}</h3>
