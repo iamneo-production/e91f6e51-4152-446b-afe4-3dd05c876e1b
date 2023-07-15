@@ -12,7 +12,8 @@ import AddMenu from "./components/Admin/AddMenu/AddMenu";
 import Addons from "./components/Admin/AddOns/AddOns";
 import { UserProvider,UserContext } from "./UserContext";
 import PageNotFound from "./components/Customer/PageNotFound/PageNotFound.jsx";
-import FoodMenuPage from "./components/Customer/Food_menu/Foodmenu";
+import EventDetailsPage from "./components/Customer/ViewBooking/EventDetailsPage";
+import EditEventPage from "./components/Customer/ViewBooking/EditEventPage";import FoodMenuPage from "./components/Customer/Food_menu/Foodmenu";
 
 
 function App() {
@@ -37,6 +38,10 @@ function App() {
             <Route path="/user/bookTheme" element={<Booking />} />
             <Route path="/user/bookTheme/:id" element={<Booking />} />
             <Route path="/user/getBookedTheme" element={<ViewBookedEvents />} />
+            <Route path="/event/:eventId" element={<EventDetailsPage />} />
+            //<Route path="/user/editEvent/:eventId" element={<EditEventPage />} />
+            <Route path="/event/:eventId/edit" element={<EditEventPage />} />
+
             <Route path="/user/Foodmenu" element={<FoodMenuPage />} />
           </>
         )}
