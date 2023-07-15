@@ -101,6 +101,8 @@ export default function BookedEventsPage () {
         <div
           key={index}
           className={`event-card ${event.deletedEvent ? 'canceled' : ''}`}
+          // className={`event-card ${event.deletedEvent !== null ? "canceled" : ''}`}
+
         >
           {event.deletedEvent && <div className="canceled-tag">Canceled</div>}
           <div className="event-details-2">
