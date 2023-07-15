@@ -47,4 +47,6 @@ public class EventModel {
     //to check wether event got cancelled or notf
     private String DeletedEvent;
     private String EmailId;
+    private String foodMenu;
+    
 }
