@@ -1,3 +1,6 @@
+.add-on-container{
+  padding-bottom: 10%;
+}
 .ReactModal__Content{
   width: fit-content !important;
   height: 400px !important;
@@ -6,6 +9,7 @@
   justify-content:space-around;
   align-items: center;
   left:30% !important;
+  
 }
 
 .grid-container {
