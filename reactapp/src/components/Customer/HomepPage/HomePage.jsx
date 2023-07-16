@@ -6,7 +6,7 @@ import { BASE_URL } from "../../../utils/userApi";
 import axios from 'axios'
 import Rating from "./Rating";
 import EventCard from "./EventCard.jsx";
-import Navbaar from "/home/coder/project/workspace/reactapp/src/components/Customer/Navbaar/Navbaar";
+import Navbaar from "../Navbaar/Navbaar";
 import UserContext from '../../../UserContext'
 
 export default function HomePage() {
