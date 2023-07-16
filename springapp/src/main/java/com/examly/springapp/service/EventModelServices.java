@@ -19,7 +19,7 @@ import java.util.Optional;
 @Service
 public class EventModelServices {
 
-    @Autowired
+@Autowired
 private EventModelRepository eventModelRepository;
 
 @Autowired
@@ -42,6 +42,7 @@ public void addEvent(EventModel eventModel) {
             try {
                 emailService.sendHtmlMail(emailDetails);
             } catch (Exception e) {
+
             }
         });
     }
@@ -120,7 +121,7 @@ public void addEvent(EventModel eventModel) {
     }
 
 
-    
+    // booking confirmation template
     private String buildEmailContent(EventModel eventModel) {
         // Define the constant for table cell style
         final String CELL_STYLE = "<td style='border: 1px solid black; padding: 8px; text-align: center;'>";

@@ -7,6 +7,8 @@ import Navbar from "../Navbar/Navbar"
 import "./AddOn.css";
 import UserContext from '../../../UserContext'
 import { Card } from 'antd';
+import { FloatButton } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
 import TextField from '@mui/material/TextField';
 
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
@@ -129,7 +131,7 @@ export default function AddOn() {
   return (
     <div className="add-on-container">
       <Navbar />
-      <button onClick={openModal} className="add-item-button_addons">Add ons</button>
+      
       <Modal isOpen={isModalOpen}>
         <div><h2 style={{ color: "#a921e4", textAlign: 'center' }}>Add new Add-on</h2></div>
         <div className="input-tags-container">
@@ -205,7 +207,6 @@ export default function AddOn() {
           </div>
         </div>
         <div className="AddnewButton">
-          
           <button onClick={handleSubmit}>Add-new Addon</button>
           <button
             onClick={() => {
@@ -327,7 +328,8 @@ export default function AddOn() {
 
           )}
         </div>
-        </div>
+        <FloatButton onClick={openModal} icon={<PlusOutlined width={70}/>} tooltip={<div>Add AddOns</div>}/>
+     </div>
       
   );
 }
