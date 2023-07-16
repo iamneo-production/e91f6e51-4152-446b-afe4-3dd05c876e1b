@@ -52,7 +52,7 @@ export default function Signup() {
   }
 
   return (
-    <div className="main-container">
+    <div className="register-main-container">
       <div className="register-form">
          <div>
           <h1 className="register-heading">Register</h1>
