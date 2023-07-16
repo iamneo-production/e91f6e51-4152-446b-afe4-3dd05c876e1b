@@ -26,10 +26,8 @@ public class AuthTokenFilter extends OncePerRequestFilter{
     @Autowired
     private UserDetailsServiceImpl userDetailsServiceImpl;
     @Override
-    protected void doFilterInternal(HttpServletRequest request, 
-
-    
-    HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException{
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, 
+    FilterChain filterChain) throws ServletException, IOException{
         try {
             String token=parseJwt(request);
             if(token!=null && jwtUtils.validateJwt(token)){
