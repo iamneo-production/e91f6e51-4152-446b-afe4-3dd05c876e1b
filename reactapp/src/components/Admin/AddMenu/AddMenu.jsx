@@ -6,6 +6,13 @@ import "./AddMenu.css";
 import axios from "axios";
 import UserContext from "../../../UserContext";
 import { Card,FloatButton } from 'antd';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import { styled } from '@mui/system';
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 // import ModeEditIcon from '@mui/icons-material/ModeEdit';
 // import DeleteIcon from '@mui/icons-material/Delete';
 //commit
@@ -22,6 +29,7 @@ export default function FoodMenu() {
   const [editingRow, setEditingRow] = React.useState(null);
   const [isEditItemModalOpen, setIsEditItemModalOpen] = React.useState(false);
   const { Meta } = Card;
+  
 
   const jwtToken = appUser?.token;
   console.log("token", jwtToken);
@@ -193,39 +201,61 @@ export default function FoodMenu() {
         <div className="input-tags-container_addMenu">
           <div className="inputs_addMenu">
             <div>
-              <input
+              <TextField
+                className="rounded-input"
                 type="text"
-                placeholder="name"
+                placeholder="Enter name"
+                variant="outlined"
+                label="Name"
                 name="name"
+                size="small"
                 onChange={handleChange}
-                className="rounded-input"
+                sx = {{
+                  width: "100%"
+                }}
               />
             </div>
             <div>
-              <input
-                type="text"
-                placeholder="imageUrl"
-                name="imageUrl"
-                onChange={handleChange}
+            <TextField
                 className="rounded-input"
+                type="text"
+                placeholder="Enter category"
+                variant="outlined"
+                label="Category"
+                name="Category"
+                size="small"
+                onChange={handleChange}
+                sx = {{
+                  width: "100%"
+                }}
               />
             </div>
             <div>
-              <input
+              <TextField
                 type="text"
-                placeholder="price"
+                label="Price"
+                placeholder="Enter price"
                 name="price"
+                size="small"
                 onChange={handleChange}
                 className="rounded-input"
+                sx = {{
+                  width: "100%"
+                }}
               />
             </div>
             <div>
-              <input
+              <TextField
                 type="text"
-                placeholder="category"
-                name="category"
+                label="Image-URL"
+                placeholder="Enter image-Url"
+                name="Image-Url"
+                size="small"
                 onChange={handleChange}
                 className="rounded-input"
+                sx = {{
+                  width: "100%"
+                }}
               />
             </div>
           </div>

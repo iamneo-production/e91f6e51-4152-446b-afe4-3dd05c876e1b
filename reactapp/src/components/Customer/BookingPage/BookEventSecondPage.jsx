@@ -64,7 +64,7 @@ export default function BookEventSecondPage({ eventData, setEventData }) {
     try {
       const res = await axios.post(`${BaseUrl}/user/addEvent`, eD, { headers });
       console.log(res.data);
-      alert(res.data);
+      Swal.fire("Success", res.data, "success");
     } catch (e) {}
   }
 
