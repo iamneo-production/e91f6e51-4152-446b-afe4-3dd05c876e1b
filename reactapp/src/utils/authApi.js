@@ -1,6 +1,6 @@
 
 //Define base url for all operations
-export const BaseUrl = "https://8080-fbfbcfdafefbdecbeaedcfdfabbdb.project.examly.io";
+export const BaseUrl = "https://8080-ceddbecfbbacaefefbdecbedaeddda.project.examly.io";
  
 
 export async function signUpUser(email, mobileNumber, password, userType, userName) {
@@ -12,7 +12,7 @@ export async function signUpUser(email, mobileNumber, password, userType, userNa
       "username":userName
     };
   //ceddbecfbbacaefefbdecbeaedcfdfabbdb ------------ pratik terminal
-  //https://8081-ceddbecfbbacaefefbdecbeaedcfdfabbdb.project.examly.io/user/getBookedTheme
+  //https://8080-ceddbecfbbacaefefbdecbedaeddda.project.examly.io-----------pratik test terminal
     try {
 
       const response = await fetch(`${BaseUrl}/user/signup`, {
