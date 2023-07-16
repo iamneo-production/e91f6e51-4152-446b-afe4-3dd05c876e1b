@@ -9,10 +9,6 @@ import { Card,FloatButton } from 'antd';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/system';
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
 // import ModeEditIcon from '@mui/icons-material/ModeEdit';
 // import DeleteIcon from '@mui/icons-material/Delete';
 //commit
@@ -62,6 +58,7 @@ export default function FoodMenu() {
       setEditingRow(null);
       setItemsArray(updatedData);
       setIsEditItemModalOpen(false);
+      window.location.reload();
     } catch (e) {
       console.log(e);
     }
@@ -206,9 +203,9 @@ export default function FoodMenu() {
                 type="text"
                 placeholder="Enter name"
                 variant="outlined"
+                size="small"
                 label="Name"
                 name="name"
-                size="small"
                 onChange={handleChange}
                 sx = {{
                   width: "100%"
@@ -222,7 +219,7 @@ export default function FoodMenu() {
                 placeholder="Enter category"
                 variant="outlined"
                 label="Category"
-                name="Category"
+                name="category"
                 size="small"
                 onChange={handleChange}
                 sx = {{
@@ -249,7 +246,7 @@ export default function FoodMenu() {
                 type="text"
                 label="Image-URL"
                 placeholder="Enter image-Url"
-                name="Image-Url"
+                name="imageUrl"
                 size="small"
                 onChange={handleChange}
                 className="rounded-input"

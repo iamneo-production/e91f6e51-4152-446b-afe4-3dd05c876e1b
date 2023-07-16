@@ -9,7 +9,7 @@
   justify-content:space-around;
   align-items: center;
   left:30% !important;
-  
+  padding:30px !important;
 }
 
 .grid-container {
@@ -99,7 +99,6 @@
     }
     .input_field_addons{
       border: 2px solid black;
-      padding: 10px 10px !important;
       width: 90%;
     }
     .input-tags-container{
