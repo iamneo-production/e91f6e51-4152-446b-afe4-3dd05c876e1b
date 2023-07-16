@@ -1,20 +1,19 @@
 
 import React, { useRef, useState, useContext, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Navbaar from "/home/coder/project/workspace/reactapp/src/components/Customer/Navbaar/Navbaar";
+import Navbaar from "../Navbaar/Navbaar";
 import { BaseUrl } from "../../../utils/authApi";
 import axios from "axios";
 import UserContext from "../../../UserContext";
 import EventDetailsPage from "./EventDetailsPage";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./ViewBooking.css"; // Import the CSS file
 
-const BookedEventsPage = () => {
-  const { appUser, setAppUserl } = useContext(UserContext);
+export default function BookedEventsPage () {
+  const { appUser } = useContext(UserContext);
   const [data, setData] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const [sortBy, setSortBy] = useState("");
-
+  
   const jwtToken = appUser?.token;
   const userId = appUser?.id;
   console.log("token", jwtToken);
@@ -99,22 +98,29 @@ const BookedEventsPage = () => {
             <div className="second-viewBooking-navbar-element">Date</div>
             <div className="second-viewBooking-navbar-element-last">Total Price</div>
           </nav>
-
+          
+          
           {filterEvents.map((event, index) => (
-            <div key={index} className="event-card" onClick={() => handleEventClick(event.eventId)}>
-              <div className="event-details-2">
-                <img src={event.eventImg} alt={event.eventName} className="event-image" />
-                <h3>{event.eventName}</h3>
-                <p>{convertTo12HourFormat(event.eventTime)}</p>
-                <p>{event.eventDate}</p>
-                <p>₹{event.eventCost}</p>
-              </div>
-            </div>
-          ))}
+        <div
+          key={index}
+          className={`event-card ${event.deletedEvent ? 'canceled' : ''}`}
+          // className={`event-card ${event.deletedEvent !== null ? "canceled" : ''}`}
+          onClick={() => handleEventClick(event.eventId)}>
+          {event.deletedEvent && <div className="canceled-tag">Canceled</div>}
+          <div className="event-details-2">
+            <img src={event.eventImg} alt={event.eventName} className="event-image" />
+            <h3>{event.eventName}</h3>
+            <p>{convertTo12HourFormat(event.eventTime)}</p>
+            <p>{event.eventDate}</p>
+            <p>₹{event.eventCost}</p>
+          </div>
+        </div>
+      ))}
+
+
         </>
       )}
     </div>
   );
 };
 
-export default BookedEventsPage;
