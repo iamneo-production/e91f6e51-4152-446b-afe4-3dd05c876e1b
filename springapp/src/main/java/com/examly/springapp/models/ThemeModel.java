@@ -34,6 +34,7 @@ public class ThemeModel {
     private Long cost;
     private Double averageRating;
     private Integer TotalRating;
+    private String Location; 
     
 
     
