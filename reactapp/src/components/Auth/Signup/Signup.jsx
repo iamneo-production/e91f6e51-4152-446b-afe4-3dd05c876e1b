@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { signUpUser } from "../../../utils/authApi";
 import { TextField, Button, FormControl, InputLabel, Select, MenuItem, InputAdornment, IconButton } from "@mui/material";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+// import Visibility from "@mui/icons-material/Visibility";
+// import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import "./Signup.css";
 
 export default function Signup() {
@@ -119,12 +119,12 @@ export default function Signup() {
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton
+                  {/* <IconButton
                     onClick={() => setShowPassword(!showPassword)}
                     edge="end"
                   >
                     {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
+                  </IconButton> */}
                 </InputAdornment>
               ),
             }}
