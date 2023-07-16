@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { signUpUser, loginUser } from "../../../utils/authApi";
-import './Signup.css';
+import { signUpUser } from "../../../utils/authApi";
+import { TextField, Button, FormControl, InputLabel, Select, MenuItem, InputAdornment, IconButton } from "@mui/material";
+// import Visibility from "@mui/icons-material/Visibility";
+// import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import "./Signup.css";
 
 export default function Signup() {
   const [userType, setAdminOrUser] = useState("");
@@ -10,11 +13,10 @@ export default function Signup() {
   const [mobileNumber, setMobileNumber] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [authenticated, setAuthenticated] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/;
+  const emailRegex = /^[a-zA-Z0-9.!#$%&’+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/;
+  const passwordRegex =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/;
   const mobileNumberRegex = /^\d{10}$/;
 
   async function handleSignup() {
@@ -33,12 +35,8 @@ export default function Signup() {
       alert("Invalid Email");
       return;
     } else if (!passwordRegex.test(password)) {
-      alert(
-        "Password must contain at least 8 characters, including one number, one lowercase and uppercase character, and one special character like #,@,$,!"
-      );
-      console.log(
-        "Password must contain at least 8 characters, including one number, one lowercase and uppercase character, and one special character like #,@,$,!"
-      );
+      alert("Password must contain at least 8 characters, including one number, one lowercase and uppercase character, and one special character like #,@,$,!");
+      console.log("Password must contain at least 8 characters, including one number, one lowercase and uppercase character, and one special character like #,@,$,!");
       return;
     } else if (password !== confirmPassword) {
       alert("Passwords do not match");
@@ -48,137 +46,118 @@ export default function Signup() {
       alert("Invalid Mobile no.");
       return;
     } else {
-      const response = await signUpUser(
-        email,
-        mobileNumber,
-        password,
-        userType,
-        userName
-      );
+      const response = await signUpUser(email, mobileNumber, password, userType, userName);
       console.log(response);
     }
   }
 
   return (
     <div className="main-container">
-      <div className="bg-container">
-        <div className="navbar-register">Register</div>
-        <div className="register-main">
-          <div className="register-form">
-            <div>
-              <select
-                data-testid="userType"
-                className="input-style-signup-select"
-                onChange={(e) => {
-                  setAdminOrUser(e.target.value);
-                }}
-              >
-                <option value="">Select user type</option>
-                <option value="user">user</option>
-                <option value="admin">admin</option>
-              </select>
-            </div>
-            <div>
-              <input
-                data-testid="email"
-                className="input-style-signup"
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Enter email"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />
-            </div>
-            <div>
-              <input
-                data-testid="username"
-                className="input-style-signup"
-                type="text"
-                name="username"
-                id="username"
-                placeholder="Enter Username"
-                value={userName}
-                onChange={(e) => {
-                  setUserName(e.target.value);
-                }}
-              />
-            </div>
-            <div>
-              <input
-                data-testid="mobileNumber"
-                className="input-style-signup"
-                type="text"
-                name="mobileNumber"
-                id="mobileNumber"
-                placeholder="Enter Mobilenumber"
-                value={mobileNumber}
-                onChange={(e) => {
-                  setMobileNumber(e.target.value);
-                }}
-              />
-            </div>
-            <div>
-              <div className="password-input-container">
-                <input
-                  data-testid="password"
-                  className="input-style-signup"
-                  type={showPassword ? "text" : "password"}
-                  name="password"
-                  id="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                />
-                <i
-                  className={`password-toggle-icon fas ${
-                    showPassword ? "fa-eye-slash" : "fa-eye"
-                  }`}
-                  onClick={() => setShowPassword(!showPassword)}
-                  style={{ color: showPassword ? "black" : "black" }}
-                ></i>
-              </div>
-            </div>
-            <div>
-              <div className="password-input-container">
-                <input
-                  data-testid="confirmPassword"
-                  className="input-style-signup"
-                  type="password"
-                  name="confirmPassword"
-                  id="confirmPassword"
-                  placeholder="Confirm Password"
-                  value={confirmPassword}
-                  onChange={(e) => {
-                    setConfirmPassword(e.target.value);
-                  }}
-                />
-              </div>
-              <div>
-                <input
-                  data-testid="submitButton"
-                  className="signup-button"
-                  type="submit"
-                  id="submitButton"
-                  value="Submit"
-                  onClick={() => {
-                    handleSignup();
-                  }}
-                />
-              </div>
-            </div>
-            <p className="loginPara">
-              Already a user?&nbsp;
-              <Link data-testid="signinLink" id="signinLink" to="/user/login">
-                Login
-              </Link>
-            </p>
-          </div>
+      <div className="register-form">
+         <div>
+          <h1 className="register-heading">Register</h1>
         </div>
+        <FormControl className="input-style-signup-select" sx={{ marginBottom: 2 }}>
+          <InputLabel>User Type</InputLabel>
+          <Select
+            value={userType}
+            onChange={(e) => setAdminOrUser(e.target.value)}
+            label="User Type"
+            size="small" // Set the size to "small"
+          >
+            <MenuItem value="">Select user type</MenuItem>
+            <MenuItem value="user">User</MenuItem>
+            <MenuItem value="admin">Admin</MenuItem>
+          </Select>
+        </FormControl>
+        <TextField
+          className="input-style-signup"
+          data-testid="email"
+          type="email"
+          label="Email"
+          placeholder="Enter email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          fullWidth
+          margin="normal"
+          size="small" // Set the size to "small"
+        />
+        <TextField
+          className="input-style-signup"
+          data-testid="username"
+          type="text"
+          label="Username"
+          placeholder="Enter Username"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+          fullWidth
+          margin="normal"
+          size="small" // Set the size to "small"
+        />
+        <TextField
+          className="input-style-signup"
+          data-testid="mobileNumber"
+          type="text"
+          label="Mobile Number"
+          placeholder="Enter Mobile number"
+          value={mobileNumber}
+          onChange={(e) => setMobileNumber(e.target.value)}
+          fullWidth
+          margin="normal"
+          size="small" // Set the size to "small"
+        />
+        <FormControl className="input-style-signup" sx={{ marginBottom: 2 }}>
+          <TextField
+            data-testid="password"
+            type={showPassword ? "text" : "password"}
+            label="Password"
+            placeholder="Enter Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            fullWidth
+            margin="normal"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  {/* <IconButton
+                    onClick={() => setShowPassword(!showPassword)}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton> */}
+                </InputAdornment>
+              ),
+            }}
+            size="small" // Set the size to "small"
+          />
+        </FormControl>
+        <FormControl className="input-style-signup" sx={{ marginBottom: 2 }}>
+          <TextField
+            data-testid="confirmPassword"
+            type= "text"
+            label="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            fullWidth
+            margin="normal"
+            size="small" // Set the size to "small"
+          />
+        </FormControl>
+
+        <button
+          data-testid="submitButton"
+          onClick={handleSignup}
+          className="signup-button"
+        >
+          Submit
+        </button>
+
+        <p className="loginPara">
+          Already a user?{" "}
+          <Link data-testid="signinLink" id="signinLink" to="/user/login">
+            &nbsp; Login
+          </Link>
+        </p>
       </div>
     </div>
   );
