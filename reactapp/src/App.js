@@ -11,9 +11,10 @@ import AddTheme from "./components/Admin/AddTheme/AddTheme";
 import AddMenu from "./components/Admin/AddMenu/AddMenu";
 import Addons from "./components/Admin/AddOns/AddOns";
 import { UserProvider,UserContext } from "./UserContext";
-import PageNotFound from "/home/coder/project/workspace/reactapp/src/components/Customer/PageNotFound/PageNotFound.jsx";
+import PageNotFound from "./components/Customer/PageNotFound/PageNotFound.jsx";
 import EventDetailsPage from "./components/Customer/ViewBooking/EventDetailsPage";
-import EditEventPage from "./components/Customer/ViewBooking/EditEventPage";
+import EditEventPage from "./components/Customer/ViewBooking/EditEventPage";import FoodMenuPage from "./components/Customer/Food_menu/Foodmenu";
+
 
 function App() {
   const { appUser } = useContext(UserContext);
@@ -41,6 +42,7 @@ function App() {
             //<Route path="/user/editEvent/:eventId" element={<EditEventPage />} />
             <Route path="/event/:eventId/edit" element={<EditEventPage />} />
 
+            <Route path="/user/Foodmenu" element={<FoodMenuPage />} />
           </>
         )}
 
