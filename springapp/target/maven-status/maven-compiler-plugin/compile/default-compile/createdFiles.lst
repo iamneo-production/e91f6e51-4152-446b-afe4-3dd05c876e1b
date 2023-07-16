@@ -25,7 +25,6 @@ com/examly/springapp/models/AddOnModel$AddOnModelBuilder.class
 com/examly/springapp/email/EmailService.class
 com/examly/springapp/controller/AddOnController.class
 com/examly/springapp/email/EmailController.class
-com/examly/springapp/models/EventModel.class
 com/examly/springapp/repository/MenuModelRepository.class
 com/examly/springapp/controller/MenuController.class
 com/examly/springapp/repository/ThemeModelRepository.class
@@ -41,5 +40,4 @@ com/examly/springapp/security/securityconfig/SecurityConfig.class
 com/examly/springapp/email/EmailMOdel.class
 com/examly/springapp/repository/AddOnModelRepository.class
 com/examly/springapp/email/EmailServiceImpl.class
-com/examly/springapp/models/AddOnModel.class
 com/examly/springapp/security/securityconfig/AuthTokenFilter.class
