@@ -85,7 +85,7 @@
   .AddnewButton button {
     background-color: black;
     color: white;
-    padding: 10px 10px;
+    padding: 10px 20px;
     border-radius: 10px;
     cursor: pointer;
   }
