@@ -1,18 +1,26 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BaseUrl } from "../../../utils/authApi";
 import "./EventDetailsPage.css";
 import Navbaar from "../Navbaar/Navbaar";
+import UserContext from "../../../UserContext";
 
 const EventDetailsPage = () => {
+  const { appUser } = useContext(UserContext);
   const { eventId } = useParams();
   const navigate = useNavigate();
   const [eventDetails, setEventDetails] = useState(null);
-  const [cancelData, setcancelData] = useState({deletedEvent: "User cancelled the Event",}
-        
-  );
+  const [cancelData, setcancelData] = useState({deletedEvent: "User cancelled the Event",});
+
+  const jwtToken = appUser?.token;
+  const userId = appUser?.id;
+  console.log("token", jwtToken);
+  const headers = {
+    Authorization: `Bearer ${jwtToken}`,
+  };
+
   useEffect(() => {
     const fetchEventDetails = async () => {
       try {
