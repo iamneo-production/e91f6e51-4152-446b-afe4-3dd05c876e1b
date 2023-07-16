@@ -7,6 +7,7 @@ public interface EmailService {
 	// Method
 	// To send a simple email
 	String sendSimpleMail(EmailMOdel details);
+	// To send a HtMl email
 	String sendHtmlMail(EmailMOdel details);
 
 	// Method
