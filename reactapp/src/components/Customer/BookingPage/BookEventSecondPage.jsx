@@ -4,6 +4,7 @@ import Select from "react-select";
 import { BaseUrl } from "../../../utils/authApi";
 import UserContext from "../../../UserContext";
 import "./Booking.css";
+import Swal from "sweetalert2";
 
 import TextField from "@mui/material/TextField";
 
@@ -63,8 +64,13 @@ export default function BookEventSecondPage({ eventData, setEventData }) {
 
     try {
       const res = await axios.post(`${BaseUrl}/user/addEvent`, eD, { headers });
-      console.log(res.data);
       Swal.fire("Success", res.data, "success");
+      console.log(res.data);
+<<<<<<< HEAD
+      Swal.fire("Success", res.data, "success");
+=======
+      // alert(res.data);
+>>>>>>> 7b3575c07c9cc4e062ac3cb2b2909a30395d9cf0
     } catch (e) {}
   }
 

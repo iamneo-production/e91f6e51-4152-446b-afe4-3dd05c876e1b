@@ -119,6 +119,7 @@ public void addEvent(EventModel eventModel) {
         return eventModelRepository.findByEventId(eventId);
     }
 
+
     
     private String buildEmailContent(EventModel eventModel) {
         // Define the constant for table cell style
