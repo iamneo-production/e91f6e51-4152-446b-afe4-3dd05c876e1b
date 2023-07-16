@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Navbar.module.css';
 import { NavLink,useLocation } from 'react-router-dom';
-import LogoutIcon from '@mui/icons-material/Logout';
+// import LogoutIcon from '@mui/icons-material/Logout';
 
 const Navbar = () => {
   const location = useLocation();
@@ -35,7 +35,7 @@ const Navbar = () => {
         </NavLink>
       </div>
       <NavLink to="/user/login" className={styles.logout} activeClassName={styles.logout} onClick={handleLogout} >
-        Logout<LogoutIcon/>
+        Logout
         </NavLink>
       </div>
     
