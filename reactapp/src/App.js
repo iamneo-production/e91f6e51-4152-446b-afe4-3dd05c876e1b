@@ -13,10 +13,15 @@ import Addons from "./components/Admin/AddOns/AddOns";
 import { UserProvider,UserContext } from "./UserContext";
 import PageNotFound from "./components/Customer/PageNotFound/PageNotFound.jsx";
 import EventDetailsPage from "./components/Customer/ViewBooking/EventDetailsPage";
-import EditEventPage from "./components/Customer/ViewBooking/EditEventPage";import FoodMenuPage from "./components/Customer/Food_menu/Foodmenu";
+import EditEventPage from "./components/Customer/ViewBooking/EditEventPage";
+import FoodMenuPage from "./components/Customer/Food_menu/Foodmenu";
 
 
 function App() {
+  const { appUser } = useContext(UserContext);
+  const userRole = appUser?.roles;
+  console.log("appuserrole : ", userRole);
+  
   return (
     <div className="App">
       {/* <ThemeProvider theme={theme}> */}
@@ -59,4 +64,12 @@ function App() {
   );
 }
 
-export default App;
+function AppWrapper() {
+  return (
+    <UserProvider>
+      <App />
+    </UserProvider>
+  );
+}
+
+export default AppWrapper;
