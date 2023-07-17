@@ -273,9 +273,13 @@ export default function FoodMenu() {
           {editingRow && (
             <div className="custom-item-container">
               <div><h2 style={{ color: "#a921e4", textAlign: 'center' }}>Edit record</h2></div>
-              <input
+              <TextField
                 type="text"
                 name="foodMenuItems"
+                variant="outlined"
+                size="small"
+                label="Name"
+                placeholder="Enter name"
                 value={editingRow.foodMenuItems}
                 onChange={(e) =>
                   setEditingRow((prevRow) => ({
@@ -285,9 +289,13 @@ export default function FoodMenu() {
                 }
                 className="custom-input"
               />
-              <input
+              <TextField
                 type="text"
                 name="foodMenuCost"
+                variant="outlined"
+                size="small"
+                label="Price"
+                placeholder="Enter price"
                 value={editingRow.foodMenuCost}
                 onChange={(e) =>
                   setEditingRow((prevRow) => ({
@@ -297,9 +305,13 @@ export default function FoodMenu() {
                 }
                 className="custom-input"
               />
-              <input
+              <TextField
                 type="text"
                 name="foodMenuType"
+                variant="outlined"
+                size="small"
+                label="Category"
+                placeholder="Enter Category"
                 value={editingRow.foodMenuType}
                 onChange={(e) =>
                   setEditingRow((prevRow) => ({
@@ -309,9 +321,13 @@ export default function FoodMenu() {
                 }
                 className="custom-input"
               />
-              <input
+              <TextField
                 type="text"
                 name="imageUrl"
+                variant="outlined"
+                size="small"
+                label="Image-URL"
+                placeholder="Enter ImageURL"
                 value={editingRow.imageUrl}
                 onChange={(e) =>
                   setEditingRow((prevRow) => ({
