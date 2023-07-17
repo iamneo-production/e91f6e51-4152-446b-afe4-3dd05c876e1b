@@ -6,12 +6,21 @@
   background-size: cover;
   
 }
+.Booking-Navabar{
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+}
 .search-box {
+    position: sticky;
+    top: 0;
+    top: 80px;
     display: flex;
     align-items: center;
     padding: 16px;
     margin : 10px 10px;
-     width: 100%;
+    width: 100%;
   }
   
   .search_input {
@@ -88,7 +97,7 @@
   
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 20px;
     justify-content: space-between;
     align-items: center;
@@ -99,17 +108,19 @@
   
   @media (max-width: 768px) {
     .grid-container {
-      grid-template-columns: repeat(3, minmax(200px, 1fr));
+      grid-template-columns: repeat(1, 1fr);
       padding: 10px;
       max-width: 600px;
     }
   }
   
+  
+  
   .bday-card{
     background-color: white;
-    width: 280px;
+    width: 300px;
     margin-top: 20px;
-    border-radius: 15px;
+    border-radius: 5px;
     box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     box-sizing: border-box;
@@ -127,7 +138,7 @@
   .bday-card img {
     position: relative;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 0px;
     width:100%;
     max-height: 500px;
   }
@@ -277,12 +288,12 @@
 .modal-actions button {
   padding: 10px 20px;
   margin-left: 10px;
-  background-color: #007bff;
+  background-color: #ea31b9;
   color: #fff;
   border: none;
   cursor: pointer;
 }
 
 .modal-actions button:hover {
-  background-color: #0056b3;
+  background-color: #f78edb;
 }
