@@ -135,7 +135,7 @@ const EventDetailsPage = () => {
             </button>
           </div>:<div className="buttons-container">
             <button className="delete-button" disabled={true}>
-              Cancelled
+              You Cancelled this booking
             </button>
           </div>}
         </div>
