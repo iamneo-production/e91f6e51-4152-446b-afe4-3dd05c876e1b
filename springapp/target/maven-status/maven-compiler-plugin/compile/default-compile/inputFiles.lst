@@ -8,9 +8,9 @@
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/models/ThemeModel.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/AddOnController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/EventBookingController.java
-/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/email/EmailMOdel.java
-/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/models/AddOnModel.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/security/securityconfig/AuthTokenFilter.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/models/AddOnModel.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/email/EmailMOdel.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/models/LoginResponseModel.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/UserController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/RatingServices.java
