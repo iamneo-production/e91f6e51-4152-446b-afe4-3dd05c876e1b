@@ -7,6 +7,9 @@ import Navbar from "../Navbar/Navbar"
 import "./AddOn.css";
 import UserContext from '../../../UserContext'
 import { Card } from 'antd';
+import { FloatButton } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
+import TextField from '@mui/material/TextField';
 
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
@@ -128,49 +131,78 @@ export default function AddOn() {
   return (
     <div className="add-on-container">
       <Navbar />
-      <button onClick={openModal} className="add-item-button_addons">Add ons</button>
+      
       <Modal isOpen={isModalOpen}>
-        <h2>Add new Add-on</h2>
+        <div><h2 style={{ color: "#a921e4", textAlign: 'center' }}>Add new Add-on</h2></div>
         <div className="input-tags-container">
           <div>
-            <input
+            <TextField
               type="text"
-              placeholder="Name"
+              variant="outlined"
+              size="small"
+              label="Name"
+              placeholder="Enter Name"
               name="addOnName"
               value={addOnItem.addOnName}
               onChange={handleChange}
               className="input_field_addons"
+              data-testid="addOnName"
+              sx = {{
+                width: "100%",
+              }}
             />
           </div>
           
           <div>
-            <input
+            <TextField
               type="text"
-              placeholder="Description"
+              variant="outlined"
+              size="small"
+              label="Description"
+              placeholder="Enter Description"
               name="addOnDescription"
               value={addOnItem.addOnDescription}
               onChange={handleChange}
               className="input_field_addons"
+              data-testid="addAddOns"
+              sx = {{
+                width: "100%"
+              }}
             />
           </div>
           <div>
-            <input
+            <TextField
               type="text"
-              placeholder="Price"
+              variant="outlined"
+              size="small"
+              label="Price"
+              placeholder="Enter Price"
               name="addOnPrice"
               value={addOnItem.addOnPrice}
               onChange={handleChange}
               className="input_field_addons"
+              sx = {{
+                width: "100%",
+                mt: -1
+              }}
             />
           </div>
           <div>
-            <input
+            <TextField
               type="text"
-              placeholder="imgUrl"
+              variant="outlined"
+              size="small"
+              label="Image-URL"
+              placeholder="Enter imgUrl"
               name="imgUrlAddons"
               value={addOnItem.imgUrlAddons}
               onChange={handleChange}
               className="input_field_addons"
+              sx = {{
+                width: "100%",
+                mt: -1, mb: -1,
+                
+              }}
             />
           </div>
         </div>
@@ -190,9 +222,12 @@ export default function AddOn() {
           {editingRow && (
             <div className="custom-item-container">
               <div><h2 style={{ color: "#a921e4", textAlign: 'center' }}>Edit record</h2></div>
-              <input
+              <TextField
                 type="text"
                 name="addOnName"
+                variant="outlined"
+                size="small"
+                label="Name"
                 value={editingRow.addOnName}
                 onChange={(e) =>
                   setEditingRow((prevRow) => ({
@@ -202,9 +237,12 @@ export default function AddOn() {
                 }
                 className="custom-input"
               />
-              <input
+              <TextField
                 type="text"
                 name="addOnPrice"
+                variant="outlined"
+                size="small"
+                label="Price"
                 value={editingRow.addOnPrice}
                 onChange={(e) =>
                   setEditingRow((prevRow) => ({
@@ -214,9 +252,12 @@ export default function AddOn() {
                 }
                 className="custom-input"
               />
-              <input
+              <TextField
                 type="text"
                 name="addOnDescription"
+                variant="outlined"
+                size="small"
+                label="Description"
                 value={editingRow.addOnDescription}
                 onChange={(e) =>
                   setEditingRow((prevRow) => ({
@@ -226,9 +267,12 @@ export default function AddOn() {
                 }
                 className="custom-input"
               />
-              <input
+              <TextField
                 type="text"
                 name="imgUrlAddons"
+                variant="outlined"
+                size="small"
+                label="Image-URL"
                 value={editingRow.imgUrlAddons}
                 onChange={(e) =>
                   setEditingRow((prevRow) => ({
@@ -284,7 +328,8 @@ export default function AddOn() {
 
           )}
         </div>
-        </div>
+        <FloatButton onClick={openModal} icon={<PlusOutlined width={70}/>} tooltip={<div>Add AddOns</div>}/>
+     </div>
       
   );
 }

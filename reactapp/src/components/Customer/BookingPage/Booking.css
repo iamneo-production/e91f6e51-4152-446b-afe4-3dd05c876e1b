@@ -2,8 +2,14 @@
   background: linear-gradient(to bottom right, #8df6f6, #f5aacf, #ff69b4);
   background-repeat: no-repeat;
   background-size: cover;
+  
 }
-
+.booking-first-page-main-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+}
 .apply-form {
   display: flex;
   flex-direction: column;
