@@ -28,6 +28,7 @@ export default function Booking() {
   const themeimgUrl = location.state && location.state.themeimgUrl;
   const cost = location.state && location.state.cost;
   const themeName = location.state && location.state.themeName;
+  const themeId = location.state && location.state.themeId;
   console.log(eventData);
 
   const handleNextPage = (e) => {
@@ -93,6 +94,7 @@ export default function Booking() {
         eventImg: themeimgUrl,
         eventName: themeName,
         eventCost: cost,
+        themeId: themeId
       };
     });
   }
@@ -119,7 +121,9 @@ export default function Booking() {
 
   return (
     <div>
-      <Navbaar />
+      <div className="booking-first-page-main-navbar">
+         <Navbaar />
+      </div>
       <div className="main-container">
         <div className="apply-form">
           {currentPage === 1 && (

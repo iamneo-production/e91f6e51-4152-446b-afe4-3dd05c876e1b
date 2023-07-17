@@ -1,17 +1,26 @@
 .Homepage{
-  background: linear-gradient(to bottom right, #f5bceb, #fac6e0, #f4cde0);
+  background: linear-gradient(to bottom right, #8df6f6, #f5aacf, #ff69b4);
   background-repeat: no-repeat;
   min-height: 100vh;
   background-position: center;
   background-size: cover;
   
 }
+.Booking-Navabar{
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+}
 .search-box {
+    position: sticky;
+    top: 0;
+    top: 80px;
     display: flex;
     align-items: center;
     padding: 16px;
     margin : 10px 10px;
-     width: 100%;
+    width: 100%;
   }
   
   .search_input {
@@ -88,7 +97,7 @@
   
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 20px;
     justify-content: space-between;
     align-items: center;
@@ -99,17 +108,19 @@
   
   @media (max-width: 768px) {
     .grid-container {
-      grid-template-columns: repeat(3, minmax(200px, 1fr));
+      grid-template-columns: repeat(1, 1fr);
       padding: 10px;
       max-width: 600px;
     }
   }
   
+  
+  
   .bday-card{
     background-color: white;
-    width: 280px;
+    width: 300px;
     margin-top: 20px;
-    border-radius: 15px;
+    border-radius: 5px;
     box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     box-sizing: border-box;
@@ -127,7 +138,7 @@
   .bday-card img {
     position: relative;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 0px;
     width:100%;
     max-height: 500px;
   }
@@ -137,42 +148,152 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
-    padding:0 5px;
+    padding: 0 5px;
   }
   
   .event-name {
     text-align: center;
     margin-top: 10px;
     font-family: Georgia, 'Times New Roman', Times, serif;
-  
   }
   
-  /*Rating stars styles*/
+  /* Rating stars styles */
   
-  .checked {
-    color: orange;
-  }
-  
-  .rating-stars {
-    font-size: 20px;
-  }
-  
-  #rating-button{
-    background-color: transparent;
-    border: none;
-    outline: none;
+  .rating {
+    font-size: 24px;
     cursor: pointer;
   }
   
-  .on {
+  .gold-star {
     color: gold;
-    font-size: 24px;
-    cursor: pointer;
   }
   
-  .off {
+  .silver-star {
     color: silver;
-    font-size: 24px;
-    cursor: pointer;
-  } 
+  }
+  .half-star {
+    color: silver;
+    position: relative;
+    display: inline-block;
+  }
   
+  .half-star::before {
+    content: "\2605";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+    color: gold;
+    z-index: 1;
+  }
+  
+  .half-star::after {
+    content: "\2605";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+    color: silver;
+    z-index: 0;
+  }
+  /* Add this CSS code to your styles */
+.link-wrapper {
+  text-decoration: none;
+  color: inherit;
+}
+
+.link-wrapper:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 200%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.modal-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info {
+  font-size: 20px;
+}
+
+.modal-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+.modal-details h1{
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.modal-details p {
+  margin-bottom: 10px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.modal-details .imgname {
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: #3d3d3d;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.price {
+  min-height: 60px;
+  text-align: left;
+  box-sizing: border-box;
+  font-size: 48px;
+  color: #222;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.modal-actions button {
+  padding: 10px 20px;
+  margin-left: 10px;
+  background-color: #ea31b9;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-actions button:hover {
+  background-color: #f78edb;
+}

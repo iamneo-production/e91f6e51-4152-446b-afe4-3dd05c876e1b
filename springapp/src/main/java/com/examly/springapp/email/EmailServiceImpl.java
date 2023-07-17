@@ -12,43 +12,52 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-
 @Service
-
 public class EmailServiceImpl implements EmailService {
 
-	@Autowired private JavaMailSender javaMailSender;
+    @Autowired
+    private JavaMailSender javaMailSender;
 
-	@Value("${spring.mail.username}") private String sender;
+    @Value("${spring.mail.username}")
+    private String sender;
 
-	// Method 1
-	// To send a simple email
-	public String sendSimpleMail(EmailMOdel details)
-	{
+    // Method to send an email with HTML content
+    public String sendHtmlMail(EmailMOdel details) {
+        try {
+            MimeMessage message = javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-		// Try block to check for exceptions
-		try {
+            helper.setFrom(sender);
+            helper.setTo(details.getRecipient());
+            helper.setSubject(details.getSubject());
+            helper.setText(details.getMsgBody(), true); // Set the HTML content to true
 
-			// Creating a simple mail message
-			SimpleMailMessage mailMessage
-				= new SimpleMailMessage();
+            javaMailSender.send(message);
+            return "Mail Sent Successfully...";
+        } catch (Exception e) {
+            return "Error while Sending Mail";
+        }
+    }
 
-			// Setting up necessary details
-			mailMessage.setFrom(sender);
-			mailMessage.setTo(details.getRecipient());
-			mailMessage.setText(details.getMsgBody());
-			mailMessage.setSubject(details.getSubject());
+    // Method 1
+    // To send a simple email
+    public String sendSimpleMail(EmailMOdel details) {
+        try {
+            SimpleMailMessage mailMessage = new SimpleMailMessage();
 
-			// Sending the mail
-			javaMailSender.send(mailMessage);
-			return "Mail Sent Successfully...";
-		}
+            mailMessage.setFrom(sender);
+            mailMessage.setTo(details.getRecipient());
+            mailMessage.setText(details.getMsgBody());
+            mailMessage.setSubject(details.getSubject());
 
-		// Catch block to handle the exceptions
-		catch (Exception e) {
-			return "Error while Sending Mail";
-		}
-	}
+            javaMailSender.send(mailMessage);
+            return "Mail Sent Successfully...";
+        } catch (Exception e) {
+            return "Error while Sending Mail";
+        }
+    }
+
+
 
 	// Method 2
 	// To send an email with attachment
@@ -73,9 +82,7 @@ public class EmailServiceImpl implements EmailService {
 				details.getSubject());
 
 			// Adding the attachment
-			FileSystemResource file
-				= new FileSystemResource(
-					new File(details.getAttachment()));
+			FileSystemResource file= new FileSystemResource(new File(details.getAttachment()));
 
 			mimeMessageHelper.addAttachment(
 				file.getFilename(), file);
