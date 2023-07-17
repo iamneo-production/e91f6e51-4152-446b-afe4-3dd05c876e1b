@@ -1,53 +1,54 @@
-import React, { useState, useEffect,useContext } from "react";
-import {Link} from "react-router-dom"
+import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import "./HomePage.css";
 import { BASE_URL } from "../../../utils/userApi";
-import axios from 'axios'
+import axios from 'axios';
 import Rating from "./Rating";
 import Modal from "react-modal";
 import EventCard from "./EventCard.jsx";
 import Navbaar from "../Navbaar/Navbaar";
-import UserContext from '../../../UserContext'
+import UserContext from '../../../UserContext';
 
 export default function HomePage() {
   const [data, setData] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [sortBy, setSortBy] = useState("");
-  const {appUser,setAppUser} =useContext(UserContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { appUser, setAppUser } = useContext(UserContext);
+
   const jwtToken = appUser?.token;
-  console.log("token",jwtToken);
+  console.log("token", jwtToken);
   const headers = {
-    Authorization: `Bearer ${jwtToken}` ,
+    Authorization: `Bearer ${jwtToken}`,
   };
 
   function openModal() {
     setIsModalOpen(true);
-  } 
+  }
+
   //---fetching events----//
 
   useEffect(() => {
-
     async function getAllThemes() {
       try {
-        const res = await axios.get(`${BASE_URL}/admin/theme`,{headers});
-        setData(res.data)
-        console.log("res",res);
+        const res = await axios.get(`${BASE_URL}/admin/theme`, { headers });
+        setData(res.data);
+        console.log("res", res);
       } catch (e) {
         console.log(e);
       }
     }
     getAllThemes();
-
-  }, [])
-
+  }, []);
 
   function handleSearch(e) {
     setSearchText(e.target.value);
-}
-//- ---------    UPDATE RATING ------//
+  }
+
+  //- ---------    UPDATE RATING ------//
+
   function handleRating(id, rating) {
-    console.log(id, rating)
+    console.log(id, rating);
 
     const updatedData = data.map((event) => {
       if (event.themeId === id) {
@@ -56,7 +57,7 @@ export default function HomePage() {
         return event;
       }
     });
-                //------- Rating --------//
+    //------- Rating --------//
     // axios.patch(`${BASE_URL}/user/getAllThemes/${id}`, updatedData.find((event) => event.themeid === id))
     // .then((res) => {
     //   console.log("updated", res.data.id, res.data);
@@ -64,14 +65,13 @@ export default function HomePage() {
     // })
     // .catch((e) => {
     //   console.log(e);
-    // })
-
-   }
+    // });
+  }
 
   const filterEvents = data.filter((singleEvent) => {
     return singleEvent.themeName.toLowerCase().includes(searchText.toLowerCase());
   });
-/*Dropdown filter*/
+
   const sortEvents = filterEvents.sort((a, b) => {
     if (sortBy === "nameAsc") {
       return a.themeName.localeCompare(b.themeName);
@@ -87,52 +87,50 @@ export default function HomePage() {
   });
 
   const events = sortEvents.map((singleEvent) => {
-    return (
-  
-      <EventCard singleEvent={singleEvent} handleRating={handleRating} key={singleEvent.themeId} />
-   
-    );
+    return <EventCard singleEvent={singleEvent} handleRating={handleRating} key={singleEvent.themeId} />;
   });
 
   return (
-    
-    <div  className="blue-background" >
-       <Navbaar />
-      {data.length === 0
-        ? <div>loading... please check connection </div>
-        : (
-          <div className="Homepage">
-            <Modal isOpen={isModalOpen} >
-              <div>Modal is opend</div>
-              <div><button onClick={()=>{ setIsModalOpen(false) }} >close</button></div>
-            </Modal>
-            <div className="wrap"> 
-           { /*Add SearchBar*/}
-             <div className="search-box">
-              <input className="search_input"
+    <div className="blue-background">
+      <div className="Booking-Navabar"><Navbaar /></div>
+      {data.length === 0 ? (
+        <div>loading... please check connection </div>
+      ) : (
+        <div className="Homepage">
+          <Modal isOpen={isModalOpen}>
+            <div>Modal is opened</div>
+            <div>
+              <button onClick={() => setIsModalOpen(false)}>close</button>
+            </div>
+          </Modal>
+          <div className="wrap">
+            {/* Add SearchBar */}
+            <div className="search-box">
+              <input
+                className="search_input"
                 type="text"
                 placeholder="Type here to Search"
                 name="searchText"
                 value={searchText}
                 onChange={handleSearch}
               />
-              <button type="submit" data-testid="searchEventButton" id="searchEventButton"></button> 
-              </div>
-              {/* Add sort by dropdown filter  */}
-               <div className="filter-container">
-                <select id="sortSelect" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                  <option value="">None</option>
-                  <option value="nameAsc">A-Z</option>
-                  <option value="nameDesc">Z-A</option>
-                  <option value="priceAsc"> Low to High</option>
-                  <option value="priceDesc"> High to Low</option>
-                </select>
-              </div>
-              </div>
-          
-            <div className="grid-container">{events}</div>
+              <button type="submit" data-testid="searchEventButton" id="searchEventButton"></button>
+            </div>
+            {/* Add sort by dropdown filter */}
+            <div className="filter-container">
+              <select id="sortSelect" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+                <option value="">None</option>
+                <option value="nameAsc">A-Z</option>
+                <option value="nameDesc">Z-A</option>
+                <option value="priceAsc">Low to High</option>
+                <option value="priceDesc">High to Low</option>
+              </select>
+            </div>
           </div>
-        )}
+
+          <div className="grid-container">{events}</div>
+        </div>
+      )}
     </div>
   );
 }
