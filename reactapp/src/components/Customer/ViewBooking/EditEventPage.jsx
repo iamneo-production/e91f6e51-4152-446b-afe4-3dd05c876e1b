@@ -71,99 +71,107 @@ const EditEventPage = () => {
       {eventDetails ? (
         <div className="edit-event-page">
           <h2>Edit Event</h2>
-          <center>
           <form className="edit-event-form" onSubmit={handleSubmit}>
-            <label>
-              Event Name:
-              <input
-                type="text"
-                name="eventName"
-                value={formData.eventName}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Event Date:
-              <input
-                type="date"
-                name="eventDate"
-                value={formData.eventDate}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Event Time:
-              <input
-                type="time"
-                name="eventTime"
-                value={formData.eventTime}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Number of people:
-              <input
-                type="text"
-                name="noOfPeople"
-                value={formData.noOfPeople}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Event Address:
-              <input
-                type="text"
-                name="eventAddress"
-                value={formData.eventAddress}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Applicant Name:
-              <input
-                type="text"
-                name="applicantName"
-                value={formData.applicantName}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Applicant Email:
-              <input
-                type="email"
-                name="applicantEmail"
-                value={formData.applicantEmail}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Applicant Mobile:
-              <input
-                type="text"
-                name="applicantMobile"
-                value={formData.applicantMobile}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Applicant Address:
-              <input
-                type="text"
-                name="applicantAddress"
-                value={formData.applicantAddress}
-                onChange={handleInputChange}
-              />
-            </label>
-            {/* render other form inputs for additional event fields */}
+            <div className="form-group">
+              <label>
+                Event Name:
+                <input
+                  type="text"
+                  name="eventName"
+                  value={formData.eventName}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <label>
+                Event Date:
+                <input
+                  type="date"
+                  name="eventDate"
+                  value={formData.eventDate}
+                  onChange={handleInputChange}
+                />
+              </label>
+            </div>
+            <div className="form-group">
+              <label>
+                Event Time:
+                <input
+                  type="time"
+                  name="eventTime"
+                  value={formData.eventTime}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <label>
+                Number of people:
+                <input
+                  type="text"
+                  name="noOfPeople"
+                  value={formData.noOfPeople}
+                  onChange={handleInputChange}
+                />
+              </label>
+            </div>
+            <div className="form-group">
+              <label>
+                Event Address:
+                <input
+                  type="text"
+                  name="eventAddress"
+                  value={formData.eventAddress}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <label>
+                Applicant Name:
+                <input
+                  type="text"
+                  name="applicantName"
+                  value={formData.applicantName}
+                  onChange={handleInputChange}
+                />
+              </label>
+            </div>
+            <div className="form-group">
+              <label>
+                Applicant Email:
+                <input
+                  type="email"
+                  name="applicantEmail"
+                  value={formData.applicantEmail}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <label>
+                Applicant Mobile:
+                <input
+                  type="text"
+                  name="applicantMobile"
+                  value={formData.applicantMobile}
+                  onChange={handleInputChange}
+                />
+              </label>
+            </div>
+            <div className="form-group">
+              <label>
+                Applicant Address:
+                <input
+                  type="text"
+                  name="applicantAddress"
+                  value={formData.applicantAddress}
+                  onChange={handleInputChange}
+                />
+              </label>
+              {/* render other form inputs for additional event fields */}
+            </div>
             <button type="submit">Save Changes</button>
           </form>
-          </center>
         </div>
       ) : (
         <div>Loading event details...</div>
       )}
     </div>
-  );  
+  );
 };
 
 export default EditEventPage;
