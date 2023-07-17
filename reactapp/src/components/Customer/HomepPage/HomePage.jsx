@@ -92,7 +92,7 @@ export default function HomePage() {
 
   return (
     <div className="blue-background">
-      <Navbaar />
+      <div className="Booking-Navabar"><Navbaar /></div>
       {data.length === 0 ? (
         <div>loading... please check connection </div>
       ) : (
