@@ -71,6 +71,7 @@ const EditEventPage = () => {
       {eventDetails ? (
         <div className="edit-event-page">
           <h2>Edit Event</h2>
+          <center>
           <form className="edit-event-form" onSubmit={handleSubmit}>
             <label>
               Event Name:
@@ -156,6 +157,7 @@ const EditEventPage = () => {
             {/* render other form inputs for additional event fields */}
             <button type="submit">Save Changes</button>
           </form>
+          </center>
         </div>
       ) : (
         <div>Loading event details...</div>
