@@ -42,7 +42,7 @@ public void addEvent(EventModel eventModel) {
             try {
                 emailService.sendHtmlMail(emailDetails);
             } catch (Exception e) {
-
+                
             }
         });
     }
