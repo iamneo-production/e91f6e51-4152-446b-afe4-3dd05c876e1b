@@ -13,8 +13,7 @@ import Addons from "./components/Admin/AddOns/AddOns";
 import { UserProvider,UserContext } from "./UserContext";
 import PageNotFound from "./components/Customer/PageNotFound/PageNotFound.jsx";
 import EventDetailsPage from "./components/Customer/ViewBooking/EventDetailsPage";
-import EditEventPage from "./components/Customer/ViewBooking/EditEventPage";
-import FoodMenuPage from "./components/Customer/Food_menu/Foodmenu";
+import EditEventPage from "./components/Customer/ViewBooking/EditEventPage";import FoodMenuPage from "./components/Customer/Food_menu/Foodmenu";
 
 
 function App() {
