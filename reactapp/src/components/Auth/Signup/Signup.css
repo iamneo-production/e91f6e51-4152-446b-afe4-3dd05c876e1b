@@ -1,106 +1,84 @@
-/* Signup.css */
-
-/* Background image */
-.bg-container {
-  background-image: url("https://www.whoa.in/download/most-popular-hd-natural-white-flower-tree-images-with-light-background-tree-wallpaper-download");
-  background-repeat: no-repeat;
+.register-main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  background: linear-gradient(to bottom right, #8df6f6, #f5aacf, #ff69b4);
   background-size: cover;
-  background-position: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* Navbar */
-.navbar-register {
-  width: 900px;
-  background-color: rgba(0, 0, 0, 0.6);
-  margin: auto;
-  color: #ffffff;
-  padding: 10px 0px;
-  text-align: center;
-  border-radius: 15px 15px 0px 0px;
-  margin-top: 70px;
-  font-weight: bold;
-}
-
-/* Form container */
-.register-main {
-  background-color: rgba(0, 0, 0, 0.5);
-  margin: auto;
-  width: 900px;
+  min-height: 100vh;
 }
 
 .register-form {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  height: fit-content;
+  margin: 0 auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Input fields */
-.input-style-signup {
-  position: relative;
-  margin-bottom: 12px;
-  padding: 13px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* Select box */
-.input-style-signup-select {
-  position: relative;
-  margin-bottom: 12px;
-  padding:13px;
-  width: 100%;
-  box-sizing: border-box;
-  border-radius: 11px;
-  font-weight: bold;
-}
-
-/* Submit button */
-.signup-button {
-  background-color: #3BAF9F;
-  color: #ffffff;
-  border: none;
-  padding: 10px;
-  width: 100%;
-  cursor: pointer;
+.register-heading {
   text-align: center;
+  margin-bottom: 20px;
 }
 
-.signup-button:hover {
-  background-color: #45a049;
+.register-heading {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'Alegreya', serif;
+  /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
+  margin-bottom: 40px;
+  background: linear-gradient(to bottom right, #1aecec,  #f50d81);
+  -webkit-background-clip: text; /* For Safari */
+  -webkit-text-fill-color: transparent; /* For Safari */
+  background-clip: text;
 }
 
-/* Login paragraph */
-.loginPara {
-  margin-top: 20px;
+.input-style-signup,
+.input-style-signup-select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 30px;
   font-size: 14px;
-  color: #ffffff;
 }
 
-.loginPara a {
-  color: #ffffff;
+.loginPara {
+  margin-top: 10px;
+  text-align: center;
+  color: #555;
+}
+
+#signinLink {
+  color: #4caf50;
   text-decoration: none;
 }
 
-.loginPara a:hover {
-  text-decoration: underline;
+.signup-button {
+  background-color: #f417b5; /* Set the background color */
+  color: white; /* Set the text color */
+  font-size: 16px; /* Set the font size */
+  padding: 10px; /* Add left padding */
+ 
+  width: 100%; /* Set width to 100% */
+  border: none; /* Remove the border */
+  border-radius: 4px; /* Add border radius */
+  cursor: pointer; /* Add a pointer cursor */
+  transition: background-color 0.3s ease; /* Add transition effect */
+  margin-top: 18px;
 }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
-  .navbar-register {
-    width: 90%;
-  }
+.signup-button:hover {
+  background-color: #d71ec2; /* Change the background color on hover */
+}
 
-  .register-main {
-    width: 90%;
-  }
-
-  .input-style-signup,
-  .input-style-signup-select,
-  .signup-button {
-    width: 100%;
-  }
+.signup-button:disabled {
+  background-color: gray; /* Change the background color when the button is disabled */
+  cursor: not-allowed; /* Change the cursor when the button is disabled */
 }
