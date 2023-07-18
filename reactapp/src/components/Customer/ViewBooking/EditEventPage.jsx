@@ -64,7 +64,7 @@ const EditEventPage = () => {
   };
 
   return (
-    <div>
+    <div className="main-container-editevent">
       <div className="viewbooking-main-navbaar">
         <Navbaar />
       </div>
