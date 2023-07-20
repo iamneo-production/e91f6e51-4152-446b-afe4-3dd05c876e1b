@@ -5,3 +5,5 @@ target
 .vscode/
 react
 puppeteer
+puppeteer/
+target/
