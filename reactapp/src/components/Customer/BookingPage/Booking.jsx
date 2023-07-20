@@ -1,4 +1,4 @@
-import React , { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import BookEventSecondPage from "./BookEventSecondPage";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -31,19 +31,21 @@ export default function Booking() {
   const themeId = location.state && location.state.themeId;
   console.log(eventData);
 
+  const requiredFields = [
+    "applicantName",
+    "applicantAddress",
+    "applicantMobile",
+    "applicantEmail",
+    "eventAddress",
+    "eventDate",
+    "eventTime",
+    "noOfPeople",
+  ];
+
   const handleNextPage = (e) => {
     e.preventDefault();
-    const requiredFields = [
-      "applicantName",
-      "applicantAddress",
-      "applicantMobile",
-      "applicantEmail",
-      "eventAddress",
-      "eventDate",
-      "eventTime",
-      "noOfPeople",
-    ];
-
+    
+    // Check if any required field is empty
     const emptyFields = requiredFields.filter((field) => {
       return isFieldEmpty(field);
     });
@@ -122,7 +124,7 @@ export default function Booking() {
   return (
     <div>
       <div className="booking-first-page-main-navbar">
-         <Navbaar />
+        <Navbaar />
       </div>
       <div className="main-container">
         <div className="apply-form">
@@ -156,7 +158,7 @@ export default function Booking() {
                 className={getInputClassName("applicantAddress")}
                 type="text"
                 name="applicantAddress"
-                id="applicantAddres"
+                id="applicantAddress"
                 label="Enter Applicant Address"
                 value={eventData.applicantAddress || ""}
                 onChange={handleChange}
@@ -182,6 +184,7 @@ export default function Booking() {
                 label="Enter Applicant Email*"
                 value={eventData.applicantEmail || ""}
                 onChange={handleChange}
+                required
               />
 
               <TextField
@@ -192,6 +195,7 @@ export default function Booking() {
                 label="Enter Event Address*"
                 value={eventData.eventAddress || ""}
                 onChange={handleChange}
+                required
               />
 
               <TextField
@@ -200,6 +204,7 @@ export default function Booking() {
                 name="eventDate"
                 value={eventData.eventDate || ""}
                 onChange={handleChange}
+                required
               />
 
               <TextField
@@ -209,6 +214,7 @@ export default function Booking() {
                 id="enterAmount"
                 value={eventData.eventTime || ""}
                 onChange={handleChange}
+                required
               />
 
               <TextField
@@ -219,6 +225,7 @@ export default function Booking() {
                 label="Enter Number of People*"
                 value={eventData.noOfPeople || ""}
                 onChange={handleChange}
+                required
               />
             </form>
           )}
