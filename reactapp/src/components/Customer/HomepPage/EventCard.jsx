@@ -13,7 +13,8 @@ export default function EventCard({ singleEvent, handleRating }) {
   return (
     <div className="bday-card" >
 
-     <div onClick={toggleModal}><img  src={singleEvent.themeimgUrl} alt="image" />
+     <div onClick={toggleModal}>
+      <img  src={singleEvent.themeimgUrl} alt="image" />
 
       <h2 className="event-name">{singleEvent.themeName}</h2>
       <div className="place-rating-container">
