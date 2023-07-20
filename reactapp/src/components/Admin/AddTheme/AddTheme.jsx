@@ -7,8 +7,9 @@ import UserContext from "../../../UserContext";
 import { useNavigate } from "react-router-dom";
 import { EditOutlined, DeleteOutlined  } from '@ant-design/icons';
 import { Card } from 'antd';
-const { Meta } = Card;
+import TextField from "@mui/material/TextField";
 
+const { Meta } = Card;
 const AddTheme = () => {
   const { appUser, setAppUserl } = useContext(UserContext);
   const themeName = useRef();
@@ -103,19 +104,24 @@ const AddTheme = () => {
         <div className={styles.container}>
           <div className={styles.theme_form}>
             <div className={styles.form}>
-              <input
+            <TextField
                 type="text"
-                placeholder="Enter Theme Name"
+                label="Enter Theme Name"
                 ref={themeName}
               />
-              <input type="text" placeholder="Enter Image URL" ref={imageUrl} />
-              <input
+              <TextField type="text" label="Enter Image URL" ref={imageUrl} />
+              <TextField
                 type="text"
-                placeholder="Enter Photographer Details"
+                label="Enter Photographer Details"
                 ref={photographerDetails}
               />
+               <TextField
+                type="text"
+                label="Location"
+                
+              />
               <div className={styles.add_btn_container}>
-                <input
+                <TextField
                   type="submit"
                   value="Add Theme"
                   className={styles.add_btn}
@@ -124,24 +130,25 @@ const AddTheme = () => {
               </div>
             </div>
             <div className={styles.form}>
-              <input
+              <TextField
                 type="text"
-                placeholder="Enter Videographer Details"
+                label="Enter Videographer Details"
                 ref={videographerDetails}
               />
-              <input
+              <TextField
                 type="text"
-                placeholder="Enter Theme Return Gift"
+                label="Enter Theme Return Gift"
                 ref={returnGift}
               />
-              <input
+              <TextField
                 type="text"
-                placeholder="Enter Theme Cost"
+                label="Enter Theme Cost"
                 ref={themeCost}
               />
-              <textarea
+              
+              <TextField
                 type="text"
-                placeholder="Enter Theme Description"
+                label="Enter Theme Description"
                 cols={20}
                 rows={10}
                 ref={description}
