@@ -1,12 +1,15 @@
-import { React, useRef, useState, useContext, useEffect } from "react";
-import Navbar from "../Navbar/Navbar"
+import React, { useRef, useState, useContext, useEffect } from "react";
+import Navbar from "../Navbar/Navbar";
 import styles from "./AddTheme.module.css";
 import { BaseUrl } from "../../../utils/authApi";
 import axios from "axios";
 import UserContext from "../../../UserContext";
 import { useNavigate } from "react-router-dom";
-import { EditOutlined, DeleteOutlined  } from '@ant-design/icons';
-import { Card } from 'antd';
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import { Card } from "antd";
+import TextField from "@mui/material/TextField";
+import Swal from "sweetalert2";
+
 const { Meta } = Card;
 
 const AddTheme = () => {
@@ -29,6 +32,31 @@ const AddTheme = () => {
 
   async function handleSubmit() {
     console.log("i am handle submit");
+  
+    // Check if any required field is empty
+    const requiredFields = [
+      themeName.current.value,
+      imageUrl.current.value,
+      photographerDetails.current.value,
+      videographerDetails.current.value,
+      returnGift.current.value,
+      themeCost.current.value,
+      description.current.value,
+    ];
+  
+    const emptyFields = requiredFields.filter((field) => !field || field.trim() === "");
+  
+    if (emptyFields.length > 0) {
+      const message = `Please fill all the fields before proceeding further`;
+      Swal.fire("Error", message, "error");
+      emptyFields.forEach((field) => {
+        const fieldElement = document.getElementById(field);
+        if (fieldElement) {
+          fieldElement.classList.add("error");
+        }
+      });
+      return;
+    }
     const themeModel = {
       themeName: themeName.current.value,
       themeimgUrl: imageUrl.current.value,
@@ -38,15 +66,14 @@ const AddTheme = () => {
       cost: themeCost.current.value,
       themeDescription: description.current.value,
     };
-
+  
     try {
-      const res = await axios.post(`${BaseUrl}/admin/addTheme`,themeModel,{ headers });
+      const res = await axios.post(`${BaseUrl}/admin/addTheme`, themeModel, { headers });
       console.log("return from backend", res.data);
-      alert(res.data);
-
+      Swal.fire("Success", res.data, "success");
       // Refresh the data after adding the theme
       getAllThemes();
-
+  
       // Reset the form fields
       themeName.current.value = "";
       imageUrl.current.value = "";
@@ -57,8 +84,12 @@ const AddTheme = () => {
       description.current.value = "";
     } catch (e) {
       console.log(e.message);
+      Swal.fire("Error", "An error occurred while submitting the form.", "error");
     }
-  }
+  };
+
+     
+  
 
   const getAllThemes = async () => {
     try {
@@ -103,19 +134,24 @@ const AddTheme = () => {
         <div className={styles.container}>
           <div className={styles.theme_form}>
             <div className={styles.form}>
-              <input
+            <TextField
                 type="text"
-                placeholder="Enter Theme Name"
+                label="Enter Theme Name"
                 ref={themeName}
               />
-              <input type="text" placeholder="Enter Image URL" ref={imageUrl} />
-              <input
+              <TextField type="text" label="Enter Image URL" ref={imageUrl} />
+              <TextField
                 type="text"
-                placeholder="Enter Photographer Details"
+                label="Enter Photographer Details"
                 ref={photographerDetails}
               />
+               <TextField
+                type="text"
+                label="Location"
+                
+              />
               <div className={styles.add_btn_container}>
-                <input
+                <TextField
                   type="submit"
                   value="Add Theme"
                   className={styles.add_btn}
@@ -124,24 +160,25 @@ const AddTheme = () => {
               </div>
             </div>
             <div className={styles.form}>
-              <input
+              <TextField
                 type="text"
-                placeholder="Enter Videographer Details"
+                label="Enter Videographer Details"
                 ref={videographerDetails}
               />
-              <input
+              <TextField
                 type="text"
-                placeholder="Enter Theme Return Gift"
+                label="Enter Theme Return Gift"
                 ref={returnGift}
               />
-              <input
+              <TextField
                 type="text"
-                placeholder="Enter Theme Cost"
+                label="Enter Theme Cost"
                 ref={themeCost}
               />
-              <textarea
+              
+              <TextField
                 type="text"
-                placeholder="Enter Theme Description"
+                label="Enter Theme Description"
                 cols={20}
                 rows={10}
                 ref={description}
