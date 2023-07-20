@@ -82,9 +82,7 @@ public class EmailServiceImpl implements EmailService {
 				details.getSubject());
 
 			// Adding the attachment
-			FileSystemResource file
-				= new FileSystemResource(
-					new File(details.getAttachment()));
+			FileSystemResource file= new FileSystemResource(new File(details.getAttachment()));
 
 			mimeMessageHelper.addAttachment(
 				file.getFilename(), file);

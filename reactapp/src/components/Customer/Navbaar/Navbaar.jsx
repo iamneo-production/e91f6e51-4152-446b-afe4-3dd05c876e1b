@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import '/home/coder/project/workspace/reactapp/src/components/Customer/Navbaar/Navbaar.css'; // Import the CSS file
+import './Navbaar.css'; // Import the CSS file
 
 
 function Navbaar() {
