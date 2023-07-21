@@ -7,6 +7,7 @@ import UserContext from "../../../UserContext";
 import { useNavigate } from "react-router-dom";
 import { EditOutlined, DeleteOutlined  } from '@ant-design/icons';
 import { Card } from 'antd';
+import Modal from "react-modal";
 const { Meta } = Card;
 
 const AddTheme = () => {
@@ -38,7 +39,7 @@ const AddTheme = () => {
       cost: themeCost.current.value,
       themeDescription: description.current.value,
     };
-
+    console.log("data sent to backend",themeModel)
     try {
       const res = await axios.post(`${BaseUrl}/admin/addTheme`,themeModel,{ headers });
       console.log("return from backend", res.data);
