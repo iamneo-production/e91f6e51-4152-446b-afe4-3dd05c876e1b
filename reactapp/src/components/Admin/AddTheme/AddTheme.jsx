@@ -5,11 +5,11 @@ import { BaseUrl } from "../../../utils/authApi";
 import axios from "axios";
 import UserContext from "../../../UserContext";
 import { useNavigate } from "react-router-dom";
+
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { Card } from "antd";
 import TextField from "@mui/material/TextField";
 import Swal from "sweetalert2";
-
 const { Meta } = Card;
 
 const AddTheme = () => {
@@ -66,7 +66,9 @@ const AddTheme = () => {
       cost: themeCost.current.value,
       themeDescription: description.current.value,
     };
-  
+
+    console.log("data sent to backend",themeModel)
+
     try {
       const res = await axios.post(`${BaseUrl}/admin/addTheme`, themeModel, { headers });
       console.log("return from backend", res.data);
