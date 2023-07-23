@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import BookEventSecondPage from "./BookEventSecondPage";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -14,9 +14,9 @@ export default function Booking() {
   const { appUser } = useContext(UserContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [eventData, setEventData] = useState({});
+  const [animationComplete, setAnimationComplete] = useState(false);
 
   const jwtToken = appUser?.token;
-  console.log("token", jwtToken);
   const headers = {
     Authorization: `Bearer ${jwtToken}`,
   };
@@ -29,7 +29,6 @@ export default function Booking() {
   const cost = location.state && location.state.cost;
   const themeName = location.state && location.state.themeName;
   const themeId = location.state && location.state.themeId;
-  console.log(eventData);
 
   const requiredFields = [
     "applicantName",
@@ -44,7 +43,7 @@ export default function Booking() {
 
   const handleNextPage = (e) => {
     e.preventDefault();
-    
+
     // Check if any required field is empty
     const emptyFields = requiredFields.filter((field) => {
       return isFieldEmpty(field);
@@ -96,7 +95,7 @@ export default function Booking() {
         eventImg: themeimgUrl,
         eventName: themeName,
         eventCost: cost,
-        themeId: themeId
+        themeId: themeId,
       };
     });
   }
@@ -121,6 +120,15 @@ export default function Booking() {
     return isFieldEmpty(fieldName) ? "input-form error" : "input-form";
   };
 
+  useEffect(() => {
+    // Set a delay to mark the animation as complete
+    const timer = setTimeout(() => {
+      setAnimationComplete(true);
+    }, 3500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div>
       <div className="booking-first-page-main-navbar">
@@ -128,20 +136,28 @@ export default function Booking() {
       </div>
       <div className="main-container">
         <div className="apply-form">
-          {currentPage === 1 && (
-            <form className="form-container">
-              <TextField
-                data-testid="enterName"
-                id="enterName"
-                className={`input-form ${getInputClassName("eventName")}`}
-                type="text"
-                value={themeName}
-                name="eventName"
-                label="Enter Event Name"
-                readOnly
-                style={{ fontWeight: "bold" }}
-                onChange={handleChange}
-              />
+          <div className={`theme-card-container ${animationComplete ? "fade-out" : ""}`}>
+            {!animationComplete && <img className="theme-card-image" src={themeimgUrl} alt="Selected Theme" />}
+          </div>
+
+          {animationComplete && (
+            <>
+              {currentPage === 1 && (
+                <form className="form-container">
+                  <TextField
+                    data-testid="enterName"
+                    id="enterName"
+                    className={`input-form ${getInputClassName("eventName")}`}
+                    type="text"
+                    value={themeName}
+                    name="eventName"
+                    label="Enter Event Name"
+                    readOnly
+                    style={{ fontWeight: "bold" }}
+                    onChange={handleChange}
+                  />
+                
+
 
               <TextField
                 className={getInputClassName("applicantName")}
@@ -181,7 +197,7 @@ export default function Booking() {
                 type="text"
                 name="applicantEmail"
                 id="applicantEmail"
-                label="Enter Applicant Email*"
+                label="Enter Applicant Email"
                 value={eventData.applicantEmail || ""}
                 onChange={handleChange}
                 required
@@ -192,7 +208,7 @@ export default function Booking() {
                 type="text"
                 name="eventAddress"
                 id="enterPanNo"
-                label="Enter Event Address*"
+                label="Enter Event Address"
                 value={eventData.eventAddress || ""}
                 onChange={handleChange}
                 required
@@ -222,29 +238,34 @@ export default function Booking() {
                 className={getInputClassName("noOfPeople")}
                 name="noOfPeople"
                 id="noOfPeople"
-                label="Enter Number of People*"
+                label="Enter Number of People"
                 value={eventData.noOfPeople || ""}
                 onChange={handleChange}
                 required
               />
-            </form>
-          )}
-          {currentPage === 2 && (
-            <BookEventSecondPage handleSubmit={handleSubmit} eventData={eventData} setEventData={setEventData} />
-          )}
+             
+            
+             </form>
+              )}
 
-          <div className="page-buttons">
-            {currentPage > 1 && (
-              <button className="page-button previous-button" onClick={handlePreviousPage}>
-                Previous
-              </button>
-            )}
-            {currentPage < 2 && (
-              <button className="page-button next-button" onClick={handleNextPage}>
-                Next
-              </button>
-            )}
-          </div>
+              {currentPage === 2 && (
+                <BookEventSecondPage handleSubmit={handleSubmit} eventData={eventData} setEventData={setEventData} />
+              )}
+
+              <div className="page-buttons">
+                {currentPage > 1 && (
+                  <button className="page-button previous-button" onClick={handlePreviousPage}>
+                    Previous
+                  </button>
+                )}
+                {currentPage < 2 && (
+                  <button className="page-button next-button" onClick={handleNextPage}>
+                    Next
+                  </button>
+                )}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>

@@ -102,6 +102,7 @@
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
   width: 92%;
   height: 6px;
+  margin-bottom: 20px;
 }
 .addOnDropdown,
 .category {
@@ -114,6 +115,7 @@
 
 /* Styles for the submit button */
 .submit-btn {
+  font-size: 18px;
   margin-top: 40px;
   margin-bottom: 20px;
   padding: 10px;
@@ -124,6 +126,7 @@
   cursor: pointer;
   width: 200px;
   transition: background-color 0.3s ease;
+  height: 50px;
 }
 
 /* Hover effect for the submit button */
@@ -169,3 +172,79 @@
 .input-form error {
   border-color: red;
 }
+
+.number-input {
+  width: 300px; /* Increase the width to make the input box larger */
+  height: 70px; /* Increase the height to make the input box taller */
+  padding: 10px; /* Adjust padding as needed */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Add this to your existing CSS or the Booking.css file */
+.theme-card-container-left,
+.theme-card-container-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.theme-card-container-left {
+  left: 0;
+  animation: slideLeft 1s forwards, fadeOut 0.5s 4.5s forwards, moveUpDown 2s infinite alternate;
+}
+
+.theme-card-container-right {
+  right: 0;
+  animation: slideRight 1s forwards, fadeOut 0.5s 4.5s forwards, moveUpDown 2s infinite alternate;
+}
+
+.theme-card-image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+ 
+
+.theme-card-container {
+  position: relative;
+  width: 50%;
+  margin: auto;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.theme-card-container.fade-out {
+  opacity: 0;
+}
+
+.theme-card-image {
+  max-width: 100%;
+  display: block;
+  transition: transform 2s ease-in-out;
+  animation: moveImage 4s infinite ease-in-out;
+}
+
+@keyframes moveImage {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(0, -20px);
+  }
+  50% {
+    transform: translate(20px, -20px);
+  }
+  75% {
+    transform: translate(20px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+
