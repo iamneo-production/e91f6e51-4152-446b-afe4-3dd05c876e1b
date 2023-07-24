@@ -208,7 +208,6 @@ const AddTheme = () => {
                         className={styles.delete_icon}
                         onClick={() => handleDelete(item)}
                       />
-                      
                     </div>
                   </Card>
                 </div>

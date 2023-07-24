@@ -15,20 +15,19 @@ export default function Booking() {
   const [currentPage, setCurrentPage] = useState(1);
   const [eventData, setEventData] = useState({});
   const [animationComplete, setAnimationComplete] = useState(false);
+  const currentDate = new Date().toISOString().split("T")[0];
 
   const jwtToken = appUser?.token;
   const headers = {
     Authorization: `Bearer ${jwtToken}`,
   };
 
-  const [responseDetails, setResponseDetails] = useState(null);
-
   const location = useLocation();
 
-  const themeimgUrl = location.state && location.state.themeimgUrl;
-  const cost = location.state && location.state.cost;
-  const themeName = location.state && location.state.themeName;
-  const themeId = location.state && location.state.themeId;
+  const themeimgUrl = location.state?.themeimgUrl;
+  const cost = location.state?.cost;
+  const themeName = location.state?.themeName;
+  const themeId = location.state?.themeId;
 
   const requiredFields = [
     "applicantName",
@@ -41,13 +40,29 @@ export default function Booking() {
     "noOfPeople",
   ];
 
-  const handleNextPage = (e) => {
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      const res = await axios.post(`${BaseUrl}/user/addEvent`, { headers }, eventData);
+      Swal.fire("Success", res.data, "success");
+    } catch (e) {
+      console.log(e, e.message);
+      Swal.fire("Error", "An error occurred while submitting the form.", "error");
+    }
+  }
+
+  const handleNextPage = async (e) => {
     e.preventDefault();
 
     // Check if any required field is empty
-    const emptyFields = requiredFields.filter((field) => {
-      return isFieldEmpty(field);
-    });
+    const emptyFields = requiredFields.filter((field) => isFieldEmpty(field));
+
+    if (!isValidDate) {
+      // Display the Swal alert if the date is not valid
+      Swal.fire("Invalid Date", "Please select a valid date.", "warning");
+      return;
+    }
 
     if (emptyFields.length > 0) {
       const message = `Please fill the following fields: ${emptyFields.join(", ")}`;
@@ -61,6 +76,7 @@ export default function Booking() {
       return;
     }
 
+    handleSubmit(e);
     setCurrentPage(currentPage + 1);
   };
 
@@ -100,26 +116,6 @@ export default function Booking() {
     });
   }
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    try {
-      const res = await axios.post(`${BaseUrl}/user/addEvent`, { headers }, eventData);
-      Swal.fire("Success", res.data, "success");
-    } catch (e) {
-      console.log(e, e.message);
-      Swal.fire("Error", "An error occurred while submitting the form.", "error");
-    }
-  }
-
-  const isFieldEmpty = (fieldName) => {
-    return !eventData[fieldName] || eventData[fieldName].trim() === "";
-  };
-
-  const getInputClassName = (fieldName) => {
-    return isFieldEmpty(fieldName) ? "input-form error" : "input-form";
-  };
-
   useEffect(() => {
     // Set a delay to mark the animation as complete
     const timer = setTimeout(() => {
@@ -128,6 +124,27 @@ export default function Booking() {
 
     return () => clearTimeout(timer);
   }, []);
+
+  const [minEventDate, setMinEventDate] = useState(currentDate);
+  const [isValidDate, setIsValidDate] = useState(true);
+
+  const handleEventDateChange = (e) => {
+    const selectedDate = e.target.value;
+    if (selectedDate < currentDate) {
+      setIsValidDate(false);
+    } else {
+      setIsValidDate(true);
+      setEventData((prev) => ({ ...prev, eventDate: selectedDate }));
+    }
+  };
+
+  const isFieldEmpty = (fieldName) => {
+    return !eventData[fieldName] || eventData[fieldName].trim() === "";
+  };
+
+  const getInputClassName = (fieldName) => {
+    return isFieldEmpty(fieldName) ? "input-form error" : "input-form";
+  };
 
   return (
     <div>
@@ -156,8 +173,6 @@ export default function Booking() {
                     style={{ fontWeight: "bold" }}
                     onChange={handleChange}
                   />
-                
-
 
               <TextField
                 className={getInputClassName("applicantName")}
@@ -182,8 +197,8 @@ export default function Booking() {
               />
 
               <TextField
+                type="number"
                 className={getInputClassName("applicantMobile")}
-                type="text"
                 name="applicantMobile"
                 id="applicantMobile"
                 label="Enter Applicant Mobile"
@@ -216,11 +231,12 @@ export default function Booking() {
 
               <TextField
                 type="date"
-                className={getInputClassName("eventDate")}
+                className={`input-form ${getInputClassName("eventDate")}`}
                 name="eventDate"
                 value={eventData.eventDate || ""}
-                onChange={handleChange}
+                onChange={handleEventDateChange}
                 required
+                min={minEventDate} // Set the min attribute to disable previous dates
               />
 
               <TextField
@@ -234,8 +250,8 @@ export default function Booking() {
               />
 
               <TextField
-                type="text"
-                className={getInputClassName("noOfPeople")}
+                type="number"
+                className={getInputClassName("number-input")}
                 name="noOfPeople"
                 id="noOfPeople"
                 label="Enter Number of People"
@@ -259,7 +275,7 @@ export default function Booking() {
                   </button>
                 )}
                 {currentPage < 2 && (
-                  <button className="page-button next-button" onClick={handleNextPage}>
+                  <button className="page-button next-button" onClick={handleNextPage} disabled={!isValidDate}>
                     Next
                   </button>
                 )}
