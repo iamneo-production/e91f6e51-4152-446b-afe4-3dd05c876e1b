@@ -31,4 +31,8 @@
   .active {
     color: pink;
   }
-  
+  .username {
+    /* color: rgb(0, 0, 0); */
+    font-size: 22px; 
+    margin-right: 30px; /* Add some space between the username and the "Logout" link */
+  }

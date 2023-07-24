@@ -7,7 +7,7 @@
     background-color: #fff; /* Set background color to white */
     margin: 0 70px 40px; /* Add margin on both right and left sides, and bottom margin */
     border-radius: 4px; /* Add border-radius to create a square border */
-    border: 1px solid rgba(0, 0, 0, 0.1); /* Add a less solid black border */
+    border: 1px solid rgba(0, 0, 0, 0.3); /* Add a less solid black border */
     transition: box-shadow 0.3s ease, transform 0.2s ease; /* Add transitions for smooth hover effect */
     
   }
