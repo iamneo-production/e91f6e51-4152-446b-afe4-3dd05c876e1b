@@ -82,3 +82,7 @@ p {
   background-color: white;
   border: 2px solid black
 }
+.logout-button i {
+  color: red;
+  margin-right: 5px;
+}
