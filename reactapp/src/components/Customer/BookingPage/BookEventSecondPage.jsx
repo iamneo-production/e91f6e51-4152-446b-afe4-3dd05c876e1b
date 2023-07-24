@@ -116,12 +116,20 @@ export default function BookEventSecondPage({ eventData, setEventData }) {
 
           <input
             type="number"
+<<<<<<< HEAD
+=======
+            className="number-input"
+>>>>>>> 086eb3db70898690f0b26d6fd1429d8bac225e2d
             placeholder={nonVegItemsPlaceholder}
             onFocus={handleNonVegItemsFocus}
           />
 
           <input
             type="number"
+<<<<<<< HEAD
+=======
+            className="number-input"
+>>>>>>> 086eb3db70898690f0b26d6fd1429d8bac225e2d
             placeholder={vegItemsPlaceholder}
             onFocus={handleVegItemsFocus}
           />
@@ -144,4 +152,8 @@ export default function BookEventSecondPage({ eventData, setEventData }) {
       </button>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 086eb3db70898690f0b26d6fd1429d8bac225e2d

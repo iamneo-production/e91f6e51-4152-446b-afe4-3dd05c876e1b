@@ -4,4 +4,11 @@ junit
 target
 .vscode/
 react
+<<<<<<< HEAD
 puppeteer
+=======
+puppeteer
+puppeteer/
+target/
+
+>>>>>>> 086eb3db70898690f0b26d6fd1429d8bac225e2d

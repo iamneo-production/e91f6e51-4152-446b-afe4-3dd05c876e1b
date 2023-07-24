@@ -1,6 +1,21 @@
 .add-on-container{
   padding-bottom: 10%;
+<<<<<<< HEAD
 }
+=======
+
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* Set the height of the body to full viewport height */
+  background: linear-gradient(to bottom right, #8df6f6, #f5aacf, #ff69b4);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; /* Ensures the background stays fixed when scrolling */
+}
+
+>>>>>>> 086eb3db70898690f0b26d6fd1429d8bac225e2d
 .ReactModal__Content{
   width: fit-content !important;
   height: 400px !important;

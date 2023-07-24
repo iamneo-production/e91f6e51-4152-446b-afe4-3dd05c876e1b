@@ -2,7 +2,11 @@
 .add-menu-container {
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
   /* background: linear-gradient(to right, #b2fefa, #0ed2f7); */
+=======
+  background: linear-gradient(to bottom right, #8df6f6, #f5aacf, #ff69b4);
+>>>>>>> 086eb3db70898690f0b26d6fd1429d8bac225e2d
   min-height: 100vh;
   padding-bottom: 10%;
 }
