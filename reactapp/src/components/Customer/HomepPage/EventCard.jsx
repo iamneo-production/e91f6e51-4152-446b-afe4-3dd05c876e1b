@@ -19,7 +19,7 @@ export default function EventCard({ singleEvent, handleRating }) {
       <h2 className="event-name">{singleEvent.themeName}</h2>
       <div className="place-rating-container">
         <div className="">
-          <p>Place:{singleEvent.themeLocation}</p>
+          <p>Place:{singleEvent.location}</p>
           <p>Price:{singleEvent.cost}</p>
         </div>
         <Rating rating={singleEvent.averageRating} /> 
