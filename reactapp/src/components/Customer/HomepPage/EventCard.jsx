@@ -33,9 +33,12 @@ export default function EventCard({ singleEvent, handleRating }) {
             </div>
             <div className="modal-details">
               <div className='imgname'><h1>{singleEvent.themeName}</h1></div>
-              <div>
-              <Rating rating={singleEvent.averageRating} /> 
-              <span> {singleEvent.totalRating}</span>
+              <div className='rate-container '>
+              <div className='average-rating'>
+              <div>{singleEvent.averageRating}</div>&nbsp;
+              <div><Rating rating={singleEvent.averageRating} /></div>&nbsp;
+              <p> ( {singleEvent.totalRating} Reviews)</p>
+              </div>
               </div>
               <div className='price'><span>&#8377;</span>
               <span>{singleEvent.cost}</span></div>
