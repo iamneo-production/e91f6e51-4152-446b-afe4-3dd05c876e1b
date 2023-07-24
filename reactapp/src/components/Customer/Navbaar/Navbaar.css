@@ -10,6 +10,7 @@
   border: 1px solid #ccc;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 20px;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .navbar-links {
@@ -24,12 +25,36 @@
   transition: color 0.3s ease-in-out;
 }
 
+.navbar-link{
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
 .navbar-link:hover {
   color: pink;
+  transform: translateX(-6px)translateY(2px) scale(1.1);
+  box-shadow: #fff;
+  
 }
+.birthday-event-navbaar{
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+.birthday-event-navbaar:hover{
+  color: pink;
+    transform: translateX(-6px)translateY(2px) scale(1.1);
+    box-shadow: #fff;
+}
+
+/* .logout-user {
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+.logout-user:hover {
+  color: pink;
+  transform: translateX(-6px) translateY(2px) scale(1.1);
+  box-shadow: #fff;
+} */
 
 .active {
   color: pink;
+  transform: translateX(6px);
 }
 
 .username {
