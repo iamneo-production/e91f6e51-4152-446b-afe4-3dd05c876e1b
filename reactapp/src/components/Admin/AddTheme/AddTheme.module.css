@@ -2,7 +2,7 @@
     width: 100vw;
     height: calc(100vh - 70px);
     /* background: linear-gradient(to right, #56ccf2, #2f80ed); */
-    background: linear-gradient(to bottom right, #8df6f6, #f5aacf, #ff69b4);
+    background: linear-gradient(to right, #b2fefa, #0ed2f7);
 
 }
 
@@ -67,13 +67,6 @@ input:focus{
     /* bottom: 15%; */
     top: 100px;
     width: 100%;
-    background-color: rgb(247, 43, 203);
-    color: #fff;
-
-}
-
-.add_btn:hover{
-    background-color: #ff6f00;
 }
 
 .card{
@@ -114,10 +107,3 @@ img{
     justify-content: space-between;
     margin: 10px;
 }
-
-.hover_effect:hover {
-    /* Customize the button style when hovering */
-    background-color: #ff6f00;
-    color: #fff;
-    cursor: pointer;
-  }
