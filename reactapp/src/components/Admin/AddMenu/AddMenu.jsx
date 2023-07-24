@@ -5,7 +5,7 @@ import Modal from "react-modal";
 import "./AddMenu.css";
 import axios from "axios";
 import UserContext from "../../../UserContext";
-import { Card,FloatButton } from 'antd';
+import { Card, FloatButton } from 'antd';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/system';
@@ -14,7 +14,7 @@ import { styled } from '@mui/system';
 //commit
 // import DataTable from "react-data-table-component";
 
-import { EditOutlined, DeleteOutlined ,PlusOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 
 
 export default function FoodMenu() {
@@ -25,7 +25,7 @@ export default function FoodMenu() {
   const [editingRow, setEditingRow] = React.useState(null);
   const [isEditItemModalOpen, setIsEditItemModalOpen] = React.useState(false);
   const { Meta } = Card;
-  
+
 
   const jwtToken = appUser?.token;
   console.log("token", jwtToken);
@@ -47,13 +47,13 @@ export default function FoodMenu() {
     console.log("edited item object is:", editedItem);
     try {
       const res = await axios.put(
-        `${BaseUrl}/admin/editMenu/${editedItem.foodMenuId}`,editedItem, { headers });
-        const updatedData = itemsArray.map((item) => {
-          if (item.addOnId === editedItem.addOnId) {
-            return editedItem;
-          }
-          return item;
-        });
+        `${BaseUrl}/admin/editMenu/${editedItem.foodMenuId}`, editedItem, { headers });
+      const updatedData = itemsArray.map((item) => {
+        if (item.addOnId === editedItem.addOnId) {
+          return editedItem;
+        }
+        return item;
+      });
       console.log("editi", res.data);
       setEditingRow(null);
       setItemsArray(updatedData);
@@ -84,13 +84,13 @@ export default function FoodMenu() {
   }
 
   // const columns = [
-    // {
-    //   name: "Id",
-    //   selector: (row) => row.foodMenuId,
-    //   style: {
-    //     width:'10px',
-    // },
-    // },
+  // {
+  //   name: "Id",
+  //   selector: (row) => row.foodMenuId,
+  //   style: {
+  //     width:'10px',
+  // },
+  // },
   //   {
   //     name: "Image",
   //     cell: (row) => (
@@ -207,13 +207,13 @@ export default function FoodMenu() {
                 label="Name"
                 name="name"
                 onChange={handleChange}
-                sx = {{
+                sx={{
                   width: "100%"
                 }}
               />
             </div>
             <div>
-            <TextField
+              <TextField
                 className="rounded-input"
                 type="text"
                 placeholder="Enter category"
@@ -222,7 +222,7 @@ export default function FoodMenu() {
                 name="category"
                 size="small"
                 onChange={handleChange}
-                sx = {{
+                sx={{
                   width: "100%"
                 }}
               />
@@ -236,7 +236,7 @@ export default function FoodMenu() {
                 size="small"
                 onChange={handleChange}
                 className="rounded-input"
-                sx = {{
+                sx={{
                   width: "100%"
                 }}
               />
@@ -250,7 +250,7 @@ export default function FoodMenu() {
                 size="small"
                 onChange={handleChange}
                 className="rounded-input"
-                sx = {{
+                sx={{
                   width: "100%"
                 }}
               />
@@ -366,8 +366,8 @@ export default function FoodMenu() {
                       />
                     }
                     actions={[
-                      <EditOutlined key="edit" onClick={() => {handleEdit(item);}}/>,
-                      <DeleteOutlined key="ellipsis" onClick={() => handleDelete(item)}/>,
+                      <EditOutlined key="edit" onClick={() => { handleEdit(item); }} />,
+                      <DeleteOutlined key="ellipsis" onClick={() => handleDelete(item)} />,
                     ]}
                   >
                     <Meta
@@ -382,7 +382,12 @@ export default function FoodMenu() {
           )}
         </div>
       </div>
-      <FloatButton onClick={openModal} icon={<PlusOutlined width={70}/>} tooltip={<div>Add Food</div>}/>
+      {/* <FloatButton onClick={openModal} icon={<PlusOutlined width={70}/>} tooltip={<div>Add Food</div>}/> */}
+      <div className="admin-add-menu-button" onClick={openModal}>
+        <div className='admin-menu-icon' >
+          <i className="fa-solid fa-circle-plus"></i>
+        </div>
+      </div>
     </div>
   );
 }
