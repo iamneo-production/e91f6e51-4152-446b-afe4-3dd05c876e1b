@@ -14,6 +14,7 @@ const AddTheme = () => {
   const themeName = useRef();
   const imageUrl = useRef();
   const photographerDetails = useRef();
+  const location = useRef();
   const videographerDetails = useRef();
   const returnGift = useRef();
   const themeCost = useRef();
@@ -33,10 +34,12 @@ const AddTheme = () => {
       themeName: themeName.current.value,
       themeimgUrl: imageUrl.current.value,
       themephotographer: photographerDetails.current.value,
+      location: location.current.value,
       themeVideographer: videographerDetails.current.value,
       themeReturnGift: returnGift.current.value,
       cost: themeCost.current.value,
       themeDescription: description.current.value,
+      
     };
 
     try {
@@ -51,10 +54,12 @@ const AddTheme = () => {
       themeName.current.value = "";
       imageUrl.current.value = "";
       photographerDetails.current.value = "";
+      location.current.value = "";
       videographerDetails.current.value = "";
       returnGift.current.value = "";
       themeCost.current.value = "";
       description.current.value = "";
+      
     } catch (e) {
       console.log(e.message);
     }
@@ -113,6 +118,11 @@ const AddTheme = () => {
                 type="text"
                 placeholder="Enter Photographer Details"
                 ref={photographerDetails}
+              />
+              <input
+                type="text"
+                placeholder="Location"
+                ref={location}
               />
               <div className={styles.add_btn_container}>
                 <input

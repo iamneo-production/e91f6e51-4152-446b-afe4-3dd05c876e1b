@@ -60,7 +60,7 @@ export default function BookedEventsPage () {
   };
 
   const filterEvents = data.filter((singleEvent) => {
-    return singleEvent.eventName.toLowerCase().includes(searchText.toLowerCase());
+    return singleEvent.eventName?.toLowerCase().includes(searchText.toLowerCase());
   });
 
   const handleEventClick = (eventId) => {

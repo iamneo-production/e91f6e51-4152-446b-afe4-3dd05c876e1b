@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState,useContext } from "react";
 import Modal from "react-modal";
-// import AddOnCard from "./AddOnCard.jsx";
 import { BaseUrl } from "../../../utils/authApi";
 import Navbar from "../Navbar/Navbar"
 import "./AddOn.css";
