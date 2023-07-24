@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 086eb3db70898690f0b26d6fd1429d8bac225e2d
 import React, { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -9,20 +5,14 @@ import { BaseUrl } from "../../../utils/authApi";
 import "./EventDetailsPage.css";
 import Navbaar from "../Navbaar/Navbaar";
 import UserContext from "../../../UserContext";
-<<<<<<< HEAD
-=======
 import Modal from "react-modal"
 import styled from 'styled-components';
->>>>>>> 086eb3db70898690f0b26d6fd1429d8bac225e2d
 
 const EventDetailsPage = () => {
   const { appUser } = useContext(UserContext);
   const { eventId } = useParams();
   const navigate = useNavigate();
   const [eventDetails, setEventDetails] = useState(null);
-<<<<<<< HEAD
-  const [cancelData, setcancelData] = useState({deletedEvent: "User cancelled the Event",});
-=======
   const [cancelData] = useState({ deletedEvent: "User cancelled the Event", });
   // for ratings
   const [rate, setRate] = useState(0);
@@ -44,7 +34,6 @@ const EventDetailsPage = () => {
   const Rating = styled.div`
     cursor: pointer;
     `
->>>>>>> 086eb3db70898690f0b26d6fd1429d8bac225e2d
 
   const jwtToken = appUser?.token;
   const userId = appUser?.id;
@@ -53,25 +42,6 @@ const EventDetailsPage = () => {
     Authorization: `Bearer ${jwtToken}`,
   };
 
-<<<<<<< HEAD
-  useEffect(() => {
-    const fetchEventDetails = async () => {
-      try {
-        const res = await axios.get(`${BaseUrl}/user/event/${eventId}`);
-        setEventDetails(res?.data);
-        console.log("result", res);
-        
-      } catch (error) {
-        console.error(error);
-      }
-      
-    };
-
-    fetchEventDetails();
-  }, [eventId]);
-
-
-=======
   
   const fetchEventDetails = async () => {
     try {
@@ -89,7 +59,6 @@ const EventDetailsPage = () => {
     fetchEventDetails();
   }, [eventId]);
 
->>>>>>> 086eb3db70898690f0b26d6fd1429d8bac225e2d
   const handleEdit = () => {
     // Redirect to the edit page passing the event ID as a parameter
     navigate(`/event/${eventId}/edit`);
@@ -99,111 +68,13 @@ const EventDetailsPage = () => {
     e.preventDefault();
 
     try {
-<<<<<<< HEAD
-     const res=await axios.put(`${BaseUrl}/user/CancelEvent/${eventId}`, cancelData);
-=======
       const res = await axios.put(`${BaseUrl}/user/CancelEvent/${eventId}`, cancelData);
->>>>>>> 086eb3db70898690f0b26d6fd1429d8bac225e2d
       // Redirect to the event details page after successful update
       navigate(`/user/getBookedTheme`);
       alert(res.data);
     } catch (error) {
       console.error(error);
     }
-<<<<<<< HEAD
-  
-    // const today = new Date().toISOString().split("T")[0];
-    // const eventDate = new Date(eventDetails.eventDate).setHours(0, 0, 0, 0); // Get event date with time set to midnight
-
-    // console.log(today);
-    // console.log(eventDate);
-    // if (today < eventDate) {
-    //   alert("Event can't be cancelled");
-    //   return;
-    
-    
-  };
-
-  return (
-  <div className="event-details-page-main">
-    <div className="viewbooking-main-navbaar">
-      <Navbaar />
-    </div>
-    <div className="event-details-page">
-    {eventDetails ? (
-      <div className="event-details-container">
-        <div className="event-image-container">
-          <img
-            className="event-image-viewbooking"
-            src={eventDetails.eventImg}
-            alt={eventDetails.eventName}
-          />
-        </div>
-        <div className="event-details">
-          <div className="event-detail-name-container">
-          {/* <h2>Event Details</h2> */}
-          <h3 className="event-detail-name">{eventDetails.eventName}</h3>
-          </div>
-          <div className="event-details-field-container">
-            <div className="event-details-field">
-              <p style={{fontWeight:'600'}}>Event Date:</p>
-              <p className="event-details-value"> {eventDetails.eventDate}</p>
-            </div>
-            <div className="event-details-field">
-            <p style={{fontWeight:'600'}}>Event Time:</p>
-            <p className="event-details-value">{eventDetails.eventTime}</p>
-            </div>
-            <div className="event-details-field">
-            <p style={{fontWeight:'600'}}>Number of People: </p>
-            <p className="event-details-value">{eventDetails.noOfPeople}</p>
-            </div>
-            <div className="event-details-field">
-            <p style={{fontWeight:'600'}}>Applicant Name: </p>
-            <p className="event-details-value">{eventDetails.applicantName}</p>
-            </div>
-            <div className="event-details-field">
-              <p style={{fontWeight:'600'}}>Applicant Email: </p>
-              <p className="event-details-value">{eventDetails.applicantEmail}</p>
-            </div>
-            <div className="event-details-field">
-              <p style={{fontWeight:'600'}}>Applicant Mobile: </p>
-              <p className="event-details-value">{eventDetails.applicantMobile}</p>
-            </div>
-            <div className="event-details-field">
-              <p style={{fontWeight:'600'}}>Applicant Address: </p>
-              <p className="event-details-value">{eventDetails.applicantAddress}</p>
-            </div>
-            <div className="event-details-field">
-              <p style={{fontWeight:'600'}}>Event Address: </p>
-              <p className="event-details-value">{eventDetails.eventAddress}</p>
-            </div>
-            <div className="event-details-field">
-              <p style={{fontWeight:'600'}}>Event Cost: </p>
-              <p className="event-details-value">{eventDetails.eventCost}</p>
-            </div>
-          </div>
-          {/* Display additional event details as needed */}
-          {eventDetails.deletedEvent===null?<div className="buttons-container">
-            <button onClick={handleEdit} className="edit-button">
-              Edit
-            </button>
-            <button onClick={handleCancel} className="delete-button">
-              Cancel
-            </button>
-          </div>:<div className="buttons-container">
-            <button className="delete-button" disabled={true}>
-              You Cancelled this booking
-            </button>
-          </div>}
-        </div>
-      </div>
-    ) : (
-      <div>Loading event details...</div>
-    )}
-    </div>
-  </div>
-)
-=======
   };
   return (
     <div className="event-details-page-main">
@@ -400,7 +271,6 @@ const EventDetailsPage = () => {
       console.log(e);
     }
   }
->>>>>>> 086eb3db70898690f0b26d6fd1429d8bac225e2d
 };
 
 export default EventDetailsPage;

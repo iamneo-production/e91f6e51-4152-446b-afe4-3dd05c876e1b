@@ -7,11 +7,7 @@ import { useLocation } from "react-router-dom";
 import "./Booking.css";
 import { BaseUrl } from "../../../utils/authApi";
 import UserContext from "../../../UserContext";
-<<<<<<< HEAD
 import Box from "@mui/material/Box";
-=======
-
->>>>>>> 086eb3db70898690f0b26d6fd1429d8bac225e2d
 import TextField from "@mui/material/TextField";
 
 export default function Booking() {
@@ -35,21 +31,19 @@ export default function Booking() {
   const themeId = location.state && location.state.themeId;
   console.log(eventData);
 
-  const requiredFields = [
-    "applicantName",
-    "applicantAddress",
-    "applicantMobile",
-    "applicantEmail",
-    "eventAddress",
-    "eventDate",
-    "eventTime",
-    "noOfPeople",
-  ];
-
   const handleNextPage = (e) => {
     e.preventDefault();
-    
-    // Check if any required field is empty
+    const requiredFields = [
+      "applicantName",
+      "applicantAddress",
+      "applicantMobile",
+      "applicantEmail",
+      "eventAddress",
+      "eventDate",
+      "eventTime",
+      "noOfPeople",
+    ];
+
     const emptyFields = requiredFields.filter((field) => {
       return isFieldEmpty(field);
     });
@@ -128,27 +122,7 @@ export default function Booking() {
   return (
     <div>
       <div className="booking-first-page-main-navbar">
-<<<<<<< HEAD
          <Navbaar />
-      </div>
-      <div className="main-container">
-        <div className="apply-form">
-          {currentPage === 1 && (
-            <form className="form-container">
-              <TextField
-                data-testid="enterName"
-                id="enterName"
-                className={`input-form ${getInputClassName("eventName")}`}
-                type="text"
-                value={themeName}
-                name="eventName"
-                label="Enter Event Name"
-                readOnly
-                style={{ fontWeight: "bold" }}
-                onChange={handleChange}
-              />
-=======
-        <Navbaar />
       </div>
       <div className="main-container">
         <div className="apply-form">
@@ -182,11 +156,7 @@ export default function Booking() {
                 className={getInputClassName("applicantAddress")}
                 type="text"
                 name="applicantAddress"
-<<<<<<< HEAD
                 id="applicantAddres"
-=======
-                id="applicantAddress"
->>>>>>> 086eb3db70898690f0b26d6fd1429d8bac225e2d
                 label="Enter Applicant Address"
                 value={eventData.applicantAddress || ""}
                 onChange={handleChange}
@@ -212,8 +182,6 @@ export default function Booking() {
                 label="Enter Applicant Email*"
                 value={eventData.applicantEmail || ""}
                 onChange={handleChange}
-                required
->>>>>>> 086eb3db70898690f0b26d6fd1429d8bac225e2d
               />
 
               <TextField
@@ -224,8 +192,6 @@ export default function Booking() {
                 label="Enter Event Address*"
                 value={eventData.eventAddress || ""}
                 onChange={handleChange}
-                required
->>>>>>> 086eb3db70898690f0b26d6fd1429d8bac225e2d
               />
 
               <TextField
@@ -234,7 +200,6 @@ export default function Booking() {
                 name="eventDate"
                 value={eventData.eventDate || ""}
                 onChange={handleChange}
-                required
               />
 
               <TextField
@@ -244,7 +209,6 @@ export default function Booking() {
                 id="enterAmount"
                 value={eventData.eventTime || ""}
                 onChange={handleChange}
-<<<<<<< HEAD
               />
 
               <TextField
@@ -255,38 +219,6 @@ export default function Booking() {
                 label="Enter Number of People*"
                 value={eventData.noOfPeople || ""}
                 onChange={handleChange}
-              />
-            </form>
-          )}
-          {currentPage === 2 && (
-            <BookEventSecondPage handleSubmit={handleSubmit} eventData={eventData} setEventData={setEventData} />
-          )}
-
-          <div className="page-buttons">
-            {currentPage > 1 && (
-              <button className="page-button previous-button" onClick={handlePreviousPage}>
-                Previous
-              </button>
-            )}
-            {currentPage < 2 && (
-              <button className="page-button next-button" onClick={handleNextPage}>
-                Next
-              </button>
-            )}
-          </div>
-=======
-                required
-              />
-
-              <TextField
-                type="text"
-                className={getInputClassName("noOfPeople")}
-                name="noOfPeople"
-                id="noOfPeople"
-                label="Enter Number of People*"
-                value={eventData.noOfPeople || ""}
-                onChange={handleChange}
-                required
               />
             </form>
           )}
@@ -310,7 +242,4 @@ export default function Booking() {
       </div>
     </div>
   );
-<<<<<<< HEAD
-}
-=======
 }
