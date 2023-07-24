@@ -144,4 +144,7 @@ export default function BookEventSecondPage({ eventData, setEventData }) {
       </button>
     </div>
   );
+<<<<<<< HEAD
+}
+=======
 }

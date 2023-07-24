@@ -60,7 +60,11 @@ export default function BookedEventsPage () {
   };
 
   const filterEvents = data.filter((singleEvent) => {
+<<<<<<< HEAD
+    return singleEvent.eventName.toLowerCase().includes(searchText.toLowerCase());
+=======
     return singleEvent.eventName?.toLowerCase().includes(searchText.toLowerCase());
+>>>>>>> 086eb3db70898690f0b26d6fd1429d8bac225e2d
   });
 
   const handleEventClick = (eventId) => {

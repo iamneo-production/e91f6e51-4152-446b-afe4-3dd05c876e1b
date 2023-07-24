@@ -1,6 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState,useContext } from "react";
 import Modal from "react-modal";
+<<<<<<< HEAD
+// import AddOnCard from "./AddOnCard.jsx";
+=======
+>>>>>>> 086eb3db70898690f0b26d6fd1429d8bac225e2d
 import { BaseUrl } from "../../../utils/authApi";
 import Navbar from "../Navbar/Navbar"
 import "./AddOn.css";
