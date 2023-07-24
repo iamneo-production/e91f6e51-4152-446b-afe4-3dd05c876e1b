@@ -116,12 +116,14 @@ export default function BookEventSecondPage({ eventData, setEventData }) {
 
           <input
             type="number"
+            className="number-input"
             placeholder={nonVegItemsPlaceholder}
             onFocus={handleNonVegItemsFocus}
           />
 
           <input
             type="number"
+            className="number-input"
             placeholder={vegItemsPlaceholder}
             onFocus={handleVegItemsFocus}
           />
