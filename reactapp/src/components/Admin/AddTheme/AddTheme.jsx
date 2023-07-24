@@ -5,10 +5,12 @@ import styles from "./AddTheme.module.css";
 import { BaseUrl } from "../../../utils/authApi";
 import axios from "axios";
 import UserContext from "../../../UserContext";
+
 import { Card } from "antd";
 import TextField from "@mui/material/TextField";
 import Swal from "sweetalert2";
 import { DeleteOutlined,EditOutlined  } from "@ant-design/icons";
+
 
 const { Meta } = Card;
 
@@ -68,6 +70,8 @@ const AddTheme = () => {
       themeDescription: description.current.value,
       location: location.current.value,
     };
+
+
 
     try {
       const res = await axios.post(`${BaseUrl}/admin/addTheme`, themeModel, { headers });
