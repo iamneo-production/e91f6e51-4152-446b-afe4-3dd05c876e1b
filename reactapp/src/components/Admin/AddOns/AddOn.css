@@ -1,69 +1,71 @@
-.add-on-container{
+.add-on-container {
   padding-bottom: 10%;
 }
-.ReactModal__Content{
+
+.ReactModal__Content {
   width: fit-content !important;
   height: 400px !important;
   display: flex;
   flex-direction: column;
-  justify-content:space-around;
+  justify-content: space-around;
   align-items: center;
-  left:30% !important;
-  padding:30px !important;
+  left: 30% !important;
+  padding: 30px !important;
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    grid-gap: 20px;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    margin: 0 auto;
-    max-width: 1200px;
-  }
-  
-  @media (max-width: 768px) {
-    .grid-container {
-      grid-template-columns: repeat(3, minmax(200px, 1fr));
-      padding: 10px;
-      max-width: 600px;
-    }
-  }
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
 
-  .Addon-card{
-    background-color: white;
-    width: 280px;
-    margin-top: 20px;
-    border-radius: 15px;
-    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
-    box-sizing: border-box;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 15px;
-    transition: transform 0.3s , box-shadow 0.3s ;
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    padding: 10px;
+    max-width: 600px;
   }
-  
-  
-  .Addon-card:hover {
-    box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.4);
-    transform: translateY(-3px);
-  }
-  
-  .Addon-card img {
-    position: relative;
-    object-fit: cover;
-    border-radius: 5px;
-    width:100%;
-    max-height: 500px;
-  }
+}
 
-  
+.Addon-card {
+  background-color: white;
+  width: 280px;
+  margin-top: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+
+/* .Addon-card:hover {
+  box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
+} */
+
+.Addon-card img {
+  position: relative;
+  object-fit: cover;
+  border-radius: 5px;
+  width: 100%;
+  max-height: 500px;
+}
+
+
 /* AddOnButton.css */
 
 .AddOnButton {
   position: absolute;
-  top: 100px; /* Adjust the value based on the height of your navbar */
+  top: 100px;
+  /* Adjust the value based on the height of your navbar */
   left: 20px;
   background-color: black;
   color: white;
@@ -76,44 +78,96 @@
   background-color: rgb(169, 33, 228);
 }
 
-  
-  .AddOnButton:hover {
-    background-color: rgb(169, 33, 228);
-  }
 
-  .AddOnButton,
-  .AddnewButton button {
-    background-color: black;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-  
-  .AddOnButton:hover,
-  .AddnewButton button:hover {
-    background-color: rgb(169, 33, 228);
-  }
-    .AddOnButton:hover {
-      background-color: rgb(169, 33, 228);
-    }
-    .input_field_addons{
-      border: 2px solid black;
-      width: 90%;
-    }
-    .input-tags-container{
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      width:400px;
-    }
+.AddOnButton:hover {
+  background-color: rgb(169, 33, 228);
+}
 
-    .add-item-button_addons {
-      padding: 8px 16px;
-      background-color: #212427;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-top: 2%;
-    }
+.AddOnButton,
+.AddnewButton button {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.AddOnButton:hover,
+.AddnewButton button:hover {
+  background-color: rgb(169, 33, 228);
+}
+
+.AddOnButton:hover {
+  background-color: rgb(169, 33, 228);
+}
+
+.input_field_addons {
+  border: 2px solid black;
+  width: 90%;
+}
+
+.input-tags-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 400px;
+}
+
+.add-item-button_addons {
+  padding: 8px 16px;
+  background-color: #212427;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 2%;
+}
+
+.admin-add-on-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  float: left;
+  margin: 0 5px;
+  background: #cbadff;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-out;
+  overflow: hidden;
+}
+
+.admin-add-on-button:hover {
+  width: 165px;
+}
+
+.admin-add-on-button .admin-add-on-icon {
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  border-radius: 50px;
+  box-sizing: border-box;
+}
+
+.admin-add-on-button .admin-add-on-icon i {
+  font-size: 25px;
+  line-height: 60px;
+  color: white;
+}
+
+.admin-add-on-button:hover::after {
+  content: "Add AddOns";
+  display: block;
+  position: absolute;
+  left: 50px;
+  top: 0;
+  width: 100px;
+  height: 60px;
+  background: #cbadff;
+  font-weight: bold;
+  line-height: 60px;
+  text-align: center;
+  border-radius: 0 50px 50px 0;
+}
