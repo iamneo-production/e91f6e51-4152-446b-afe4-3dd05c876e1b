@@ -35,15 +35,18 @@ function Navbaar() {
           View Booked Event
         </NavLink>
       </div>
-      <div className='logout-user'>
+      <div className='usericon'>
         <i class="fa-regular fa-user"></i>
         {user ? (
           <span className="username">{`${user}`}</span>
         ) : null}
+        
+        <div className='logout-user'>
         <NavLink to="/user/login" className="navbar-link" activeClassName="active" onClick={handleLogout}>
           <i className="fa-solid fa-right-from-bracket"></i>
           Logout
         </NavLink>
+      </div>
       </div>
     </nav>
   );
