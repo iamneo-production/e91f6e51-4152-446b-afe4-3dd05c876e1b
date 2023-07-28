@@ -60,7 +60,8 @@ private UserDetailsServiceImpl userDetailsServiceImpl;
         http.cors().and().csrf().disable()
         .exceptionHandling().authenticationEntryPoint(authEntryPoint).and()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-        //.authorizeRequests().antMatchers("/user/login/**","/user/signup/**","/admin/signup/**","/admin/login/**","/").permitAll()
+        // .authorizeRequests().antMatchers("/user/login/**","/user/signup/**","/admin/signup/**","/admin/login/**","/",
+        // "/admin/event/**","/admin/theme/**","/admin/add-on/**","/admin/menu/**").permitAll()
         .authorizeRequests().antMatchers("/**").permitAll()
         .anyRequest().authenticated();
         http.authenticationProvider(authenticationProvider());
