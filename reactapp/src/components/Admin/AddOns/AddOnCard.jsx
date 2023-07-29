@@ -19,6 +19,7 @@ export default function AddOnCard({singleCard}) {
         <div className="">
           {/* A paragraph displaying the cost of the AddOn. */}
           <p>Cost:{singleCard.addOnPrice}</p>
+          //------pratik -----
           
           {/* A paragraph displaying the description of the AddOn. */}
           <p>Description : {singleCard.addOnDescription}</p>
