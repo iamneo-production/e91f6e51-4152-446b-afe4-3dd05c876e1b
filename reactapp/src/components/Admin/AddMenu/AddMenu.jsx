@@ -16,7 +16,7 @@ import { styled } from '@mui/system';
 
 import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 
-
+// All the Used states 
 export default function FoodMenu() {
   const { appUser, setAppUserl } = useContext(UserContext);
   const [newItem, setNewItem] = React.useState({});
@@ -131,6 +131,7 @@ export default function FoodMenu() {
   // ];
 
   // //  get all items food menu items
+  //// Function to get a new item to the backend and update the state
   useEffect(() => {
     async function getAllItems() {
       try {
@@ -164,7 +165,7 @@ export default function FoodMenu() {
       foodMenuCost: newItem.price,
       imageUrl: newItem.imageUrl,
     };
-
+    // Function to get a new item to the backend and update the state
     try {
       const res = await axios.post(`${BaseUrl}/admin/addMenu`, item, { headers });
       console.log(res.data);
