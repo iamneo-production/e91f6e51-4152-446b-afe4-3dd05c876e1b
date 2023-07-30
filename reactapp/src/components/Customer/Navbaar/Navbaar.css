@@ -1,34 +1,105 @@
 .navbar {
-    background-image: radial-gradient(circle, #5c0067 0%, #00d4ff 100%);
-    color: white;
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-    border: 1px solid #ccc;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    font-size: 20px;
-  }
+  background-image: radial-gradient(circle, #5c0067 0%, #00d4ff 100%);
+  color: white;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  border: 1px solid #ffffff;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 20px;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: white;
+  margin-right: 20px;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar-link:hover {
+  color: pink;
+  transform: translateX(-6px)translateY(2px) scale(1.1);
+  box-shadow: #fff;
   
-  .navbar-links {
-    display: flex;
-    align-items: center;
-  }
+}
+.birthday-event-navbaar{
+  display: flex;
+  align-items: center;
+  color: white;
+  transition: color 0.3s ease-in-out;
+}
+
+.birthday-event-navbaar:hover{
+  color: rgb(32, 28, 29);
+    transform: translateX(-6px)translateY(2px) scale(1.1);
+    box-shadow: #fff;
+}
+
+.usericon{
+  display: flex;
+  margin-right: 20px;
+  align-items: center;
+}
+.username{
+  text-decoration: none;
+  color: white;
+  margin-right: 20px;
+ align-items: flex-end;
+}
+ .logout-user {
+  display: flex;
+  align-items: center;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.logout-user:hover {
+  color: pink;
+  transform: translateX(-6px) translateY(2px) scale(1.1);
+  box-shadow: #fff;
+} 
+
+.active {
+  color: white;
+  transform: translateX(6px);
+}
+
+.username {
+  /* color: rgb(0, 0, 0); */
+  font-size: 22px;
+  margin-right: 30px;
+  /* Add some space between the username and the "Logout" link */
+}
+.logout-user i.fa-regular.fa-user {
+  margin-right: 8px;
+}
+.logout-user a:nth-of-type(1) i {
+  color: red;
+  margin-right: 8px;
+
+  /* Adjust the color for the Logout icon */
+}
+.navbar-links i{
+  color: #ffab40;
+  margin-right: 8px;
+}
+.birthday-event-navbaar i{
+  margin-left: 30px;
+  margin-right: 8px;
+}
+
+.usericon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   
-  .navbar-link {
-    text-decoration: none;
-    color: white;
-    margin-right: 20px;
-    transition: color 0.3s ease-in-out;
-  }
-  
-  .navbar-link:hover {
-    color: pink;
-  }
-  
-  .active {
-    color: pink;
-  }
-  
+}
+
