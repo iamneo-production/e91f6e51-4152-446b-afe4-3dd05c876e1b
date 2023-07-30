@@ -310,3 +310,28 @@
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);
   transform: translateY(0.3px);
 }
+
+/* ... Other CSS styles ... */
+
+.rate-container {
+  display: flex;
+  align-items: center;
+}
+
+.average-rating {
+  display: flex;
+  align-items: center;
+  margin-right: 10px; /* Add equal spacing between the average rating and the Rating component */
+}
+
+.average-rating p,
+.total-rating p {
+  margin: 0;
+  margin-right: 10px; /* Add equal spacing between the rating value and the Rating component */
+}
+
+.total-rating {
+  font-size: 14px;
+  color: #666;
+}
+

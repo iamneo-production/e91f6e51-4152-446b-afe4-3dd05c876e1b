@@ -13,12 +13,13 @@ export default function EventCard({ singleEvent, handleRating }) {
   return (
     <div className="bday-card" >
 
-     <div onClick={toggleModal}><img  src={singleEvent.themeimgUrl} alt="image" />
+     <div onClick={toggleModal}>
+      <img  src={singleEvent.themeimgUrl} alt="image" />
 
       <h2 className="event-name">{singleEvent.themeName}</h2>
       <div className="place-rating-container">
         <div className="">
-          <p>Place:{singleEvent.themeLocation}</p>
+          <p>Place:{singleEvent.location}</p>
           <p>Price:{singleEvent.cost}</p>
         </div>
         <Rating rating={singleEvent.averageRating} /> 
@@ -32,8 +33,13 @@ export default function EventCard({ singleEvent, handleRating }) {
             </div>
             <div className="modal-details">
               <div className='imgname'><h1>{singleEvent.themeName}</h1></div>
-              <Rating rating={singleEvent.averageRating} /> 
-              
+              <div className='rate-container '>
+              <div className='average-rating'>
+              <div>{singleEvent.averageRating}</div>&nbsp;
+              <div><Rating rating={singleEvent.averageRating} /></div>&nbsp;
+              <p> ( {singleEvent.totalRating} Reviews)</p>
+              </div>
+              </div>
               <div className='price'><span>&#8377;</span>
               <span>{singleEvent.cost}</span></div>
              <div className='desc'><p>{singleEvent.themeDescription}</p></div>

@@ -3,6 +3,7 @@ import Navbar from "../Navbar/Navbar"
 import styles from "./AddTheme.module.css";
 import { BaseUrl } from "../../../utils/authApi";
 import axios from "axios";
+import Modal from "react-modal";
 import UserContext from "../../../UserContext";
 import { useNavigate } from "react-router-dom";
 import { EditOutlined, DeleteOutlined  } from '@ant-design/icons';
@@ -14,12 +15,14 @@ const AddTheme = () => {
   const themeName = useRef();
   const imageUrl = useRef();
   const photographerDetails = useRef();
+  const location = useRef();
   const videographerDetails = useRef();
   const returnGift = useRef();
   const themeCost = useRef();
   const description = useRef();
   const navigate = useNavigate();
   const [data, setData] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const jwtToken = appUser?.token;
   console.log("token", jwtToken);
@@ -33,10 +36,12 @@ const AddTheme = () => {
       themeName: themeName.current.value,
       themeimgUrl: imageUrl.current.value,
       themephotographer: photographerDetails.current.value,
+      location: location.current.value,
       themeVideographer: videographerDetails.current.value,
       themeReturnGift: returnGift.current.value,
       cost: themeCost.current.value,
       themeDescription: description.current.value,
+      
     };
 
     try {
@@ -51,13 +56,20 @@ const AddTheme = () => {
       themeName.current.value = "";
       imageUrl.current.value = "";
       photographerDetails.current.value = "";
+      location.current.value = "";
       videographerDetails.current.value = "";
       returnGift.current.value = "";
       themeCost.current.value = "";
       description.current.value = "";
+      
     } catch (e) {
       console.log(e.message);
     }
+  }
+
+
+  function openModal() {
+    setIsModalOpen(true);
   }
 
   const getAllThemes = async () => {
@@ -114,6 +126,11 @@ const AddTheme = () => {
                 placeholder="Enter Photographer Details"
                 ref={photographerDetails}
               />
+              <input
+                type="text"
+                placeholder="Location"
+                ref={location}
+              />
               <div className={styles.add_btn_container}>
                 <input
                   type="submit"
@@ -165,9 +182,7 @@ const AddTheme = () => {
                       />
                     }
                     actions={[
-                      <EditOutlined key="edit" onClick={() => {
-                        console.log("clicked")
-                      }}/>,
+                      <EditOutlined key="edit" onClick={openModal}/>,
                       <DeleteOutlined key="ellipsis" onClick={() => handleDelete(item)}/>,
                     ]}
                   >
@@ -181,6 +196,82 @@ const AddTheme = () => {
           </div>
         </div>
       </div>
+
+      
+      <Modal
+  isOpen={isModalOpen}
+  onRequestClose={() => setIsModalOpen(false)}
+  className={styles.modal} // Apply the 'modal' CSS class
+  overlayClassName={styles.modalOverlay}
+>
+<h2 className={styles.modalTitle}>Edit Theme</h2>
+  <div className={styles.modalContent}>
+    
+    <div className={styles.modalForm}>
+      <input
+        type="text"
+        placeholder="Enter Theme Name"
+        ref={themeName}
+        className={styles.modalInput}
+      />
+      <input
+        type="text"
+        placeholder="Enter Image URL"
+        ref={imageUrl}
+        className={styles.modalInput}
+      />
+      <input
+        type="text"
+        placeholder="Enter Location Details"
+        ref={location}
+        className={styles.modalInput}
+      />
+      <input
+        type="text"
+        placeholder="Enter Photographer Details"
+        ref={photographerDetails}
+        className={styles.modalInput}
+      />
+      <div className={styles.modalButtonContainer}>
+        <input
+          type="submit"
+          value="Save Changes"
+          className={styles.modalButton}
+          onClick={handleSubmit}
+        />
+      </div>
+    </div>
+    <div className={styles.modalForm}>
+      <input
+        type="text"
+        placeholder="Enter Videographer Details"
+        ref={videographerDetails}
+        className={styles.modalInput}
+      />
+      <input
+        type="text"
+        placeholder="Enter Theme Return Gift"
+        ref={returnGift}
+        className={styles.modalInput}
+      />
+      <input
+        type="text"
+        placeholder="Enter Theme Cost"
+        ref={themeCost}
+        className={styles.modalInput}
+      />
+      <textarea
+        type="text"
+        placeholder="Enter Theme Description"
+        cols={20}
+        rows={10}
+        ref={description}
+        className={styles.modalTextarea}
+      />
+    </div>
+  </div>
+</Modal>
+
     </>
   );
 };
