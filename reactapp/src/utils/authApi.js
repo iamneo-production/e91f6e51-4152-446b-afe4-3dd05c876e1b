@@ -1,7 +1,7 @@
 
 //Define base url for all operations
 
-export const BaseUrl = "https://8080-eccebdfefbdecbedaeddda.project.examly.io";
+export const BaseUrl = "https://8080-ededacddcfefbdecbedaeddda.project.examly.io";
 
 
 
