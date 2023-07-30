@@ -14,8 +14,8 @@ export async function signUpUser(email, mobileNumber, password, userType, userNa
       "userRole":userType,
       "username":userName
     };
-  //ceddbecfbbacaefefbdecbeaedcfdfabbdb ------------ pratik terminal
-  //https://8080-ceddbecfbbacaefefbdecbedaeddda.project.examly.io-----------pratik test terminal
+  //ceddbecfbbacaefefbdecbeaedcfdfabbdb --------
+  //https://8080-ceddbecfbbacaefefbdecbedaeddda.project.examly.io---- test terminal
     try {
 
       const response = await fetch(`${BaseUrl}/user/signup`, {
