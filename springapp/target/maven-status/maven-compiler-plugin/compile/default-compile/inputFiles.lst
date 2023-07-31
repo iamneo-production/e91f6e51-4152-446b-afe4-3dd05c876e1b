@@ -1,6 +1,6 @@
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/MessageResponse.java
-/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/email/EmailServiceImpl.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/AdminController.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/email/EmailServiceImpl.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/EventModelRepository.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/MenuModelRepository.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/AddOnModelServices.java
@@ -8,8 +8,8 @@
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/models/ThemeModel.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/AddOnController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/EventBookingController.java
-/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/email/EmailMOdel.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/models/AddOnModel.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/email/EmailMOdel.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/security/securityconfig/AuthTokenFilter.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/models/LoginResponseModel.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/UserController.java
@@ -18,8 +18,8 @@
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/ThemeController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/security/securityservices/UserDetailsImpl.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/EventModelServices.java
-/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/models/UserModel.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/AddOnModelRepository.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/models/UserModel.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/UserModelRepository.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/EventController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/UserModelService.java
@@ -27,14 +27,14 @@
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/models/LoginModel.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/ThemeModelRepository.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/models/AdminModel.java
-/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/email/EmailService.java
-/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/RatingController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/SpringappApplication.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/RatingController.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/email/EmailService.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/security/securityconfig/JwtUtils.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/security/securityconfig/SecurityConfig.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/security/securityconfig/AuthEntryPoint.java
-/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/models/UserRole.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/AdminModelRepository.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/models/UserRole.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/AuthController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/MenuModelServices.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/models/MenuModel.java
